@@ -1,0 +1,17 @@
+{#
+  Usage: {{ logoPartial.logo(variant="default", size=32, class="text-white") }}
+  variant: "full" | "default" | "mark" (see _data/logos.js). size: rendered height in
+  px; width is derived from the viewBox ratio, so it's never hand-written — zero CLS.
+
+  Inlined rather than <img>: the sources are `fill="currentColor"` and carry no colour
+  of their own. An externally referenced SVG resolves currentColor against its OWN
+  document, where `color` is unset and falls back to black — <img src="logo.svg">
+  would paint every logo black on dark blue. Inlining lets one file serve both
+  polarities via a text-* utility at the call site.
+#}
+{% macro logo(variant="default", size=40, alt=None, class="") %}
+{%- set v = logos[variant] -%}
+{%- set width = (size * v.ratio) | round -%}
+{%- set name = alt if alt != None else (site.name if v.hasText else "") -%}
+<svg viewBox="{{ v.viewBox }}" width="{{ width }}" height="{{ size }}" fill="currentColor"{% if class %} class="{{ class }}"{% endif %}{% if name %} role="img" aria-label="{{ name }}"{% else %} aria-hidden="true"{% endif %}>{{ v.body | safe }}</svg>
+{%- endmacro %}
