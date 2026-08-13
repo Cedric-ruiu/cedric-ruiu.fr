@@ -1,0 +1,62 @@
+{% import "partials/logo.njk" as logoPartial with context %}
+{% import "partials/icons.njk" as iconPartial with context %}
+
+<footer class="safe-x bg-ink">
+  <div class="mx-auto max-w-6xl px-4 py-14 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 gap-10 lg:grid-cols-[1.4fr_1fr_1fr_1.2fr]">
+      <div>
+        <a href="/" class="tap mb-4" aria-label="{{ site.name }} — accueil">
+          {{ logoPartial.logo(variant="default", size=34, alt="", class="text-white") }}
+        </a>
+        <p class="max-w-xs text-sm leading-relaxed text-on-ink-muted">Développeur web indépendant à Séné, dans le Morbihan. Création de sites internet, référencement SEO et performance web, en Bretagne et partout en France.</p>
+      </div>
+
+      <div>
+        <div class="mb-2 font-serif text-[13px] font-extrabold uppercase tracking-wider text-white">Pages</div>
+        {# `tap`'s invisible padding (to reach 44px) would double into visible gaps between
+           stacked items; -mt-3 pulls each one back to match Expertise's gap-3. #}
+        <ul class="flex flex-col text-sm [&>li+li]:-mt-3">
+          {% for item in site.nav %}
+          <li><a href="{{ item.url }}" class="tap w-fit text-on-ink"><span class="link-underline">{{ item.name }}</span></a></li>
+          {% endfor %}
+          <li><a href="/mentions-legales/" class="tap w-fit text-on-ink"><span class="link-underline">Mentions légales</span></a></li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="mb-4 font-serif text-[13px] font-extrabold uppercase tracking-wider text-white">Expertise</div>
+        <ul class="flex flex-col gap-3 text-sm text-on-ink">
+          <li>Web</li>
+          <li>Référencement</li>
+          <li>Performance</li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="mb-2 font-serif text-[13px] font-extrabold uppercase tracking-wider text-white">Contact</div>
+        {# Same -mt-3 correction as the Pages list, but only between two `tap` links. #}
+        <ul class="flex flex-col text-sm text-on-ink">
+          <li><a href="mailto:{{ site.email }}" class="tap w-fit"><span class="link-underline">{{ site.email }}</span></a></li>
+          <li class="-mt-3"><a href="tel:{{ site.phone | phoneE164 }}" class="tap w-fit"><span class="link-underline">{{ site.phone | phoneDisplay }}</span></a></li>
+          <li>{{ site.locality }}, {{ site.department }} ({{ site.departmentCode }})</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="border-t border-white/10">
+    {# Deliberately understated: same subtle grey as the copyright, no underline
+       animation. It's a credit for the curious, not a call to action. #}
+    {# py-3 rather than py-6: `tap` already carries the link to a 44px target,
+       which is what sets this bar's height now. #}
+    <div class="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-x-6 gap-y-1 px-4 py-3 text-[13px] text-on-ink-subtle sm:px-6 lg:px-8">
+      <span>© {% year %} {{ site.name }} — {{ site.baselineShort }}</span>
+      {# Same tab on purpose, unlike the portfolio cards: this is a credit at the
+         very bottom of the page, not a link you are meant to come back from. #}
+      <a href="{{ site.repository }}" class="tap gap-2 text-on-ink-subtle transition-colors hover:text-on-ink">
+        {{ iconPartial.icon("github", class="h-4 w-4 shrink-0") }}
+        Code source
+      </a>
+    </div>
+  </div>
+</footer>

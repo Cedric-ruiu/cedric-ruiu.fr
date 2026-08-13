@@ -1,0 +1,90 @@
+{% import "partials/logo.njk" as logoPartial with context %}
+
+<header class="safe-x sticky top-0 z-40 bg-ocean">
+  <div class="mx-auto flex h-14 max-w-6xl items-center justify-between px-4 sm:px-6 lg:px-8">
+    <a href="/" class="tap shrink-0" aria-label="{{ site.name }} — accueil">
+      {{ logoPartial.logo(variant="default", size=32, alt="", class="text-white") }}
+    </a>
+
+    <nav aria-label="Navigation principale" class="hidden md:block">
+      <ul class="flex items-center gap-9">
+        {% for item in site.nav %}
+        <li>
+          {# text-white/85 measures 4.66:1 on ocean, clearing WCAG 1.4.3. #}
+          <a
+            href="{{ item.url }}"
+            class="tap font-serif text-[15px] font-extrabold {% if page.url == item.url %}text-white{% else %}text-white/85 hover:text-white{% endif %}"
+            {% if page.url == item.url %}aria-current="page"{% endif %}
+          ><span class="link-underline">{{ item.name }}</span></a>
+        </li>
+        {% endfor %}
+      </ul>
+    </nav>
+
+    {# Hidden until nav.js reveals it: the panel it opens only exists with script,
+       so without JS this would be a dead control. Navigation stays reachable in
+       the footer. Valid here — unlike on the <svg> below, a <button> is an
+       HTMLElement, so `toggle.hidden = false` really does clear the attribute. #}
+    <button
+      type="button"
+      id="nav-toggle"
+      class="flex h-11 w-11 items-center justify-center rounded text-white md:hidden"
+      aria-expanded="false"
+      aria-controls="nav-mobile"
+      aria-label="Ouvrir le menu"
+      hidden
+    >
+      {# One icon, no open/close swap: the panel below is `fixed inset-0 z-50` and
+         covers this header (z-40), so the button is never visible while the menu
+         is open. `hidden` is also invalid on <svg> — it is an HTMLElement
+         attribute, so setting it from script would have done nothing anyway. #}
+      <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+        <line x1="3" y1="6" x2="21" y2="6"></line>
+        <line x1="3" y1="12" x2="21" y2="12"></line>
+        <line x1="3" y1="18" x2="21" y2="18"></line>
+      </svg>
+    </button>
+  </div>
+
+  {# role="dialog" keeps assistive technology from reaching the page behind this overlay. #}
+  <div
+    id="nav-mobile"
+    class="safe-all fixed inset-0 z-50 flex flex-col bg-ocean-deep"
+    role="dialog"
+    aria-modal="true"
+    aria-label="Menu"
+    hidden
+  >
+    <div class="flex h-14 items-center justify-between px-4">
+      <a href="/" class="tap" aria-label="{{ site.name }} — accueil">
+        {{ logoPartial.logo(variant="default", size=28, alt="", class="text-white") }}
+      </a>
+      <button
+        type="button"
+        id="nav-close"
+        class="flex h-11 w-11 items-center justify-center rounded text-white"
+        aria-label="Fermer le menu"
+      >
+        <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+          <line x1="5" y1="5" x2="19" y2="19"></line>
+          <line x1="19" y1="5" x2="5" y2="19"></line>
+        </svg>
+      </button>
+    </div>
+
+    <nav aria-label="Navigation mobile" class="flex flex-1 flex-col justify-center px-8 pb-20">
+      <ul class="flex flex-col gap-2">
+        {% for item in site.nav %}
+        <li>
+          <a
+            href="{{ item.url }}"
+            class="block py-3 font-serif text-2xl font-extrabold {% if page.url == item.url %}text-white{% else %}text-white/80{% endif %}"
+            {% if page.url == item.url %}aria-current="page"{% endif %}
+          >{{ item.name }}</a>
+        </li>
+        {% endfor %}
+      </ul>
+      <a href="/contact/" class="btn-primary mt-10">Me contacter</a>
+    </nav>
+  </div>
+</header>
