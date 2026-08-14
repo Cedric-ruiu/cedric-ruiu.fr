@@ -1,0 +1,91 @@
+# image: public URL of the screenshot ("/portfolio/x.webp" maps to src/portfolio/x.webp).
+#        Missing file → the card falls back to a neutral flat panel at the same ratio, no CLS.
+# year: leave empty when unknown — the template renders nothing rather than a guess.
+
+- name: "Myrmecophoto"
+  url: "https://myrmecophoto.fr/"
+  tag: "Site éditorial"
+  year: 2025
+  stack: "Nuxt"
+  description: >-
+    Mon site de photographie naturaliste, consacré aux fourmis de France et
+    d'Europe. Il réunit une collection taxonomique — une fiche par espèce,
+    photographiée sous plusieurs angles — et un carnet de terrain où je publie
+    mes observations et mes notes de macrophotographie. C'est le terrain sur
+    lequel je teste ce que je propose ensuite : structure de contenu, vitesse
+    d'affichage et référencement.
+  image: "/portfolio/myrmecophoto.webp"
+  imageAlt: "Page d'accueil de Myrmecophoto, avec une macrophotographie de fourmi et l'accès à la collection d'espèces."
+
+- name: "Aksel San Tattoo"
+  url: "https://akselsan-tattoo.com/"
+  tag: "Site vitrine"
+  year: 2026
+  stack: "Eleventy"
+  description: >-
+    Site vitrine conçu et développé pour un tatoueur installé à Ostwald, près
+    de Strasbourg. Il présente le portfolio, les flashs disponibles, le
+    déroulement d'un projet de tatouage et les couvertures, avec un formulaire
+    de prise de contact. Site entièrement statique : rien à maintenir côté
+    serveur, aucune mise à jour à surveiller, et une robustesse à toute
+    épreuve, même en cas d'afflux de visiteurs.
+  image: "/portfolio/akselsan-tattoo.webp"
+  imageAlt: "Page d'accueil du site Aksel San Tattoo, avec le portfolio de tatouages en couleur."
+
+- name: "Danse de la Licorne"
+  url: "https://lion-dance.fr/"
+  tag: "Site vitrine"
+  year: 2015
+  stack: "WordPress, thème sur mesure"
+  description: >-
+    Site conçu et développé pour une école strasbourgeoise de danse de la
+    licorne et du dragon. Il explique la tradition, présente les costumes
+    disponibles pour les prestations — mariages, nouvel an, inaugurations — et
+    détaille les cours et les inscriptions. Le thème a été écrit sur mesure,
+    et le site est publié en plusieurs langues.
+  image: "/portfolio/lion-dance.webp"
+  imageAlt: "Page d'accueil du site Danse de la Licorne, avec une photo de prestation en costume."
+
+- name: "AKSVB Strasbourg"
+  url: "https://aksvb-strasbourg.fr/"
+  tag: "Site vitrine"
+  year: 2014
+  stack: "WordPress, thème sur mesure"
+  description: >-
+    Site conçu et développé pour une école d'arts martiaux traditionnels
+    sino-vietnamiens à Strasbourg. Il regroupe les cours proposés aux adultes
+    et aux enfants, les horaires et tarifs, les démonstrations publiques et
+    l'histoire de l'école. Comme le précédent, il repose sur un thème écrit
+    sur mesure plutôt que sur un gabarit du commerce.
+  image: "/portfolio/aksvb-strasbourg.webp"
+  imageAlt: "Page d'accueil du site AKSVB Strasbourg, avec la présentation des cours de kung-fu."
+
+- name: "GypSum"
+  url: "https://cedric-ruiu.github.io/gyp-sum/"
+  tag: "Application web"
+  year: 2026
+  stack: "Vue 3, Vite"
+  description: >-
+    Calculateur de dosage eau et plâtre pour la fabrication de moules en
+    céramique. On saisit les dimensions du moule et de la pièce à mouler, le
+    rapport plâtre/eau souhaité et une marge de sécurité ; l'outil en déduit
+    les quantités exactes, en s'appuyant sur la masse volumique réelle du
+    gypse plutôt que sur une règle de trois. Tout le calcul se fait dans le
+    navigateur, aucune donnée n'est envoyée.
+  image: "/portfolio/gyp-sum.webp"
+  imageAlt: "Interface de GypSum, avec les champs de dimensions du moule et le résultat en litres d'eau et kilos de plâtre."
+
+- name: "DAB Trainer"
+  url: "https://cedric-ruiu.github.io/atm-trainer/"
+  tag: "Application web"
+  year: 2026
+  stack: "Vue 3, Vite"
+  description: >-
+    Simulateur de distributeur de billets, pensé pour que des personnes en
+    difficulté cognitive s'entraînent à retirer de l'argent sans aucun enjeu.
+    Il reproduit le parcours complet — insertion de la carte, code, choix du
+    montant, retrait des billets et du ticket — au rythme de la personne et
+    autant de fois qu'elle le souhaite. Gratuit, open source, sans publicité
+    et utilisable directement sur tablette.
+  image: "/portfolio/atm-trainer.webp"
+  imageAlt: "Écran du simulateur DAB Trainer, avec le clavier numérique et la fente à billets."
