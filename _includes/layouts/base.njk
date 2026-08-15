@@ -50,6 +50,8 @@
     "url": "{{ site.url }}",
     "email": "{{ site.email }}",
     "telephone": "{{ site.phone | phoneE164 }}",
+    "image": "{{ home.why.photo.portraitLarge | absoluteUrl(site.url) }}",
+    "sameAs": ["https://github.com/Cedric-ruiu"],
     "knowsAbout": ["Développement web", "Référencement naturel (SEO)", "Performance web"],
     "areaServed": ["{{ site.region }}", "France"],
     "address": {
