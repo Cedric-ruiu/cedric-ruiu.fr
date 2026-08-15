@@ -1,0 +1,97 @@
+---
+layout: base
+---
+{% import "partials/logo.njk" as logoPartial with context %}
+{% import "partials/icons.njk" as iconPartial %}
+
+{# Background rhythm, not to be reordered: ocean nav → ocean-deep hero → sand cards → tide band → sand CTA → ink footer. #}
+<section class="relative overflow-hidden bg-ocean-deep">
+  {# Watermark hangs outside the frame; overflow-hidden on the section clips it instead of causing horizontal scroll. #}
+  <div class="pointer-events-none absolute -right-16 -bottom-24 select-none opacity-12 sm:-right-8 lg:right-8" aria-hidden="true">
+    {{ logoPartial.logo(variant="mark", size=520, alt="", class="h-[clamp(20rem,55vw,34rem)] w-auto text-white") }}
+  </div>
+
+  <div class="relative mx-auto flex max-w-3xl flex-col items-center px-4 pt-14 pb-16 text-center sm:px-6 sm:pt-20 sm:pb-24">
+    {{ logoPartial.logo(variant="full", size=179, class="w-[min(78vw,420px)] h-auto text-white") }}
+
+    <p class="eyebrow mt-10 text-eyebrow-on-ocean-deep">{{ home.hero.eyebrow }}</p>
+    <h1 class="text-h1-hero mt-4 font-serif text-white">{{ home.hero.title }}</h1>
+    <p class="text-body mt-6 max-w-xl text-on-ocean-deep">{{ home.hero.intro }}</p>
+
+    <div class="mt-9 flex w-full flex-col gap-3 sm:w-auto sm:flex-row sm:gap-4">
+      <a href="{{ home.hero.primary.url }}" class="btn-primary w-full sm:w-auto">{{ home.hero.primary.label }}</a>
+      {# border-white/40: 3.48:1 against ocean-deep, clears WCAG 1.4.11's 3:1. #}
+      <a href="{{ home.hero.secondary.url }}" class="btn-secondary w-full border-white/40 text-white hover:border-white hover:text-white sm:w-auto">{{ home.hero.secondary.label }}</a>
+    </div>
+  </div>
+</section>
+
+<section class="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
+  <div class="max-w-2xl">
+    <p class="eyebrow">{{ home.expertise.eyebrow }}</p>
+    <h2 class="text-h2 mt-3 font-serif">{{ home.expertise.title }}</h2>
+    <p class="text-body mt-4">{{ home.expertise.intro }}</p>
+  </div>
+
+  <div class="mt-10 grid grid-cols-1 gap-6 md:grid-cols-3">
+    {% for item in home.expertise.items %}
+    <article class="card flex flex-col p-6 sm:p-7">
+      {{ iconPartial.icon(item.icon, class="h-14 w-14 text-ocean") }}
+
+      <h3 class="text-h3 mt-6 font-serif">{{ item.title }}</h3>
+      {% for paragraph in item.paragraphs %}
+      <p class="text-body mt-4">{{ paragraph }}</p>
+      {% endfor %}
+    </article>
+    {% endfor %}
+  </div>
+</section>
+
+<section class="bg-tide">
+  <div class="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
+    <div class="grid grid-cols-1 items-start gap-10 lg:grid-cols-2 lg:gap-14">
+      <div>
+        <p class="eyebrow">{{ home.why.eyebrow }}</p>
+        <h2 class="text-h2 mt-3 font-serif">{{ home.why.title }}</h2>
+        <p class="text-body mt-4">{{ home.why.intro }}</p>
+
+        <dl class="mt-8 flex flex-col gap-6">
+          {% for item in home.why.items %}
+          <div>
+            <dt class="font-serif text-h3 font-bold text-ink">{{ item.title }}</dt>
+            <dd class="text-body mt-2">{{ item.text }}</dd>
+          </div>
+          {% endfor %}
+        </dl>
+      </div>
+
+      {# Art-directed portrait: wide crop on phones, tall crop from 640px up. The
+         aspect-* below switches at the same 640px breakpoint as the <source>
+         media query, so reserved space always matches the picked crop — zero
+         CLS. The <img> is absolutely positioned, so its intrinsic ratio never
+         drives layout. #}
+      {# `mx-auto` must stay on the inner div, not this grid item: an auto
+         margin on the grid item would downgrade `justify-self: stretch` to
+         `start` (CSS Box Alignment §6.2), sizing it to its absolutely-positioned
+         (i.e. empty) content and collapsing the card to zero width ≥640px. #}
+      <div class="order-first lg:order-last">
+        <div class="overflow-hidden rounded border border-border bg-white sm:mx-auto sm:max-w-sm lg:max-w-none">
+          <div class="relative aspect-[600/406] w-full sm:aspect-[787/1000]">
+            <picture>
+              <source media="(min-width: 640px)" srcset="{{ home.why.photo.portrait }} 787w, {{ home.why.photo.portraitLarge }} 1559w" sizes="(min-width: 1024px) 33rem, 24rem">
+              <img src="{{ home.why.photo.landscape }}" width="600" height="406" alt="{{ home.why.photo.alt }}" loading="lazy" decoding="async" class="absolute inset-0 h-full w-full object-cover">
+            </picture>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="mx-auto max-w-3xl px-4 py-16 text-center sm:px-6 sm:py-20">
+  <h2 class="text-h2 font-serif">{{ home.cta.title }}</h2>
+  <p class="text-body mx-auto mt-4 max-w-xl">{{ home.cta.text }}</p>
+  <a href="{{ home.cta.button.url }}" class="btn-primary mt-8 w-full sm:w-auto">{{ home.cta.button.label }}</a>
+</section>
+
+{{ content | safe }}

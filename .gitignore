@@ -1,0 +1,29 @@
+.DS_Store
+
+node_modules
+*.log*
+.env
+
+_site
+
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
+
+# Fonts are copied from node_modules by scripts/copy-fonts.mjs at build time
+public/fonts
+
+# The social card is rasterised from assets/logos/logo.svg by
+# scripts/build-images.mjs. The logos themselves are inlined into the HTML
+# straight from that directory, so nothing is emitted under public/img any more.
+public/og.png
+
+# Scripts are minified from assets/js/ by scripts/build-js.mjs at build time
+public/js
+
+# Local working files, never published
+CLAUDE.md
+tmp

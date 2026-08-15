@@ -1,0 +1,84 @@
+# `icon` selects a pictogram from _includes/partials/icons.njk by name — not a
+# Tailwind class fragment, since a class built by concatenation would be invisible
+# to the scanner.
+
+hero:
+  eyebrow: "Création de sites internet · Référencement SEO · Performance web"
+  title: "Artisan du web, je conçois des sites sur mesure pour votre activité."
+  intro: >-
+    Je suis Cédric Ruiu, développeur web indépendant à Séné, dans le Morbihan. Je conçois des sites internet pour les artisans, indépendants et petites entreprises, en Bretagne comme partout en France. Développement, référencement et performance : vous avez un seul interlocuteur, du premier échange à la mise en ligne.
+  primary:
+    label: "Me contacter"
+    url: "/contact/"
+  secondary:
+    label: "Voir mes projets"
+    url: "/portfolio/"
+
+expertise:
+  eyebrow: "Ce que je fais"
+  title: "Trois expertises, une seule personne"
+  intro: >-
+    Créer un site, le rendre visible et le garder rapide sont trois expertises différentes. Je les réunis au même endroit pour que votre site reste cohérent de la conception jusqu'à ses performances.
+  items:
+    - icon: "site"
+      title: "Création de site internet"
+      paragraphs:
+        - >-
+          Je conçois et développe votre site de A à Z : structure, contenus, interface, développement, hébergement et mise en ligne. Vous échangez directement avec la personne qui réalise le projet, sans intermédiaire.
+        - >-
+          Site vitrine, présentation d'activité, portfolio, réservation, formulaire ou projet web plus spécifique : je construis la solution en fonction de votre activité, plutôt que de vous faire entrer dans un modèle existant.
+        - >-
+          Mon expérience en développement web me permet aussi d'aller plus loin qu'un simple site vitrine lorsque votre projet le nécessite : fonctionnalités sur mesure, données, APIs, outils métier ou intégrations avec vos services existants.
+    - icon: "seo"
+      title: "Référencement SEO"
+      paragraphs:
+        - >-
+          Être présent sur Google ne suffit pas : encore faut-il apparaître au bon endroit, devant les bonnes personnes. J'analyse en profondeur votre site pour identifier ce qui freine sa visibilité : structure, contenu, balises, maillage, performances, indexation et nombreux autres signaux techniques et éditoriaux.
+        - >-
+          J'ai développé mon propre outil d'audit SEO qui permet cette analyse et d'aller beaucoup plus loin qu'un simple contrôle de quelques pages. Il produit un rapport détaillé, hiérarchisé et exploitable, avec les problèmes identifiés et les actions à mener pour les corriger.
+        - >-
+          Et lorsque j'ai accès au code source, le workflow peut aller plus loin : certaines corrections peuvent être réalisées automatiquement. Vous ne recevez donc pas seulement une liste de recommandations ; je peux aussi intervenir directement sur le site pour les mettre en œuvre.
+        - >-
+          Vous avez déjà un site ? Un audit peut constituer un excellent premier pas pour savoir précisément où vous en êtes et quelles actions auront le plus d'impact.
+    - icon: "perf"
+      title: "Performance"
+      paragraphs:
+        - >-
+          Un site rapide est plus agréable à utiliser, particulièrement sur mobile et lorsque la connexion est mauvaise. Je conçois des sites légers et réactifs, avec une attention particulière portée au chargement des pages et aux performances réelles.
+        - >-
+          La performance ne se limite pas à un bon score Lighthouse. Moins de code, moins de ressources et moins de données à transférer permettent aussi de réduire les ressources mobilisées par le navigateur et les serveurs. Une approche plus sobre, qui profite à la fois à vos visiteurs, à votre référencement et à l'impact environnemental du site.
+        - >-
+          Votre site existe déjà ? Je peux mesurer ses performances, identifier ce qui le ralentit et prioriser les optimisations qui auront le plus d'impact.
+
+why:
+  eyebrow: "Pourquoi travailler avec moi"
+  title: "La personne qui code est celle à qui vous parlez"
+  intro: >-
+    Je suis installé à Séné, dans le Morbihan. Je privilégie les échanges directs et je peux me déplacer dans le secteur de Vannes et du Golfe du Morbihan. Pour les projets ailleurs en France, je travaille simplement à distance, par téléphone ou en visio.
+  # Served as delivered, bypassing `responsiveImage`: re-encoding (AVIF included)
+  # came out heavier at equal quality. The number in each filename IS its pixel
+  # width, repeated by the template as the srcset `w` descriptor — keep them in
+  # sync when renaming a file.
+  photo:
+    alt: "Cédric Ruiu, développeur web indépendant à Séné, dans le Morbihan."
+    landscape: "/cedric-ruiu-portrait-paysage-600.webp"
+    portrait: "/cedric-ruiu-portrait-787.webp"
+    portraitLarge: "/cedric-ruiu-portrait-1559.webp"
+  items:
+    - title: "Un seul interlocuteur"
+      text: >-
+        Vous expliquez votre activité une seule fois. Pas d'intermédiaire ni de relais entre plusieurs prestataires : la personne qui comprend votre besoin est aussi celle qui conçoit, développe et met en ligne votre site.
+    - title: "Vingt ans de métier"
+      text: >-
+        Je développe des sites et des applications web depuis de nombreuses années, avec une expertise particulière en développement frontend, SEO technique et performance. Cette expérience me permet d'aborder un projet avec une vraie exigence technique, tout en restant adapté aux besoins d'une petite structure.
+    - title: "Un site qui vous appartient"
+      text: >-
+        Le code, les textes, les images et le nom de domaine sont à vous. Vous pouvez reprendre la main, changer de prestataire ou faire évoluer votre site : rien n'est enfermé dans un abonnement ou un outil dont vous n'auriez pas les clés.
+
+cta:
+  title: "Un projet en tête ?"
+  text: >-
+    Dites-moi ce que vous faites et ce que vous aimeriez améliorer. Je vous réponds avec un premier avis honnête — y compris si la meilleure solution n'est pas de refaire votre site.
+  button:
+    label: "Me contacter"
+    url: "/contact/"

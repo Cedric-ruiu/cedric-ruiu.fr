@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="{{ site.lang }}">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ title }}</title>
+  <meta name="description" content="{{ description }}">
+  <link rel="canonical" href="{{ page.url | absoluteUrl(site.url) }}">
+
+  {# /og.png is rasterised by scripts/build-images.mjs: social crawlers don't render SVG. #}
+  <meta property="og:title" content="{{ title }}">
+  <meta property="og:description" content="{{ description }}">
+  <meta property="og:image" content="{{ "/og.png" | absoluteUrl(site.url) }}">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="{{ site.name }} — {{ site.baseline }}">
+  <meta property="og:url" content="{{ page.url | absoluteUrl(site.url) }}">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:site_name" content="{{ site.name }}">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{{ title }}">
+  <meta name="twitter:description" content="{{ description }}">
+  <meta name="twitter:image" content="{{ "/og.png" | absoluteUrl(site.url) }}">
+
+  {% if noindex %}<meta name="robots" content="noindex">{% endif %}
+
+  <meta name="theme-color" content="#1e6c8e">
+  <meta name="color-scheme" content="light">
+
+  <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <meta name="apple-mobile-web-app-title" content="{{ site.name }}">
+  <link rel="manifest" href="/site.webmanifest">
+
+  {# No image preload: logos are inline SVG, not LCP candidates, so no page has an image on the critical path. #}
+  <link rel="preload" as="font" href="/fonts/bitter-latin-wght-normal.woff2" type="font/woff2" crossorigin>
+  <link rel="preload" as="font" href="/fonts/manrope-latin-wght-normal.woff2" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/assets/css/main.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "{{ site.name }}",
+    "jobTitle": "{{ site.jobTitle }}",
+    "url": "{{ site.url }}",
+    "email": "{{ site.email }}",
+    "telephone": "{{ site.phone | phoneE164 }}",
+    "knowsAbout": ["Développement web", "Référencement naturel (SEO)", "Performance web"],
+    "areaServed": ["{{ site.region }}", "France"],
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "{{ site.locality }}",
+      "addressRegion": "{{ site.region }}",
+      "addressCountry": "{{ site.country }}"
+    }
+  }
+  </script>
+</head>
+
+{# text-copy sets the running-text colour once, here; `text-body` on the elements
+   below is the fluid size, and inherits this colour. #}
+<body class="bg-sand font-sans text-copy antialiased">
+  <a href="#contenu" class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-100 focus:inline-flex focus:min-h-11 focus:items-center focus:rounded focus:bg-ocean focus:px-4 focus:text-white">Aller au contenu</a>
+
+  {% include "partials/header.njk" %}
+
+  <main id="contenu">
+    {{ content | safe }}
+  </main>
+
+  {% include "partials/footer.njk" %}
+
+  <script src="/js/nav.js" defer></script>
+</body>
+
+</html>
