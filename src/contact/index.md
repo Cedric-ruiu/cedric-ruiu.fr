@@ -9,8 +9,9 @@ formHeading: "Écrivez-moi"
 ---
 
 Écrivez-moi, appelez-moi, ou remplissez le formulaire : les trois arrivent au
-même endroit. **Je réponds sous 48 heures**, avec un premier avis concret plutôt
-qu'un devis automatique.
+même endroit. Je suis basé à Séné, près de Vannes, et je travaille aussi à
+distance partout en France. **Je réponds sous 48 heures**, avec un premier avis
+concret plutôt qu'un devis automatique.
 
 Et si vous hésitez encore, un simple état des lieux de votre site actuel est une
 bonne façon de commencer — sans engagement de refonte.
