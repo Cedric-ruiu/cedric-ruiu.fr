@@ -345,6 +345,290 @@
   }
 }
 
+/*
+ * Home hero — underwater scene.
+ *
+ * Three ingredients, in order of cost: a static background (free), two kelp
+ * fronds swaying (4 composited layers, phone included) and bubbles (6 layers on
+ * a phone, 12 on desktop). Every animation moves `transform` and `opacity`
+ * only, so none of them touches layout or paint — they all run on the
+ * compositor.
+ *
+ * Reduced motion is handled by the global block below: it cuts every duration
+ * to 0.01ms with no fill mode, so the kelp settles upright and the bubbles keep
+ * the `opacity: 0` they rest at, i.e. the scene goes still rather than broken.
+ */
+@layer components {
+  /* Depth, painted rather than animated: light from the surface at the top —
+     which also carries the ocean nav down into the ocean-deep hero — and the
+     water darkening toward the seabed. Measured on the painted pixels: the glow
+     is spent by 22% of the height and the eyebrow — the first text — starts at
+     28%, so no contrast pair in the palette sees a lighter background than it
+     was checked against. Below 42% the water only gets darker, which is why the
+     secondary button's white/40 border went from 2.97:1 to 3.21:1 on a phone,
+     where the near frond had been washing it out. */
+  .hero-water {
+    background-color: var(--color-ocean-deep);
+    background-image:
+      radial-gradient(
+        84% 44% at 50% -6%,
+        color-mix(in oklab, var(--color-ocean) 62%, transparent),
+        transparent 70%
+      ),
+      linear-gradient(
+        to bottom,
+        transparent 30%,
+        color-mix(in oklab, var(--color-ink) 74%, transparent)
+      );
+  }
+
+  /*
+   * Kelp. The holdfast is the pivot: both transforms share a bottom-centre
+   * origin, so displacement grows with height — nothing at the base, most at
+   * the tip. Two of them, nested, because one rotation reads as a metronome:
+   * the frond turns (.kelp) while the blade lags behind it (.kelp-blade), on
+   * periods with no common factor so the pair never settles into a visible
+   * loop. Measured travel at the tip: ~17px on a phone, ~25 to 45px on a
+   * desktop, over the several seconds of a half-cycle — a couple of pixels a
+   * second, which is the speed the whole scene is tuned to.
+   */
+  .kelp {
+    transform-origin: bottom center;
+    animation: kelp-sway 17s ease-in-out -5s infinite;
+  }
+
+  .kelp-blade {
+    transform-origin: bottom center;
+    animation: kelp-lag 11s ease-in-out -4s infinite;
+  }
+
+  /* The far frond: same drawing, so it is mirrored and put on slower periods
+     rather than reading as a clone. It is also much larger and fainter than the
+     near one, which is what separates the two planes — a big shape at 6% reads
+     as distance, a small one at 12% as foreground. `scale` (the independent
+     property) instead of a scaleX() transform, because `transform` is taken by
+     the animation and the two compose. */
+  .kelp-far {
+    scale: -1 1;
+    animation-duration: 26s;
+    animation-delay: -11s;
+
+    & .kelp-blade {
+      animation-duration: 19s;
+      animation-delay: -9s;
+    }
+  }
+
+  /*
+   * Bubbles — flat discs, not glass beads: same vocabulary as the symbol above
+   * them, which is a solid one-colour shape and nothing else. No rim, no
+   * highlight, no gradient; the element's own opacity does all the work.
+   *
+   * Position, size, travel and rhythm live in the numbered classes below rather
+   * than in a style attribute, so nothing is built by string concatenation and
+   * the Tailwind scanner has nothing to miss. `bottom` is a percentage of the
+   * hero, so the column stays evenly filled whether the hero is 890px tall on a
+   * phone or 900px on a desktop.
+   */
+  .bubble {
+    position: absolute;
+    border-radius: 9999px;
+    background-color: var(--color-white);
+    /* Rest state, and the state reduced motion falls back to: invisible. */
+    opacity: 0;
+    animation: bubble-rise var(--bubble-duration) linear var(--bubble-delay)
+      infinite;
+  }
+
+  .bubble-1 {
+    left: 6%;
+    bottom: 2%;
+    width: 14px;
+    height: 14px;
+    --bubble-rise: 26rem;
+    --bubble-drift: 0.9rem;
+    --bubble-duration: 26s;
+    --bubble-delay: -3s;
+    --bubble-peak: 0.16;
+  }
+
+  .bubble-2 {
+    left: 89%;
+    bottom: 22%;
+    width: 9px;
+    height: 9px;
+    --bubble-rise: 19rem;
+    --bubble-drift: -0.7rem;
+    --bubble-duration: 21s;
+    --bubble-delay: -13s;
+    --bubble-peak: 0.14;
+  }
+
+  .bubble-3 {
+    left: 17%;
+    bottom: 48%;
+    width: 8px;
+    height: 8px;
+    --bubble-rise: 15rem;
+    --bubble-drift: 0.6rem;
+    --bubble-duration: 32s;
+    --bubble-delay: -22s;
+    --bubble-peak: 0.12;
+  }
+
+  .bubble-4 {
+    left: 73%;
+    bottom: 6%;
+    width: 17px;
+    height: 17px;
+    --bubble-rise: 28rem;
+    --bubble-drift: -1.1rem;
+    --bubble-duration: 25s;
+    --bubble-delay: -8s;
+    --bubble-peak: 0.15;
+  }
+
+  .bubble-5 {
+    left: 40%;
+    bottom: 34%;
+    width: 10px;
+    height: 10px;
+    --bubble-rise: 22rem;
+    --bubble-drift: 0.8rem;
+    --bubble-duration: 35s;
+    --bubble-delay: -17s;
+    --bubble-peak: 0.11;
+  }
+
+  .bubble-6 {
+    left: 95%;
+    bottom: 58%;
+    width: 12px;
+    height: 12px;
+    --bubble-rise: 16rem;
+    --bubble-drift: -0.6rem;
+    --bubble-duration: 29s;
+    --bubble-delay: -27s;
+    --bubble-peak: 0.13;
+  }
+
+  .bubble-7 {
+    left: 28%;
+    bottom: 12%;
+    width: 11px;
+    height: 11px;
+    --bubble-rise: 24rem;
+    --bubble-drift: 0.7rem;
+    --bubble-duration: 23s;
+    --bubble-delay: -6s;
+    --bubble-peak: 0.14;
+  }
+
+  .bubble-8 {
+    left: 62%;
+    bottom: 40%;
+    width: 8px;
+    height: 8px;
+    --bubble-rise: 18rem;
+    --bubble-drift: -0.5rem;
+    --bubble-duration: 31s;
+    --bubble-delay: -20s;
+    --bubble-peak: 0.11;
+  }
+
+  .bubble-9 {
+    left: 12%;
+    bottom: 66%;
+    width: 13px;
+    height: 13px;
+    --bubble-rise: 14rem;
+    --bubble-drift: 1rem;
+    --bubble-duration: 27s;
+    --bubble-delay: -11s;
+    --bubble-peak: 0.12;
+  }
+
+  .bubble-10 {
+    left: 82%;
+    bottom: 30%;
+    width: 9px;
+    height: 9px;
+    --bubble-rise: 21rem;
+    --bubble-drift: -0.8rem;
+    --bubble-duration: 34s;
+    --bubble-delay: -25s;
+    --bubble-peak: 0.1;
+  }
+
+  .bubble-11 {
+    left: 52%;
+    bottom: 4%;
+    width: 16px;
+    height: 16px;
+    --bubble-rise: 30rem;
+    --bubble-drift: 0.5rem;
+    --bubble-duration: 24s;
+    --bubble-delay: -15s;
+    --bubble-peak: 0.15;
+  }
+
+  .bubble-12 {
+    left: 33%;
+    bottom: 70%;
+    width: 10px;
+    height: 10px;
+    --bubble-rise: 13rem;
+    --bubble-drift: -0.9rem;
+    --bubble-duration: 28s;
+    --bubble-delay: -9s;
+    --bubble-peak: 0.11;
+  }
+}
+
+@keyframes kelp-sway {
+  from,
+  to {
+    transform: rotate(-3.2deg);
+  }
+  50% {
+    transform: rotate(3.6deg);
+  }
+}
+
+@keyframes kelp-lag {
+  from,
+  to {
+    transform: skewX(2.1deg);
+  }
+  50% {
+    transform: skewX(-2.4deg);
+  }
+}
+
+/* Rises at a constant speed — a bubble reaches terminal velocity almost at
+   once — and bows sideways on the way, so the column reads as moving water
+   rather than a straight line of dots. */
+@keyframes bubble-rise {
+  from {
+    opacity: 0;
+    transform: translate(0, 0) scale(0.72);
+  }
+  14% {
+    opacity: var(--bubble-peak);
+  }
+  50% {
+    transform: translate(var(--bubble-drift), calc(var(--bubble-rise) * -0.5))
+      scale(1);
+  }
+  82% {
+    opacity: var(--bubble-peak);
+  }
+  to {
+    opacity: 0;
+    transform: translate(0, calc(var(--bubble-rise) * -1)) scale(1.08);
+  }
+}
+
 /* Outside every @layer so it outranks the utilities without needing !important.
    Only drops motion properties (transform, background-size…); colour
    transitions stay since they're a state change, not motion. */
