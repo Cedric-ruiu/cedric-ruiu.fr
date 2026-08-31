@@ -62,10 +62,13 @@ await render({
 });
 
 // 838px is the content width GitHub renders a README at, so the banner is
-// served 1:1 with no browser downscaling.
+// served 1:1 with no browser downscaling. The two-line lockup is far taller for
+// a given width than the old one-line logo, so here logoWidth is set by the
+// canvas HEIGHT: 400px wide renders 204px tall, keeping ~38px of air top and
+// bottom. Raise it and the logo starts crowding the 280px band.
 await render({
   file: path.join("assets", "banner.png"),
   width: 838,
   height: 280,
-  logoWidth: 480,
+  logoWidth: 400,
 });

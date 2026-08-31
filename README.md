@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/banner.png" alt="Cédric Ruiu — création de site internet, référencement, performance" width="838">
+  <img src="assets/banner.png" alt="Cédric Ruiu — website, référencement, performance" width="838">
 </p>
 
 <h1 align="center">cedric-ruiu.fr</h1>
@@ -61,12 +61,17 @@ The 404 and thank-you pages are `noindex` by design, which Lighthouse scores dow
 
 | Page | Requests | Transferred | Budget used |
 |---|---|---|---|
-| Home | 11 | **112.3 kB** | 37 % |
+| Home | 11 | **108.4 kB** | 36 % |
 | Portfolio | 16 | 217.6 kB | 73 % |
 | Contact | 10 | 86.8 kB | 29 % |
 | Legal notice | 10 | 87.3 kB | 29 % |
 | 404 | 10 | 85.7 kB | 29 % |
 | Thank-you | 10 | 85.9 kB | 29 % |
+
+The home row was re-measured on **2026-08-31**, when the hero logo was replaced: the new artwork is
+a lighter trace, and the page dropped from 112.4 kB to 108.4 kB over the wire. Building both states
+through the same harness confirmed no other page moved. Lighthouse was re-run on the same build —
+every score and every CLS identical to the table above.
 
 Both tables are deliberately pessimistic. The request count includes the manifest and the full icon
 set, which Lighthouse fetches to test installability and a browser does not — a real client picks
@@ -75,7 +80,7 @@ screenshots, where a visitor who lands and stays put loads three: about 156 kB i
 
 One stylesheet per page, **24,160 bytes** minified and **6,027 bytes** over the wire. One script,
 **1,119 bytes** minified and **512 bytes** over the wire. On the home page the two self-hosted fonts
-account for 57.6 kB and the icon set for a further 14.3 kB, leaving 40 kB for the document,
+account for 57.6 kB and the icon set for a further 14.3 kB, leaving 36 kB for the document,
 stylesheet, script and portrait combined.
 
 ## Stack
