@@ -61,26 +61,27 @@ The 404 and thank-you pages are `noindex` by design, which Lighthouse scores dow
 
 | Page | Requests | Transferred | Budget used |
 |---|---|---|---|
-| Home | 11 | **108.4 kB** | 36 % |
-| Portfolio | 16 | 217.6 kB | 73 % |
-| Contact | 10 | 86.8 kB | 29 % |
-| Legal notice | 10 | 87.3 kB | 29 % |
-| 404 | 10 | 85.7 kB | 29 % |
-| Thank-you | 10 | 85.9 kB | 29 % |
+| Home | 11 | **100.7 kB** | 34 % |
+| Portfolio | 16 | 215.8 kB | 72 % |
+| Contact | 10 | 85.0 kB | 28 % |
+| Legal notice | 10 | 85.5 kB | 28 % |
+| 404 | 10 | 83.9 kB | 28 % |
+| Thank-you | 10 | 84.0 kB | 28 % |
 
-The home row was re-measured on **2026-08-31**, when the hero logo was replaced: the new artwork is
-a lighter trace, and the page dropped from 112.4 kB to 108.4 kB over the wire. Building both states
-through the same harness confirmed no other page moved. Lighthouse was re-run on the same build —
-every score and every CLS identical to the table above.
+This table was re-measured in full on **2026-08-31**, when both lockups were replaced by a new,
+lighter trace. Every page gained: the nav-and-footer lockup went from 9.7 kB of source to 5.3 kB and
+is inlined two to three times per page, and the home page also carries the hero lockup, down from
+29.8 kB to 12.2 kB. Home fell from 112.4 kB to 100.7 kB, the other five by about 2 kB each.
+Lighthouse was re-run on the same build — every score and every CLS identical to the table above.
 
 Both tables are deliberately pessimistic. The request count includes the manifest and the full icon
 set, which Lighthouse fetches to test installability and a browser does not — a real client picks
 one icon and caches it. The portfolio figure scrolls the whole page, so it counts all six
-screenshots, where a visitor who lands and stays put loads three: about 156 kB in practice.
+screenshots, where a visitor who lands and stays put loads three: about 154 kB in practice.
 
 One stylesheet per page, **24,160 bytes** minified and **6,027 bytes** over the wire. One script,
 **1,119 bytes** minified and **512 bytes** over the wire. On the home page the two self-hosted fonts
-account for 57.6 kB and the icon set for a further 14.3 kB, leaving 36 kB for the document,
+account for 57.6 kB and the icon set for a further 14.3 kB, leaving 29 kB for the document,
 stylesheet, script and portrait combined.
 
 ## Stack
