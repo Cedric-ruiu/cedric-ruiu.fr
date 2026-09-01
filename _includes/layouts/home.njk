@@ -4,15 +4,43 @@ layout: base
 {% import "partials/logo.njk" as logoPartial with context %}
 {% import "partials/icons.njk" as iconPartial %}
 
-{# Background rhythm, not to be reordered: ocean nav → ocean-deep hero → sand cards → tide band → sand CTA → ink footer. #}
-<section class="relative overflow-hidden bg-ocean-deep">
-  {# Watermark hangs outside the frame; overflow-hidden on the section clips it instead of causing horizontal scroll. #}
-  <div class="pointer-events-none absolute -right-16 -bottom-24 select-none opacity-12 sm:-right-8 lg:right-8" aria-hidden="true">
-    {{ logoPartial.logo(variant="mark", size=520, alt="", class="h-[clamp(20rem,55vw,34rem)] w-auto text-white") }}
+{# Background rhythm, not to be reordered: ocean nav → ocean-deep hero → sand cards → tide band → sand CTA → ink footer. `hero-water` carries that ocean-deep, plus the depth gradient — see main.css. #}
+<section class="hero-water relative overflow-hidden">
+  {# Two kelp fronds, and they must stay adjacent in the source: the symbol is
+     8.5 kB of path data, and the second copy costs 148 bytes on the wire only
+     because gzip matches it against the first. Move them apart and the match
+     falls out of the 32 kB window — measured 31/08/2026.
+
+     The far one is mirrored, much larger and much fainter than the near one:
+     size and opacity are what put the two in different planes. Both hang
+     outside the frame; overflow-hidden on the section clips them instead of
+     causing horizontal scroll. #}
+  <div class="kelp kelp-far pointer-events-none absolute -bottom-8 -left-24 select-none opacity-7 lg:-bottom-20 lg:-left-48 lg:opacity-6 xl:-left-36" aria-hidden="true">
+    {{ logoPartial.logo(variant="mark", size=520, alt="", class="kelp-blade h-[34rem] w-auto text-white lg:h-[46rem] xl:h-[52rem]") }}
+  </div>
+  <div class="kelp pointer-events-none absolute -right-16 -bottom-24 select-none opacity-12 sm:-right-8 lg:right-8" aria-hidden="true">
+    {{ logoPartial.logo(variant="mark", size=520, alt="", class="kelp-blade h-[clamp(20rem,55vw,34rem)] w-auto text-white") }}
+  </div>
+
+  {# Six bubbles everywhere, six more from lg up — every one of them a
+     composited layer, so the phone gets half the column. #}
+  <div class="pointer-events-none absolute inset-0" aria-hidden="true">
+    <span class="bubble bubble-1"></span>
+    <span class="bubble bubble-2"></span>
+    <span class="bubble bubble-3"></span>
+    <span class="bubble bubble-4"></span>
+    <span class="bubble bubble-5"></span>
+    <span class="bubble bubble-6"></span>
+    <span class="bubble bubble-7 hidden lg:block"></span>
+    <span class="bubble bubble-8 hidden lg:block"></span>
+    <span class="bubble bubble-9 hidden lg:block"></span>
+    <span class="bubble bubble-10 hidden lg:block"></span>
+    <span class="bubble bubble-11 hidden lg:block"></span>
+    <span class="bubble bubble-12 hidden lg:block"></span>
   </div>
 
   <div class="relative mx-auto flex max-w-3xl flex-col items-center px-4 pt-14 pb-16 text-center sm:px-6 sm:pt-20 sm:pb-24">
-    {{ logoPartial.logo(variant="full", size=179, class="w-[min(78vw,420px)] h-auto text-white") }}
+    {{ logoPartial.logo(variant="full", size=214, class="w-[min(78vw,420px)] h-auto text-white") }}
 
     <p class="eyebrow mt-10 text-eyebrow-on-ocean-deep">{{ home.hero.eyebrow }}</p>
     <h1 class="text-h1-hero mt-4 font-serif text-white">{{ home.hero.title }}</h1>

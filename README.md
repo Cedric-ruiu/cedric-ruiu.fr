@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/banner.png" alt="Cédric Ruiu — création de site internet, référencement, performance" width="838">
+  <img src="assets/banner.png" alt="Cédric Ruiu — website, référencement, performance" width="838">
 </p>
 
 <h1 align="center">cedric-ruiu.fr</h1>
@@ -36,7 +36,11 @@ does not need. Everything below follows from that.
 - **No tracking.** No analytics, no pixel, no cookie — and therefore no consent banner. Zero
   requests leave for a third-party domain on any rendered page.
 - **A budget, not an aspiration.** 300 kB per page on mobile, images included. The heaviest page
-  currently uses 73 % of it; the home page, 37 %.
+  currently uses 72 % of it; the home page, 34 %.
+- **Motion that never leaves the compositor.** The home page hero is an underwater scene: two kelp
+  fronds from the logo swaying around their holdfast, twelve bubbles rising. `transform` and
+  `opacity` only — no image, no script, no library, 1.2 kB on the wire, Lighthouse still 100 and CLS
+  still 0.000. It goes still under `prefers-reduced-motion`.
 - **Mobile-first in the strict sense.** Unprefixed utilities are the mobile case; breakpoints only
   ever widen. Verified from 320 px up.
 - **WCAG 2.1 AA.** Every colour pair in the palette is contrast-checked, form fields included.
@@ -61,22 +65,33 @@ The 404 and thank-you pages are `noindex` by design, which Lighthouse scores dow
 
 | Page | Requests | Transferred | Budget used |
 |---|---|---|---|
-| Home | 11 | **112.3 kB** | 37 % |
-| Portfolio | 16 | 217.6 kB | 73 % |
-| Contact | 10 | 86.8 kB | 29 % |
-| Legal notice | 10 | 87.3 kB | 29 % |
-| 404 | 10 | 85.7 kB | 29 % |
-| Thank-you | 10 | 85.9 kB | 29 % |
+| Home | 11 | **101.9 kB** | 34 % |
+| Portfolio | 16 | 216.6 kB | 72 % |
+| Contact | 10 | 85.8 kB | 29 % |
+| Legal notice | 10 | 86.3 kB | 29 % |
+| 404 | 10 | 84.7 kB | 28 % |
+| Thank-you | 10 | 84.9 kB | 28 % |
+
+This table was re-measured in full on **2026-08-31**, twice. First when both lockups were replaced
+by a new, lighter trace: the nav-and-footer lockup went from 9.7 kB of source to 5.3 kB and is
+inlined two to three times per page, the home page also carries the hero lockup, down from 29.8 kB
+to 12.2 kB, and home fell from 112.4 kB to 100.7 kB with the other five gaining about 2 kB each.
+Then again after the hero's underwater scene, which put 1.2 kB back on the home page and 0.7 to
+0.8 kB on the others — almost all of it stylesheet, which every page pays for and only the home page
+uses. Lighthouse was re-run on the home page against that last build: 100 / 100 / 100 / 100,
+CLS 0.000, LCP 1.58 s (median of three, Lighthouse 13.4.1). The other five pages are unchanged since
+the table above.
 
 Both tables are deliberately pessimistic. The request count includes the manifest and the full icon
 set, which Lighthouse fetches to test installability and a browser does not — a real client picks
 one icon and caches it. The portfolio figure scrolls the whole page, so it counts all six
-screenshots, where a visitor who lands and stays put loads three: about 156 kB in practice.
+screenshots, where a visitor who lands and stays put loads three: about 154 kB in practice.
 
-One stylesheet per page, **24,160 bytes** minified and **6,027 bytes** over the wire. One script,
-**1,119 bytes** minified and **512 bytes** over the wire. On the home page the two self-hosted fonts
-account for 57.6 kB and the icon set for a further 14.3 kB, leaving 40 kB for the document,
-stylesheet, script and portrait combined.
+One stylesheet per page, **27,792 bytes** minified and **6,889 bytes** over the wire. One script,
+**1,119 bytes** minified and **510 bytes** over the wire. On the home page the two self-hosted fonts
+account for 57.6 kB and the icon set for a further 14.3 kB, leaving 30 kB for the document,
+stylesheet, script and portrait combined. The hero's second kelp is 8.5 kB of inline path data that
+costs 148 bytes on the wire, because it sits next to the first copy and gzip matches it.
 
 ## Stack
 
