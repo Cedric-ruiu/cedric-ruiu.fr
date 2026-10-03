@@ -22,7 +22,7 @@
 
 ## Overview
 
-A six-page site — home, portfolio, contact, thank-you, legal notice, 404 — for a freelance web
+A nine-page site — home, three service pages, portfolio, contact, thank-you, legal notice, 404 — for a freelance web
 developer working with tradespeople, sole traders and very small businesses, based in Brittany and
 serving the whole of France.
 
@@ -31,12 +31,14 @@ search visibility has no business being slow, breaking on a cheap phone, or drop
 does not need. Everything below follows from that.
 
 - **No runtime dependencies.** No framework, no CDN, no third-party script. The 1.1 kB mobile menu
-  is the only JavaScript on the site, and every page works without it — the menu button is only
+  is the only JavaScript the site itself needs, beside a small audience-measurement script, and
+  every page works without either — the menu button is only
   revealed once the script runs, and the footer carries the same navigation.
-- **No tracking.** No analytics, no pixel, no cookie — and therefore no consent banner. Zero
-  requests leave for a third-party domain on any rendered page.
+- **No tracking.** No pixel, no cookie, no third-party tracker — and therefore no consent banner.
+  Audience is measured with a cookieless, privacy-friendly tool run by the site owner: aggregate,
+  anonymous statistics only, shared with no one.
 - **A budget, not an aspiration.** 300 kB per page on mobile, images included. The heaviest page
-  currently uses 72 % of it; the home page, 34 %.
+  currently uses 70 % of it; the home page, 32 %.
 - **Motion that never leaves the compositor.** The home page hero is an underwater scene: two kelp
   fronds from the logo swaying around their holdfast, twelve bubbles rising. `transform` and
   `opacity` only — no image, no script, no library, 1.2 kB on the wire, Lighthouse still 100 and CLS
@@ -47,13 +49,16 @@ does not need. Everything below follows from that.
 
 ## Measured results
 
-Measured **2026-08-15** against the production build, served locally with gzip as in production,
+Measured **2026-10-03** against the production build, served locally with gzip as in production,
 under mobile emulation (Moto G Power, slow 4G, 4× CPU throttle). Lighthouse 13.4.1, median of three
 runs.
 
 | Page | Performance | Accessibility | Best practices | SEO | LCP | CLS |
 |---|---|---|---|---|---|---|
-| Home | 100 | 100 | 100 | 100 | 1.65 s | 0 |
+| Home | 100 | 100 | 100 | 100 | 1.58 s | 0 |
+| Website creation | 100 | 100 | 100 | 100 | 1.50 s | 0 |
+| SEO audit | 100 | 100 | 100 | 100 | 1.50 s | 0 |
+| Web performance | 100 | 100 | 100 | 100 | 1.50 s | 0 |
 | Portfolio | 100 | 100 | 100 | 100 | 1.80 s | 0 |
 | Contact | 100 | 100 | 100 | 100 | 1.50 s | 0 |
 | Legal notice | 100 | 100 | 100 | 100 | 1.50 s | 0 |
@@ -65,32 +70,32 @@ The 404 and thank-you pages are `noindex` by design, which Lighthouse scores dow
 
 | Page | Requests | Transferred | Budget used |
 |---|---|---|---|
-| Home | 11 | **101.9 kB** | 34 % |
-| Portfolio | 16 | 216.6 kB | 72 % |
-| Contact | 10 | 85.8 kB | 29 % |
-| Legal notice | 10 | 86.3 kB | 29 % |
-| 404 | 10 | 84.7 kB | 28 % |
-| Thank-you | 10 | 84.9 kB | 28 % |
+| Home | 10 | **94.8 kB** | 32 % |
+| Website creation | 12 | 150.7 kB | 50 % |
+| SEO audit | 9 | 83.7 kB | 28 % |
+| Web performance | 11 | 133.0 kB | 44 % |
+| Portfolio | 15 | 211.2 kB | 70 % |
+| Contact | 9 | 79.2 kB | 26 % |
+| Legal notice | 9 | 79.7 kB | 27 % |
+| 404 | 9 | 78.1 kB | 26 % |
+| Thank-you | 9 | 78.3 kB | 26 % |
 
-This table was re-measured in full on **2026-08-31**, twice. First when both lockups were replaced
-by a new, lighter trace: the nav-and-footer lockup went from 9.7 kB of source to 5.3 kB and is
-inlined two to three times per page, the home page also carries the hero lockup, down from 29.8 kB
-to 12.2 kB, and home fell from 112.4 kB to 100.7 kB with the other five gaining about 2 kB each.
-Then again after the hero's underwater scene, which put 1.2 kB back on the home page and 0.7 to
-0.8 kB on the others — almost all of it stylesheet, which every page pays for and only the home page
-uses. Lighthouse was re-run on the home page against that last build: 100 / 100 / 100 / 100,
-CLS 0.000, LCP 1.58 s (median of three, Lighthouse 13.4.1). The other five pages are unchanged since
-the table above.
+Both tables were re-measured in full on **2026-10-03**, after the three service pages. Their charts
+— a Search Console curve, Core Web Vitals figures and a page-weight comparison — are inline SVG and HTML, with no image and no
+request; what they cost is stylesheet, 0.75 kB on the wire, paid by every page. The website creation
+page is the heaviest of the three because it shows three portfolio thumbnails, lazy-loaded and
+counted here. The home page got lighter: its three service cards now carry one paragraph each and
+link to the page holding the detail.
 
 Both tables are deliberately pessimistic. The request count includes the manifest and the full icon
 set, which Lighthouse fetches to test installability and a browser does not — a real client picks
 one icon and caches it. The portfolio figure scrolls the whole page, so it counts all six
 screenshots, where a visitor who lands and stays put loads three: about 154 kB in practice.
 
-One stylesheet per page, **27,792 bytes** minified and **6,889 bytes** over the wire. One script,
+One stylesheet per page, **32,012 bytes** minified and **7,661 bytes** over the wire (gzip -9). One script,
 **1,119 bytes** minified and **510 bytes** over the wire. On the home page the two self-hosted fonts
-account for 57.6 kB and the icon set for a further 14.3 kB, leaving 30 kB for the document,
-stylesheet, script and portrait combined. The hero's second kelp is 8.5 kB of inline path data that
+account for 57.9 kB, leaving 37 kB for the document, stylesheet, scripts, portrait and icons
+combined. The hero's second kelp is 8.5 kB of inline path data that
 costs 148 bytes on the wire, because it sits next to the first copy and gzip matches it.
 
 ## Stack
@@ -103,7 +108,7 @@ costs 148 bytes on the wire, because it sits next to the first copy and gzip mat
 | Colour | Native **OKLCH** tokens | Perceptually uniform, so adjusting a hue does not silently break a contrast ratio — which matters when the whole palette must hold AA. |
 | Content data | YAML in `_data/` | Copy and projects are data, not code. Raw values only; every derived form is an Eleventy filter, so there is one source of truth. |
 | JavaScript | None, beyond one hand-written file | The mobile menu. Portfolio tiles are links and the contact form is a plain `POST`. |
-| Fonts | Bitter + Manrope, self-hosted | Variable, latin subset, 57.6 kB for both. No Google Fonts request, so no user data leaves the site. |
+| Fonts | Bitter + Manrope, self-hosted | Variable, latin subset, 57.9 kB for both. No Google Fonts request, so no user data leaves the site. |
 | Contact form | [Web3Forms](https://web3forms.com/) | Static hosting cannot send mail. Web3Forms takes the POST and forwards it, without JavaScript and without a cookie. |
 | Hosting | GitHub Pages + GitHub Actions | Free, HTTPS included, CDN-served. The repository is the source of truth: a merge deploys, and the Git history is the site's history. |
 | Tooling | [Biome](https://biomejs.dev/) 2 | One tool for JS, CSS and JSON, in a fraction of the ESLint + Prettier runtime. |
@@ -204,7 +209,7 @@ GitHub drops it on every deployment.
 
 Three constraints of the platform are accepted rather than worked around. GitHub Pages sets **no
 custom HTTP headers**, so there is no server-set CSP or HSTS — the site depends on neither, loading
-no third-party script and storing nothing. It runs **no server-side code**, hence the form is
+no third-party script and storing nothing on the visitor's device. It runs **no server-side code**, hence the form is
 delegated to Web3Forms, which the legal notice discloses. And it serves **no pre-compressed files**,
 so compression is the CDN's and minification at build time is the only remaining lever.
 

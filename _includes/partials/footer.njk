@@ -14,7 +14,7 @@
       <div>
         <div class="mb-2 font-serif text-[13px] font-extrabold uppercase tracking-wider text-white">Pages</div>
         {# `tap`'s invisible padding (to reach 44px) would double into visible gaps between
-           stacked items; -mt-3 pulls each one back to match Expertise's gap-3. #}
+           stacked items; -mt-3 pulls each one back to a 12px rhythm. #}
         <ul class="flex flex-col text-sm [&>li+li]:-mt-3">
           {% for item in site.nav %}
           <li><a href="{{ item.url }}" class="tap w-fit text-on-ink"><span class="link-underline">{{ item.name }}</span></a></li>
@@ -24,11 +24,12 @@
       </div>
 
       <div>
-        <div class="mb-4 font-serif text-[13px] font-extrabold uppercase tracking-wider text-white">Expertise</div>
-        <ul class="flex flex-col gap-3 text-sm text-on-ink">
-          <li>Web</li>
-          <li>Référencement</li>
-          <li>Performance</li>
+        <div class="mb-2 font-serif text-[13px] font-extrabold uppercase tracking-wider text-white">Expertise</div>
+        {# Same -mt-3 correction as the Pages list. #}
+        <ul class="flex flex-col text-sm [&>li+li]:-mt-3">
+          {% for service in services %}
+          <li><a href="{{ service.url }}" class="tap w-fit text-on-ink" {% if page.url == service.url %}aria-current="page"{% endif %}><span class="link-underline">{{ service.name }}</span></a></li>
+          {% endfor %}
         </ul>
       </div>
 

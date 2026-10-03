@@ -1,0 +1,24 @@
+{#- The three Core Web Vitals, as measured on this site's home page — read
+    from the `vitals` front matter of /performance-web/ (Lighthouse, median of
+    three, mobile emulation). Lab data: INP needs real visits, so its slot shows
+    Total Blocking Time, its lab stand-in, and says so.
+
+    Included from Markdown: no blank line (it would end the HTML block), no
+    <p>/<ul> (prose-site would restyle them). -#}
+<figure class="my-10 rounded border border-border bg-white p-4 sm:p-6">
+  <dl class="grid grid-cols-1 gap-5 sm:grid-cols-3 sm:gap-6">
+    <div class="flex flex-col-reverse justify-end gap-1">
+      <dt class="text-sm leading-snug text-muted">Affichage (LCP)<br>objectif : 2,5 s ou moins</dt>
+      <dd class="font-serif text-h2 font-extrabold text-ocean">{{ vitals.lcp }}</dd>
+    </div>
+    <div class="flex flex-col-reverse justify-end gap-1">
+      <dt class="text-sm leading-snug text-muted">Stabilité (CLS)<br>objectif : 0,1 ou moins</dt>
+      <dd class="font-serif text-h2 font-extrabold text-ocean">{{ vitals.cls }}</dd>
+    </div>
+    <div class="flex flex-col-reverse justify-end gap-1">
+      <dt class="text-sm leading-snug text-muted">Réactivité : temps de blocage<br>objectif : le plus bas possible</dt>
+      <dd class="font-serif text-h2 font-extrabold text-ocean">{{ vitals.tbt }}</dd>
+    </div>
+  </dl>
+  <figcaption class="mt-5 border-t border-border pt-4 text-sm leading-relaxed text-muted">Page d'accueil de ce site, mesurée avec Lighthouse le {{ vitals.measured }}, en simulant un téléphone moyen sur une connexion 4G lente.</figcaption>
+</figure>

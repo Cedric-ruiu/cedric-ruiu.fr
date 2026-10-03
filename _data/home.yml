@@ -1,7 +1,3 @@
-# `icon` selects a pictogram from _includes/partials/icons.njk by name — not a
-# Tailwind class fragment, since a class built by concatenation would be invisible
-# to the scanner.
-
 hero:
   eyebrow: "Création de sites internet · Référencement SEO · Performance web"
   title: "Artisan du web, je conçois des sites sur mesure pour votre activité"
@@ -19,36 +15,25 @@ expertise:
   title: "Trois expertises, une seule personne"
   intro: >-
     Créer un site, le rendre visible et le garder rapide sont trois expertises différentes. Je les réunis au même endroit pour que votre site reste cohérent de la conception jusqu'à ses performances.
+  # One teaser paragraph per card: the detail lives on the service page, so
+  # nothing is said twice. `service` is a key from services.yml, which supplies
+  # the icon and the URL; `link` is the card's own descriptive anchor text.
   items:
-    - icon: "site"
+    - service: "creation"
       title: "Création de site internet"
-      paragraphs:
-        - >-
-          Je conçois et développe votre site de A à Z : structure, contenus, interface, développement, hébergement et mise en ligne. Vous échangez directement avec la personne qui réalise le projet, sans intermédiaire.
-        - >-
-          Site vitrine, présentation d'activité, portfolio, réservation, formulaire ou projet web plus spécifique : je construis la solution en fonction de votre activité, plutôt que de vous faire entrer dans un modèle existant.
-        - >-
-          Mon expérience en développement web me permet aussi d'aller plus loin qu'un simple site vitrine lorsque votre projet le nécessite : fonctionnalités sur mesure, données, APIs, outils métier ou intégrations avec vos services existants.
-    - icon: "seo"
+      text: >-
+        Je conçois et développe votre site de A à Z, du premier échange à la mise en ligne : site vitrine, boutique en ligne, application web ou mobile, textes compris si vous le souhaitez. Vous échangez directement avec la personne qui réalise le projet, sans intermédiaire.
+      link: "Découvrir la création de site"
+    - service: "seo"
       title: "Référencement SEO"
-      paragraphs:
-        - >-
-          Être présent sur Google ne suffit pas : encore faut-il apparaître au bon endroit, devant les bonnes personnes. J'analyse en profondeur votre site pour identifier ce qui freine sa visibilité : structure, contenu, balises, maillage, performances, indexation et nombreux autres signaux techniques et éditoriaux.
-        - >-
-          J'ai développé mon propre outil d'audit SEO qui permet cette analyse et d'aller beaucoup plus loin qu'un simple contrôle de quelques pages. Il produit un rapport détaillé, hiérarchisé et exploitable, avec les problèmes identifiés et les actions à mener pour les corriger.
-        - >-
-          Et lorsque j'ai accès au code source, le workflow peut aller plus loin : certaines corrections peuvent être réalisées automatiquement. Vous ne recevez donc pas seulement une liste de recommandations ; je peux aussi intervenir directement sur le site pour les mettre en œuvre.
-        - >-
-          Vous avez déjà un site ? Un audit peut constituer un excellent premier pas pour savoir précisément où vous en êtes et quelles actions auront le plus d'impact.
-    - icon: "perf"
+      text: >-
+        Être présent sur Google ne suffit pas : encore faut-il apparaître devant les bonnes personnes. Mon audit SEO identifie précisément ce qui freine votre visibilité, et vous remet un rapport d'actions hiérarchisé — que vous pouvez appliquer vous-même ou me confier.
+      link: "Tout savoir sur l'audit SEO"
+    - service: "performance"
       title: "Performance"
-      paragraphs:
-        - >-
-          Un site rapide est plus agréable à utiliser, particulièrement sur mobile et lorsque la connexion est mauvaise. Je conçois des sites légers et réactifs, avec une attention particulière portée au chargement des pages et aux performances réelles.
-        - >-
-          La performance ne se limite pas à un bon score Lighthouse. Moins de code, moins de ressources et moins de données à transférer permettent aussi de réduire les ressources mobilisées par le navigateur et les serveurs. Une approche plus sobre, qui profite à la fois à vos visiteurs, à votre référencement et à l'impact environnemental du site.
-        - >-
-          Votre site existe déjà ? Je peux mesurer ses performances, identifier ce qui le ralentit et prioriser les optimisations qui auront le plus d'impact.
+      text: >-
+        Un site rapide est plus agréable à utiliser, surtout sur mobile et avec une connexion moyenne. Je conçois des sites légers dès le départ, et je peux mesurer le vôtre pour trouver ce qui le ralentit.
+      link: "En savoir plus sur la performance web"
 
 why:
   eyebrow: "Pourquoi travailler avec moi"

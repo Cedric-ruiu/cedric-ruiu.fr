@@ -63,14 +63,17 @@ layout: base
 
   <div class="mt-10 grid grid-cols-1 gap-6 md:grid-cols-3">
     {% for item in home.expertise.items %}
+    {% for service in services %}{% if service.key == item.service %}
     <article class="card flex flex-col p-6 sm:p-7">
-      {{ iconPartial.icon(item.icon, class="h-14 w-14 text-ocean") }}
+      {{ iconPartial.icon(service.icon, class="h-14 w-14 text-ocean") }}
 
       <h3 class="text-h3 mt-6 font-serif">{{ item.title }}</h3>
-      {% for paragraph in item.paragraphs %}
-      <p class="text-body mt-4">{{ paragraph }}</p>
-      {% endfor %}
+      <p class="text-body mt-4">{{ item.text }}</p>
+      <p class="mt-auto pt-4">
+        <a href="{{ service.url }}" class="tap font-medium text-ocean"><span class="link-underline">{{ item.link }} <span aria-hidden="true">→</span></span></a>
+      </p>
     </article>
+    {% endif %}{% endfor %}
     {% endfor %}
   </div>
 </section>

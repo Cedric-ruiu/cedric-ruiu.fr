@@ -234,11 +234,11 @@
 }
 
 /*
- * Long-form prose (legal notice, thank-you page, 404). Written by hand instead
- * of pulled from @tailwindcss/typography — that plugin ships 13 kB of rules
- * (tables, code, definition lists…) these three pages never use. Values match
+ * Long-form prose (service pages, legal notice, thank-you page, 404). Written
+ * by hand instead of pulled from @tailwindcss/typography — that plugin ships
+ * 13 kB of rules (code, definition lists…) these pages never use. Values match
  * its prose-base scale, so nothing shifts visually; a Markdown element not
- * covered here (a table, a blockquote) needs a rule added.
+ * covered here (a blockquote, a code block) needs a rule added.
  */
 @utility prose-site {
   color: var(--color-copy);
@@ -277,10 +277,6 @@
     list-style-type: disc;
   }
 
-  & ol {
-    list-style-type: decimal;
-  }
-
   & li {
     padding-left: 0.375em;
     margin-block: 0.5em;
@@ -290,8 +286,68 @@
     color: var(--color-border-field);
   }
 
-  & ol > li::marker {
-    color: var(--color-muted);
+  /* Ordered lists read as numbered steps — the prose only uses them for a
+     sequence (how a project or an audit unfolds). The disc is sized to one
+     line of text, so it sits level with the first line whatever wraps. */
+  & ol {
+    list-style: none;
+    padding-left: 0;
+    counter-reset: step;
+  }
+
+  & ol > li {
+    position: relative;
+    padding-left: 2.75em;
+    margin-block: 1em;
+    counter-increment: step;
+  }
+
+  & ol > li::before {
+    content: counter(step);
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: grid;
+    place-items: center;
+    width: 1.75rem;
+    height: 1.75rem;
+    border-radius: 9999px;
+    background-color: var(--color-tide);
+    color: var(--color-ocean);
+    font-family: var(--font-serif);
+    font-size: 0.875rem;
+    font-weight: 800;
+  }
+
+  /* Wrapped in an overflow-x-auto <div> in the Markdown, so a table too wide
+     for a phone scrolls inside its own box instead of the page. The spacing
+     sits on that wrapper: a margin can't collapse out of a scroll container. */
+  & :has(> table) {
+    margin-block: 1.75em;
+  }
+
+  & table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9375em;
+    line-height: 1.6;
+  }
+
+  & :is(th, td) {
+    padding: 0.75em 1em 0.75em 0;
+    border-bottom: 1px solid var(--color-border);
+    text-align: left;
+    vertical-align: top;
+  }
+
+  & :is(th, td):last-child {
+    padding-right: 0;
+  }
+
+  & th {
+    border-bottom-color: var(--color-border-field);
+    color: var(--color-ink);
+    font-weight: 600;
   }
 
   & a {
