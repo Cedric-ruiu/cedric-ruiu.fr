@@ -1,0 +1,29 @@
+{#- This site's home page against the median mobile web page, in the amount of
+    data a phone downloads to display it. Figures from the `weight` front
+    matter of /performance-web/; bar widths are SVG attributes, not inline
+    styles.
+
+    Included from Markdown: no blank line, no <p>/<ul> (see vitals-proof.njk). -#}
+<figure class="my-10 rounded border border-border bg-white p-4 sm:p-6">
+  <div class="flex flex-col gap-5">
+    <div>
+      <div class="flex flex-wrap items-baseline justify-between gap-x-4 text-sm">
+        <span class="text-copy">Une page web moyenne, sur mobile</span>
+        <span class="font-medium text-ink">{{ (weight.median / 1000).toFixed(1) | replace(".", ",") }}&nbsp;Mo</span>
+      </div>
+      <svg class="mt-2 block h-3 w-full" viewBox="0 0 100 4" preserveAspectRatio="none" aria-hidden="true">
+        <rect width="100" height="4" class="fill-border-field"/>
+      </svg>
+    </div>
+    <div>
+      <div class="flex flex-wrap items-baseline justify-between gap-x-4 text-sm">
+        <span class="text-copy">La page d'accueil de ce site</span>
+        <span class="font-medium text-ink">moins de 0,1&nbsp;Mo</span>
+      </div>
+      <svg class="mt-2 block h-3 w-full" viewBox="0 0 100 4" preserveAspectRatio="none" aria-hidden="true">
+        <rect width="{{ (weight.site / weight.median * 100) | round(2) }}" height="4" class="fill-ocean"/>
+      </svg>
+    </div>
+  </div>
+  <figcaption class="mt-5 border-t border-border pt-4 text-sm leading-relaxed text-muted">Quantité de données qu'un téléphone télécharge pour afficher la page. Page moyenne : <a href="https://almanac.httparchive.org/en/2024/page-weight" class="underline underline-offset-2">Web Almanac 2024</a>. Ce site : mesuré le {{ weight.measured }}.</figcaption>
+</figure>

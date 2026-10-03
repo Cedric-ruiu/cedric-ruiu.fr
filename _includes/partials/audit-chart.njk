@@ -1,0 +1,45 @@
+{#- SEO audit case study: key figures and the weekly Search Console curve.
+    Geometry comes from _data/auditCase.js; the figures are before/after daily
+    averages from the same export (March–April vs August–September 2026,
+    position weighted by impressions).
+
+    Included from Markdown, so: no blank line anywhere (it would end the HTML
+    block) and no <p>/<ul> (prose-site would restyle them). The SVG is
+    stretched to its box, hence non-scaling strokes; the month labels live in
+    HTML below it so they keep a readable size on a phone. `grid-cols-7`
+    matches the seven months the series covers. -#}
+<figure class="my-10 rounded border border-border bg-white p-4 sm:p-6">
+  <dl class="grid grid-cols-3 gap-3 text-center sm:gap-6">
+    <div class="flex flex-col-reverse justify-end gap-1">
+      <dt class="text-xs leading-snug text-muted sm:text-sm">Impressions par jour</dt>
+      <dd class="font-serif text-h3 font-extrabold text-ocean">×2,2</dd>
+    </div>
+    <div class="flex flex-col-reverse justify-end gap-1">
+      <dt class="text-xs leading-snug text-muted sm:text-sm">Clics par jour</dt>
+      <dd class="font-serif text-h3 font-extrabold text-ocean">×2</dd>
+    </div>
+    <div class="flex flex-col-reverse justify-end gap-1">
+      <dt class="text-xs leading-snug text-muted sm:text-sm">Position moyenne</dt>
+      <dd class="font-serif text-h3 font-extrabold text-ocean">10,4 → 8,6</dd>
+    </div>
+  </dl>
+  <svg class="mt-8 block h-44 w-full sm:h-56" viewBox="0 0 {{ auditCase.width }} {{ auditCase.height }}" preserveAspectRatio="none" role="img" aria-labelledby="audit-chart-title audit-chart-desc">
+    <title id="audit-chart-title">Impressions hebdomadaires dans Google, de mars à septembre 2026</title>
+    <desc id="audit-chart-desc">Les actions de l'audit sont appliquées début mai. Les impressions restent à leur niveau habituel pendant environ huit semaines, le temps que Google prenne les changements en compte, puis augmentent à partir de fin juin jusqu'à environ deux fois ce niveau en août, niveau maintenu en septembre.</desc>
+    <rect x="{{ auditCase.markerX }}" y="0" width="{{ auditCase.waitWidth }}" height="{{ auditCase.height }}" class="fill-tide"/>
+    <path d="{{ auditCase.area }}" class="fill-ocean/10"/>
+    <line x1="0" y1="{{ auditCase.baselineY }}" x2="{{ auditCase.width }}" y2="{{ auditCase.baselineY }}" class="stroke-border-field" stroke-width="1.5" stroke-dasharray="6 5" vector-effect="non-scaling-stroke"/>
+    <line x1="{{ auditCase.markerX }}" y1="0" x2="{{ auditCase.markerX }}" y2="{{ auditCase.height }}" class="stroke-ink" stroke-width="1.5" stroke-dasharray="2 4" vector-effect="non-scaling-stroke"/>
+    <polyline points="{{ auditCase.line }}" class="fill-none stroke-ocean" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round" vector-effect="non-scaling-stroke"/>
+  </svg>
+  <div class="mt-2 grid grid-cols-7 text-center text-xs text-muted" aria-hidden="true">
+    {%- for month in auditCase.months %}<span>{{ month }}</span>{% endfor -%}
+  </div>
+  <div class="mt-5 flex flex-wrap gap-x-6 gap-y-2 text-sm text-copy" aria-hidden="true">
+    <span class="inline-flex items-center gap-2"><span class="h-0.5 w-6 rounded bg-ocean"></span>Impressions par semaine</span>
+    <span class="inline-flex items-center gap-2"><span class="h-0.5 w-6 border-t-2 border-dashed border-border-field"></span>Niveau moyen avant l'audit</span>
+    <span class="inline-flex items-center gap-2"><span class="h-4 w-0 border-l-2 border-dotted border-ink"></span>Actions appliquées</span>
+    <span class="inline-flex items-center gap-2"><span class="h-3 w-6 rounded-sm bg-tide"></span>Délai avant les premiers effets (≈ 8 semaines)</span>
+  </div>
+  <figcaption class="mt-5 border-t border-border pt-4 text-sm leading-relaxed text-muted">Données Google Search Console d'un atelier artisanal qui vend ses créations en ligne. Avant/après : moyennes de mars-avril contre août-septembre 2026. Un cas réel — chaque site évolue différemment.</figcaption>
+</figure>

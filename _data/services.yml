@@ -1,0 +1,32 @@
+# The three service pages. Read by the footer ("Expertise"), the home cards and
+# the "other services" block of each service page, so a URL or a name is only
+# ever written here. `key` matches `service` in each page's front matter, the
+# `services` list in projects.yml and `service` in home.yml. `icon` selects a
+# pictogram from _includes/partials/icons.njk by name.
+
+- key: "creation"
+  name: "Création de site"
+  title: "Création de site internet"
+  summary: >-
+    Site vitrine, boutique en ligne, application web ou mobile, conçus et
+    développés sur mesure — textes compris si vous le souhaitez.
+  url: "/creation-site-internet/"
+  icon: "site"
+
+- key: "seo"
+  name: "Audit SEO"
+  title: "Audit SEO"
+  summary: >-
+    Une analyse complète de votre site et un rapport d'actions précis pour
+    gagner en visibilité sur Google.
+  url: "/audit-seo/"
+  icon: "seo"
+
+- key: "performance"
+  name: "Performance web"
+  title: "Performance web"
+  summary: >-
+    Des sites légers et rapides, surtout sur mobile, et un diagnostic de ce qui
+    ralentit le vôtre.
+  url: "/performance-web/"
+  icon: "perf"
