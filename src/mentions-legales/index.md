@@ -1,7 +1,7 @@
 ---
 layout: page
 title: "Mentions légales — cedric-ruiu.fr"
-description: "Éditeur, hébergeur, propriété intellectuelle, absence de cookies et traitement des données du formulaire de contact du site cedric-ruiu.fr."
+description: "Éditeur, hébergeur, propriété intellectuelle, cookies et mesure d'audience, traitement des données du formulaire de contact du site cedric-ruiu.fr."
 permalink: /mentions-legales/
 eyebrow: "Informations légales"
 heading: "Mentions légales"
@@ -51,12 +51,26 @@ restent la propriété de leurs titulaires respectifs.
 
 ## Cookies et mesure d'audience
 
-**Ce site ne dépose aucun cookie.** Il n'embarque ni outil de mesure d'audience,
-ni pixel publicitaire, ni bouton de réseau social, ni service tiers chargé au
-fil de votre navigation. C'est précisément pour cette raison qu'aucun bandeau de
-consentement ne vous est présenté : il n'y a rien à consentir.
+**Ce site ne dépose aucun cookie.** Il n'embarque ni pixel publicitaire, ni
+bouton de réseau social, ni service tiers de suivi.
 
-Aucune donnée de navigation n'est collectée, analysée ni transmise à quiconque.
+Il utilise en revanche un **outil de mesure d'audience respectueux de la vie
+privée**, exploité par l'éditeur du site lui-même. Il produit uniquement des
+statistiques globales et anonymes — nombre de visites, pages consultées, site de
+provenance, type d'appareil, pays — afin de savoir quels contenus sont utiles et
+d'améliorer le site. Concrètement :
+
+- aucun cookie ni identifiant n'est déposé sur votre appareil ;
+- votre adresse IP n'est pas conservée, et aucune donnée ne permet de vous
+  identifier ni de suivre votre navigation d'un site à l'autre ;
+- les statistiques restent chez l'éditeur : elles ne sont ni transmises, ni
+  revendues, ni recoupées avec d'autres données.
+
+Conformément aux recommandations de la CNIL, une mesure d'audience strictement
+limitée à des statistiques anonymes est dispensée de consentement : c'est
+pourquoi aucun bandeau ne vous est présenté. Si vous préférez malgré tout ne pas
+être comptabilisé, un bloqueur de contenu ou la protection contre le pistage de
+votre navigateur suffit.
 
 ## Formulaire de contact et données personnelles
 
