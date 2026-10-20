@@ -22,7 +22,7 @@
 
 ## Overview
 
-A nine-page site — home, three service pages, portfolio, contact, thank-you, legal notice, 404 — for a freelance web
+An eleven-page site — home, five service pages, portfolio, contact, thank-you, legal notice, 404 — for a freelance web
 developer working with tradespeople, sole traders and very small businesses, based in Brittany and
 serving the whole of France.
 
@@ -38,7 +38,7 @@ does not need. Everything below follows from that.
   Audience is measured with a cookieless, privacy-friendly tool run by the site owner: aggregate,
   anonymous statistics only, shared with no one.
 - **A budget, not an aspiration.** 300 kB per page on mobile, images included. The heaviest page
-  currently uses 70 % of it; the home page, 32 %.
+  currently uses 71 % of it; the home page, 32 %.
 - **Motion that never leaves the compositor.** The home page hero is an underwater scene: two kelp
   fronds from the logo swaying around their holdfast, twelve bubbles rising. `transform` and
   `opacity` only — no image, no script, no library, 1.2 kB on the wire, Lighthouse still 100 and CLS
@@ -49,43 +49,48 @@ does not need. Everything below follows from that.
 
 ## Measured results
 
-Measured **2026-10-03** against the production build, served locally with gzip as in production,
-under mobile emulation (Moto G Power, slow 4G, 4× CPU throttle). Lighthouse 13.4.1, median of three
+Measured **2026-10-20** against the production build, served locally with gzip as in production,
+under mobile emulation (Moto G Power, slow 4G, 4× CPU throttle). Lighthouse 13.5.0, median of three
 runs.
 
 | Page | Performance | Accessibility | Best practices | SEO | LCP | CLS |
 |---|---|---|---|---|---|---|
 | Home | 100 | 100 | 100 | 100 | 1.58 s | 0 |
-| Website creation | 100 | 100 | 100 | 100 | 1.50 s | 0 |
-| SEO audit | 100 | 100 | 100 | 100 | 1.50 s | 0 |
-| Web performance | 100 | 100 | 100 | 100 | 1.50 s | 0 |
-| Portfolio | 100 | 100 | 100 | 100 | 1.80 s | 0 |
-| Contact | 100 | 100 | 100 | 100 | 1.50 s | 0 |
-| Legal notice | 100 | 100 | 100 | 100 | 1.50 s | 0 |
-| 404 | 100 | 100 | 100 | 66 | 1.50 s | 0 |
-| Thank-you | 100 | 100 | 100 | 66 | 1.50 s | 0 |
+| Website creation | 100 | 100 | 100 | 100 | 1.35 s | 0 |
+| SEO audit | 100 | 100 | 100 | 100 | 1.35 s | 0 |
+| Web performance | 100 | 100 | 100 | 100 | 1.35 s | 0 |
+| Website redesign | 100 | 100 | 100 | 100 | 1.35 s | 0 |
+| Mobile app | 100 | 100 | 100 | 100 | 1.35 s | 0 |
+| Portfolio | 100 | 100 | 100 | 100 | 1.73 s | 0 |
+| Contact | 100 | 100 | 100 | 100 | 1.35 s | 0 |
+| Legal notice | 100 | 100 | 100 | 100 | 1.35 s | 0 |
+| 404 | 100 | 100 | 100 | 66 | 1.35 s | 0 |
+| Thank-you | 100 | 100 | 100 | 66 | 1.35 s | 0 |
 
 The 404 and thank-you pages are `noindex` by design, which Lighthouse scores down through its
 `is-crawlable` audit. That is the intended outcome, not a defect.
 
 | Page | Requests | Transferred | Budget used |
 |---|---|---|---|
-| Home | 10 | **94.8 kB** | 32 % |
-| Website creation | 12 | 150.7 kB | 50 % |
-| SEO audit | 9 | 83.7 kB | 28 % |
-| Web performance | 11 | 133.0 kB | 44 % |
-| Portfolio | 15 | 211.2 kB | 70 % |
-| Contact | 9 | 79.2 kB | 26 % |
-| Legal notice | 9 | 79.7 kB | 27 % |
-| 404 | 9 | 78.1 kB | 26 % |
-| Thank-you | 9 | 78.3 kB | 26 % |
+| Home | 10 | **95.6 kB** | 32 % |
+| Website creation | 12 | 151.7 kB | 51 % |
+| SEO audit | 9 | 85.1 kB | 28 % |
+| Web performance | 11 | 133.9 kB | 45 % |
+| Website redesign | 9 | 82.4 kB | 27 % |
+| Mobile app | 11 | 110.5 kB | 37 % |
+| Portfolio | 15 | 211.8 kB | 71 % |
+| Contact | 9 | 79.8 kB | 27 % |
+| Legal notice | 9 | 80.6 kB | 27 % |
+| 404 | 9 | 78.6 kB | 26 % |
+| Thank-you | 9 | 78.8 kB | 26 % |
 
-Both tables were re-measured in full on **2026-10-03**, after the three service pages. Their charts
+Both tables were re-measured in full on **2026-10-20**, after two more service pages (website
+redesign, mobile app) and services in the menu. The first three service pages' charts
 — a Search Console curve, Core Web Vitals figures and a page-weight comparison — are inline SVG and HTML, with no image and no
 request; what they cost is stylesheet, 0.75 kB on the wire, paid by every page. The website creation
-page is the heaviest of the three because it shows three portfolio thumbnails, lazy-loaded and
-counted here. The home page got lighter: its three service cards now carry one paragraph each and
-link to the page holding the detail.
+page is the heaviest service page because it shows three portfolio thumbnails, lazy-loaded and
+counted here. Since 2026-10-03, every page has gained 0.5 to 0.9 kB on the wire, mostly the two new
+menu entries and the structured data describing the business; the home page, 0.8 kB.
 
 Both tables are deliberately pessimistic. The request count includes the manifest and the full icon
 set, which Lighthouse fetches to test installability and a browser does not — a real client picks
