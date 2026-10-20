@@ -11,12 +11,13 @@ layout: base
      — and a search engine looking for a snippet — should get first. #}
   <p class="text-body mt-5">{{ lead }}</p>
 
-  {# Call stays above the fold on a phone, one tap away: the audience is local
-     and mostly mobile. No-break spaces keep the label on one line, as the
+  {# Call stays above the fold on a phone, one tap away, and comes first: the
+     audience is local and mostly mobile, and the call is the conversion the
+     site is built for. No-break spaces keep the label on one line, as the
      number itself already is. #}
   <div class="mt-8 flex flex-col gap-3 sm:flex-row sm:gap-4">
-    <a href="/contact/" class="btn-primary w-full sm:w-auto">Me contacter</a>
-    <a href="tel:{{ site.phone | phoneE164 }}" data-umami-event="appel" data-umami-event-emplacement="heros" class="btn-secondary w-full sm:w-auto">Appeler&nbsp;le&nbsp;{{ site.phone | phoneDisplay }}</a>
+    <a href="tel:{{ site.phone | phoneE164 }}" data-umami-event="appel" data-umami-event-emplacement="heros" class="btn-primary w-full sm:w-auto">Appeler&nbsp;le&nbsp;{{ site.phone | phoneDisplay }}</a>
+    <a href="/contact/" class="btn-secondary w-full sm:w-auto">Me contacter</a>
   </div>
 </section>
 
