@@ -46,10 +46,14 @@ layout: base
     <h1 class="text-h1-hero mt-4 font-serif text-white">{{ home.hero.title }}</h1>
     <p class="text-body mt-6 max-w-xl text-on-ocean-deep">{{ home.hero.intro }}</p>
 
-    <div class="mt-9 flex w-full flex-col gap-3 sm:w-auto sm:flex-row sm:gap-4">
-      <a href="{{ home.hero.primary.url }}" class="btn-primary w-full sm:w-auto">{{ home.hero.primary.label }}</a>
+    {# The call comes first: it is the conversion the site is built for, and one
+       tap away on a phone. Wraps from sm up, the three labels being too wide for
+       a single row at 640px. #}
+    <div class="mt-9 flex w-full flex-col gap-3 sm:w-auto sm:flex-row sm:flex-wrap sm:justify-center sm:gap-4">
+      <a href="tel:{{ site.phone | phoneE164 }}" data-umami-event="appel" data-umami-event-emplacement="heros" class="btn-primary w-full sm:w-auto">Appeler&nbsp;le&nbsp;{{ site.phone | phoneDisplay }}</a>
       {# border-white/40: 3.48:1 against ocean-deep, clears WCAG 1.4.11's 3:1. #}
-      <a href="{{ home.hero.secondary.url }}" class="btn-secondary w-full border-white/40 text-white hover:border-white hover:text-white sm:w-auto">{{ home.hero.secondary.label }}</a>
+      <a href="{{ home.hero.contact.url }}" class="btn-secondary w-full border-white/40 text-white hover:border-white hover:text-white sm:w-auto">{{ home.hero.contact.label }}</a>
+      <a href="{{ home.hero.projects.url }}" class="btn-secondary w-full border-white/40 text-white hover:border-white hover:text-white sm:w-auto">{{ home.hero.projects.label }}</a>
     </div>
   </div>
 </section>
