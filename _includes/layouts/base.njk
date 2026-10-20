@@ -41,25 +41,52 @@
   <link rel="preload" as="font" href="/fonts/manrope-latin-wght-normal.woff2" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="/assets/css/main.css">
 
+  {# One JSON-LD block: the business and the person behind it, linked by @id.
+     No streetAddress anywhere — the street only appears on the legal notice. #}
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "{{ site.name }}",
-    "jobTitle": "{{ site.jobTitle }}",
-    "url": "{{ site.url }}",
-    "email": "{{ site.email }}",
-    "telephone": "{{ site.phone | phoneE164 }}",
-    "image": "{{ home.why.photo.portraitLarge | absoluteUrl(site.url) }}",
-    "sameAs": ["https://github.com/Cedric-ruiu"],
-    "knowsAbout": ["Développement web", "Référencement naturel (SEO)", "Performance web"],
-    "areaServed": ["{{ site.region }}", "France"],
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "{{ site.locality }}",
-      "addressRegion": "{{ site.region }}",
-      "addressCountry": "{{ site.country }}"
-    }
+    "@graph": [
+      {
+        "@type": "LocalBusiness",
+        "@id": "{{ site.url }}/#activite",
+        "name": "{{ site.name }}",
+        "url": "{{ site.url }}",
+        "email": "{{ site.email }}",
+        "telephone": "{{ site.phone | phoneE164 }}",
+        "image": "{{ '/og.png' | absoluteUrl(site.url) }}",
+        "founder": { "@id": "{{ site.url }}/#cedric-ruiu" },
+        {# dump | safe: autoescape would turn the query string's & into &amp;, which
+           a <script> body never decodes. #}
+        "sameAs": [{{ site.googleBusinessProfile | dump | safe }}, "https://github.com/Cedric-ruiu"],
+        "areaServed": {{ site.areaServed | dump | safe }},
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "{{ site.locality }}",
+          "postalCode": "{{ site.postalCode }}",
+          "addressRegion": "{{ site.region }}",
+          "addressCountry": "{{ site.country }}"
+        }
+      },
+      {
+        "@type": "Person",
+        "@id": "{{ site.url }}/#cedric-ruiu",
+        "name": "{{ site.name }}",
+        "jobTitle": "{{ site.jobTitle }}",
+        "url": "{{ site.url }}",
+        "email": "{{ site.email }}",
+        "telephone": "{{ site.phone | phoneE164 }}",
+        "image": "{{ home.why.photo.portraitLarge | absoluteUrl(site.url) }}",
+        "sameAs": ["https://github.com/Cedric-ruiu"],
+        "knowsAbout": ["Développement web", "Référencement naturel (SEO)", "Performance web"],
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "{{ site.locality }}",
+          "addressRegion": "{{ site.region }}",
+          "addressCountry": "{{ site.country }}"
+        }
+      }
+    ]
   }
   </script>
 

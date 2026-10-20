@@ -30,6 +30,25 @@ department: "Morbihan"
 departmentCode: "56"
 region: "Bretagne"
 country: "FR"
+postalCode: "56860"
+
+# Mirrors the service area of the Google Business Profile (JSON-LD areaServed),
+# plus remote work across France.
+areaServed:
+  - "Séné"
+  - "Vannes"
+  - "Ploeren"
+  - "Plescop"
+  - "Saint-Avé"
+  - "Theix-Noyalo"
+  - "Auray"
+  - "Lorient"
+  - "Ploërmel"
+  - "Morbihan"
+  - "France"
+
+# Google Business Profile listing, linked from the JSON-LD (sameAs).
+googleBusinessProfile: "https://www.google.com/maps/search/?api=1&query=C%C3%A9dric%20Ruiu&query_place_id=ChIJo5ZOXTPHOykRzNiKWDhv35s"
 
 # web3formsKey is a public key by design, safe to version.
 web3formsKey: "d0e8982f-f4d2-43ca-978f-1b633b25de54"
