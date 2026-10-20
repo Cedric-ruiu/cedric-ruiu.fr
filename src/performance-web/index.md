@@ -1,16 +1,17 @@
 ---
 layout: service
-title: "Performance web : des sites rapides sur mobile | Cédric Ruiu"
+title: "Site lent ? Audit de performance web sur mobile | Cédric Ruiu"
 description: "Des sites légers qui s'affichent vite, même en 4G : ma spécialité depuis plus de dix ans. Audit de performance et conseils pour accélérer votre site."
 permalink: /performance-web/
 service: "performance"
 eyebrow: "Performance web"
 heading: "Performance web : un site rapide, surtout sur mobile"
 lead: >-
-  Un site rapide s'affiche vite, réagit tout de suite et ne saute pas pendant le
-  chargement, même sur un téléphone en 4G moyenne. C'est ma spécialité depuis
-  plus de dix ans : chaque site que je livre est conçu léger dès le départ, et
-  je peux mesurer votre site actuel pour trouver ce qui le ralentit.
+  Votre site met du temps à s'afficher sur téléphone, ou saute pendant le
+  chargement ? Un site rapide s'affiche vite et réagit tout de suite, même en 4G
+  moyenne. C'est ma spécialité depuis plus de dix ans : chaque site que je livre
+  est conçu léger dès le départ, et je peux mesurer le vôtre pour trouver ce qui
+  le ralentit.
 # Home page, measured with tmp/measure/lighthouse.sh (median of three, mobile)
 # and tmp/measure/pages.mjs (on the wire, KiB). Re-measure before editing.
 # `median` is the median mobile page of the Web Almanac 2024, in kB.
