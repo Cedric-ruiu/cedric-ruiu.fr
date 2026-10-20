@@ -12,10 +12,14 @@ baselineShort: "Web / Référencement / Performance"
 # Public source repository, linked discreetly from the footer.
 repository: "https://github.com/Cedric-ruiu/cedric-ruiu.fr"
 
-# Looped by header.njk and footer.njk; the legal notice link is added separately.
+# Looped by header.njk (through the navLinks filter) and footer.njk; the legal
+# notice link is added separately. A `service` entry is a key of services.yml:
+# the header shows it, the footer leaves it to its own "Expertise" column.
 nav:
   - name: "Accueil"
     url: "/"
+  - service: "seo"
+  - service: "creation"
   - name: "Portfolio"
     url: "/portfolio/"
   - name: "Contact"

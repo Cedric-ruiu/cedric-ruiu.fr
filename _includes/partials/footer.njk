@@ -16,8 +16,11 @@
         {# `tap`'s invisible padding (to reach 44px) would double into visible gaps between
            stacked items; -mt-3 pulls each one back to a 12px rhythm. #}
         <ul class="flex flex-col text-sm [&>li+li]:-mt-3">
+          {# Service entries of the menu are already listed under "Expertise". #}
           {% for item in site.nav %}
+          {% if not item.service %}
           <li><a href="{{ item.url }}" class="tap w-fit text-on-ink"><span class="link-underline">{{ item.name }}</span></a></li>
+          {% endif %}
           {% endfor %}
           <li><a href="/mentions-legales/" class="tap w-fit text-on-ink"><span class="link-underline">Mentions légales</span></a></li>
         </ul>

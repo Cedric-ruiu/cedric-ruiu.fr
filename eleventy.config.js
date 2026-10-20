@@ -122,6 +122,19 @@ export default function (eleventyConfig) {
     (url, base) => new URL(url ?? "/", base).href,
   );
 
+  // site.nav entries are either a plain page ({ name, url }) or a service key
+  // ({ service: "seo" }), resolved here against services.yml so a service URL
+  // is still only written once.
+  eleventyConfig.addFilter("navLinks", (nav, services) =>
+    (nav ?? []).map((item) => {
+      if (!item.service) return item;
+      const service = (services ?? []).find((s) => s.key === item.service);
+      if (!service)
+        throw new Error(`Unknown service in site.nav: ${item.service}`);
+      return { name: service.name, url: service.url, service: item.service };
+    }),
+  );
+
   eleventyConfig.addShortcode("year", () => `${new Date().getFullYear()}`);
 
   // Images are referenced by public URL ("/portfolio/gyp-sum.webp"), mapping

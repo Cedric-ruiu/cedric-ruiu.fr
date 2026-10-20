@@ -8,7 +8,7 @@
 
     <nav aria-label="Navigation principale" class="hidden md:block">
       <ul class="flex items-center gap-9">
-        {% for item in site.nav %}
+        {% for item in site.nav | navLinks(services) %}
         <li>
           {# text-white/85 measures 4.66:1 on ocean, clearing WCAG 1.4.3. #}
           <a
@@ -95,7 +95,7 @@
 
     <nav aria-label="Navigation mobile" class="flex flex-1 flex-col justify-center px-8 pb-20">
       <ul class="flex flex-col gap-2">
-        {% for item in site.nav %}
+        {% for item in site.nav | navLinks(services) %}
         <li>
           <a
             href="{{ item.url }}"
