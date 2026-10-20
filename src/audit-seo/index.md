@@ -178,6 +178,10 @@ envies et votre temps, trois options :
 - **Un mélange des deux.** Je me charge des points techniques, vous gardez la
   main sur ce qui vous revient : vos textes, vos photos, votre fiche Google.
 
+Et si le rapport conclut que le site doit être refait, je peux m'en charger :
+c'est une [refonte de site internet](/refonte-site-internet/), préparée pour
+garder votre place sur Google.
+
 ## Comment se déroule un audit ?
 
 1. **Un échange sur votre activité.** Vos clients, votre zone, vos concurrents,

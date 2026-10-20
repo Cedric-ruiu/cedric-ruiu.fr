@@ -29,6 +29,8 @@ expertise:
       text: >-
         Je conçois et développe votre site de A à Z, du premier échange à la mise en ligne : site vitrine, boutique en ligne, application web ou mobile, textes compris si vous le souhaitez. Vous échangez directement avec la personne qui réalise le projet, sans intermédiaire.
       link: "Découvrir la création de site"
+      # Services this card's text leads to, listed under it (keys of services.yml).
+      related: ["refonte", "application"]
     - service: "performance"
       title: "Performance"
       text: >-

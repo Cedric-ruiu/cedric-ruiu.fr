@@ -73,6 +73,11 @@ layout: base
 
       <h3 class="text-h3 mt-6 font-serif">{{ item.title }}</h3>
       <p class="text-body mt-4">{{ item.text }}</p>
+      {% if item.related %}
+      <p class="text-body mt-3">Voir aussi :
+        {% for key in item.related %}{% for other in services %}{% if other.key == key %}<a href="{{ other.url }}" class="font-medium text-ocean underline underline-offset-2">{{ other.title }}</a>{% endif %}{% endfor %}{% if not loop.last %} · {% endif %}{% endfor %}
+      </p>
+      {% endif %}
       <p class="mt-auto pt-4">
         <a href="{{ service.url }}" class="tap font-medium text-ocean"><span class="link-underline">{{ item.link }} <span aria-hidden="true">→</span></span></a>
       </p>
