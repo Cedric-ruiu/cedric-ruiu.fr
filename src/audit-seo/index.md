@@ -21,6 +21,19 @@ faq:
       insuffisants, lenteur, présence locale négligée. Son intérêt ne tient pas
       au diagnostic seul, mais au plan d'action qui en découle : quoi corriger,
       dans quel ordre, et pourquoi.
+  - question: "Pourquoi mon site n'apparaît pas sur Google ?"
+    answer: >-
+      Le plus souvent pour l'une de ces raisons : Google ne connaît pas encore
+      toutes vos pages, elles ne reprennent pas les mots que tapent vos clients,
+      d'autres sites répondent mieux à la question ou sont davantage cités
+      ailleurs sur le web, ou, pour les recherches locales, votre fiche Google
+      est incomplète ou sans avis. L'audit sert à savoir laquelle vous concerne.
+  - question: "Combien coûte un audit SEO ?"
+    answer: >-
+      Le prix d'un audit SEO dépend surtout de la taille du site et de ce qu'il
+      faut examiner : nombre de pages, boutique en ligne ou non, présence
+      locale, accès à Search Console. Après un premier échange sur votre site,
+      je vous donne un prix ferme, avant tout engagement.
   - question: "Combien de temps avant de voir des résultats ?"
     answer: >-
       Comptez plusieurs semaines, parfois quelques mois : Google doit d'abord
@@ -47,6 +60,12 @@ faq:
       Oui, et c'est même là qu'il est le plus rentable. Sur un petit site,
       chaque page compte, et quelques corrections bien choisies peuvent suffire
       à changer sa visibilité.
+  - question: "Peut-on se rencontrer ?"
+    answer: >-
+      Oui, si vous êtes dans le secteur de Vannes et du Golfe du Morbihan : je
+      me déplace volontiers. Ailleurs en France, l'audit se fait entièrement à
+      distance, par téléphone ou en visio. Il ne demande que l'adresse de votre
+      site et, si possible, un accès à vos outils Google.
 cta:
   title: "Votre site mérite d'être trouvé"
   text: >-
