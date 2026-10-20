@@ -16,8 +16,8 @@ Ce site est édité à titre personnel par :
 {{ site.legal.address.street }}<br>
 {{ site.legal.address.postalCode }} {{ site.legal.address.city }}, {{ site.legal.address.country }}
 
-- Email : [{{ site.email }}](mailto:{{ site.email }})
-- Téléphone : [{{ site.phone | phoneDisplay }}](tel:{{ site.phone | phoneE164 }})
+- Email : <a href="mailto:{{ site.email }}" data-umami-event="email" data-umami-event-emplacement="mentions-legales">{{ site.email }}</a>
+- Téléphone : <a href="tel:{{ site.phone | phoneE164 }}" data-umami-event="appel" data-umami-event-emplacement="mentions-legales">{{ site.phone | phoneDisplay }}</a>
 {% if site.legal.statut %}- Statut : {{ site.legal.statut }}
 {% endif %}{% if site.legal.siret %}- SIRET : {{ site.legal.siret }}
 {% endif %}{% if site.legal.tva %}- Numéro de TVA intracommunautaire : {{ site.legal.tva }}
@@ -101,7 +101,7 @@ supprimé.
 **Vos droits** : vous disposez d'un droit d'accès, de rectification,
 d'effacement, de limitation et d'opposition sur les informations vous
 concernant. Pour les exercer, écrivez-moi à
-[{{ site.email }}](mailto:{{ site.email }}) : je vous réponds et je m'exécute
+<a href="mailto:{{ site.email }}" data-umami-event="email" data-umami-event-emplacement="mentions-legales">{{ site.email }}</a> : je vous réponds et je m'exécute
 sous un mois.
 
 Si la réponse ne vous satisfait pas, vous pouvez saisir la Commission nationale

@@ -17,4 +17,4 @@ actions:
 Je l'ai bien reçu et je vous réponds sous 48 heures, à l'adresse email que vous
 avez indiquée. Si rien n'arrive d'ici là, pensez à jeter un œil dans vos
 courriers indésirables — ou appelez-moi directement au
-[{{ site.phone | phoneDisplay }}](tel:{{ site.phone | phoneE164 }}).
+<a href="tel:{{ site.phone | phoneE164 }}" data-umami-event="appel" data-umami-event-emplacement="merci">{{ site.phone | phoneDisplay }}</a>.

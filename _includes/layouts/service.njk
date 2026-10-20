@@ -16,7 +16,7 @@ layout: base
      number itself already is. #}
   <div class="mt-8 flex flex-col gap-3 sm:flex-row sm:gap-4">
     <a href="/contact/" class="btn-primary w-full sm:w-auto">Me contacter</a>
-    <a href="tel:{{ site.phone | phoneE164 }}" class="btn-secondary w-full sm:w-auto">Appeler&nbsp;le&nbsp;{{ site.phone | phoneDisplay }}</a>
+    <a href="tel:{{ site.phone | phoneE164 }}" data-umami-event="appel" data-umami-event-emplacement="heros" class="btn-secondary w-full sm:w-auto">Appeler&nbsp;le&nbsp;{{ site.phone | phoneDisplay }}</a>
   </div>
 </section>
 
@@ -106,6 +106,6 @@ layout: base
   <p class="text-body mx-auto mt-4 max-w-xl">{{ cta.text }}</p>
   <div class="mt-8 flex flex-col gap-3 sm:flex-row sm:justify-center sm:gap-4">
     <a href="/contact/" class="btn-primary w-full sm:w-auto">Me contacter</a>
-    <a href="tel:{{ site.phone | phoneE164 }}" class="btn-secondary w-full sm:w-auto">Appeler&nbsp;le&nbsp;{{ site.phone | phoneDisplay }}</a>
+    <a href="tel:{{ site.phone | phoneE164 }}" data-umami-event="appel" data-umami-event-emplacement="cta" class="btn-secondary w-full sm:w-auto">Appeler&nbsp;le&nbsp;{{ site.phone | phoneDisplay }}</a>
   </div>
 </section>
