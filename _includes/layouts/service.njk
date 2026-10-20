@@ -89,13 +89,16 @@ layout: base
     <div class="mt-8 grid grid-cols-1 gap-6 md:grid-cols-2">
       {% for item in services %}
       {% if item.key != service %}
-      <a href="{{ item.url }}" class="card group flex items-start gap-5 p-6 transition-colors hover:border-ocean sm:p-7">
+      {# Only the title is the link, so its anchor text stays short; its ::after
+         stretches over the card to keep the whole card clickable, and the focus
+         ring moves to the card to match that clickable area. #}
+      <div class="card group relative flex items-start gap-5 p-6 transition-colors hover:border-ocean has-focus-visible:outline-2 has-focus-visible:outline-offset-2 has-focus-visible:outline-ocean sm:p-7">
         {{ iconPartial.icon(item.icon, class="h-12 w-12 shrink-0 text-ocean") }}
-        <span>
-          <span class="block font-serif text-h3 font-bold text-ink group-hover:text-ocean">{{ item.title }}</span>
-          <span class="text-body mt-2 block">{{ item.summary }}</span>
-        </span>
-      </a>
+        <div>
+          <h3 class="font-serif text-h3 font-bold"><a href="{{ item.url }}" class="text-ink group-hover:text-ocean after:absolute after:inset-0 focus-visible:outline-none focus-visible:shadow-none">{{ item.title }}</a></h3>
+          <p class="text-body mt-2">{{ item.summary }}</p>
+        </div>
+      </div>
       {% endif %}
       {% endfor %}
     </div>
