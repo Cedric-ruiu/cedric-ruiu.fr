@@ -49,7 +49,7 @@ navigateur ne permet pas.
 
 <div class="overflow-x-auto">
 
-| | Application web installable | Application publiée sur les stores |
+| <span class="sr-only">Critère</span> | Application web installable | Application publiée sur les stores |
 |---|---|---|
 | Installation | Depuis le navigateur, en l'ajoutant à l'écran d'accueil | Depuis l'App Store ou Google Play |
 | Validation par Apple et Google | Aucune | À chaque publication et à chaque mise à jour |
