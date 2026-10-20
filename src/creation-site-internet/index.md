@@ -13,6 +13,19 @@ lead: >-
   votre projet de bout en bout, textes compris, et je peux aussi reprendre un
   site existant pour le faire évoluer.
 faq:
+  - question: "Combien coûte un site internet ?"
+    answer: >-
+      Tout dépend de ce que le site doit faire : nombre de pages, rédaction des
+      textes, boutique en ligne, réservation ou formulaire sur mesure. Un site
+      vitrine de quelques pages n'a pas le prix d'une boutique. Après un premier
+      appel, je vous remets un devis détaillé.
+  - question: "Quel site choisir quand on est artisan ?"
+    answer: >-
+      Pour la plupart des artisans, un site vitrine suffit : vos services, vos
+      réalisations, votre zone d'intervention et un numéro qu'on peut appeler
+      d'un geste depuis son téléphone. Une boutique en ligne n'a de sens que si
+      vous vendez des produits. L'essentiel : qu'on vous trouve, puis qu'on vous
+      appelle.
   - question: "Pouvez-vous créer une application mobile ?"
     answer: >-
       Oui : une application installable sur l'écran d'accueil du téléphone, ou
