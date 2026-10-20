@@ -22,7 +22,7 @@ vitals:
   tbt: "0 ms"
 weight:
   measured: "20 octobre 2026"
-  site: 95.6
+  site: 95.7
   median: 2311
 faq:
   - question: "Comment savoir si mon site est lent ?"
