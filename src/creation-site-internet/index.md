@@ -15,10 +15,10 @@ lead: >-
 faq:
   - question: "Pouvez-vous créer une application mobile ?"
     answer: >-
-      Oui. Selon le besoin, il peut s'agir d'une application installable depuis
-      les stores, ou d'une application web qui s'utilise depuis le navigateur du
-      téléphone sans passer par un store. Nous choisissons ensemble la solution
-      la plus adaptée à votre usage et à votre budget.
+      Oui : une application installable sur l'écran d'accueil du téléphone, ou
+      publiée sur les stores selon le besoin. Les deux options sont comparées
+      sur la page <a href="/application-mobile/" class="font-medium text-ocean
+      underline underline-offset-2">application mobile</a>.
   - question: "Faut-il que je fournisse les textes ?"
     answer: >-
       Non. Vous pouvez fournir vos textes, que je relis et adapte au web, ou me
@@ -70,8 +70,8 @@ Quelques exemples de ce que je réalise :
   rendez-vous ou de décrire leur demande.
 - **Application web** — un outil métier, un calculateur, un espace client : un
   logiciel qui s'ouvre dans le navigateur.
-- **Application mobile** — quand votre projet doit vivre sur l'écran d'accueil
-  d'un téléphone.
+- **[Application mobile](/application-mobile/)** — quand votre projet doit
+  vivre sur l'écran d'accueil d'un téléphone.
 - **Intégrations** — relier votre site aux services que vous utilisez déjà :
   paiement, agenda, emailing, outils de gestion.
 

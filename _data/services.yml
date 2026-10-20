@@ -31,6 +31,15 @@
   url: "/audit-seo/"
   icon: "seo"
 
+- key: "application"
+  name: "Application mobile"
+  title: "Application mobile"
+  summary: >-
+    Une application installable sur l'écran d'accueil du téléphone, ou publiée
+    sur les stores, conçue et développée sur mesure.
+  url: "/application-mobile/"
+  icon: "app"
+
 - key: "performance"
   name: "Performance web"
   title: "Performance web"
