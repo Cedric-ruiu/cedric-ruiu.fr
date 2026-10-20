@@ -15,13 +15,13 @@ lead: >-
 # and tmp/measure/pages.mjs (on the wire, KiB). Re-measure before editing.
 # `median` is the median mobile page of the Web Almanac 2024, in kB.
 vitals:
-  measured: "3 octobre 2026"
+  measured: "20 octobre 2026"
   lcp: "1,6 s"
   cls: "0"
   tbt: "0 ms"
 weight:
-  measured: "3 octobre 2026"
-  site: 94.8
+  measured: "20 octobre 2026"
+  site: 95.6
   median: 2311
 faq:
   - question: "Comment savoir si mon site est lent ?"
