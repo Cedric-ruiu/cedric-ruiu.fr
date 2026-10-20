@@ -21,29 +21,50 @@
       </ul>
     </nav>
 
-    {# Hidden until nav.js reveals it: the panel it opens only exists with script,
-       so without JS this would be a dead control. Navigation stays reachable in
-       the footer. Valid here — unlike on the <svg> below, a <button> is an
-       HTMLElement, so `toggle.hidden = false` really does clear the attribute. #}
-    <button
-      type="button"
-      id="nav-toggle"
-      class="flex h-11 w-11 items-center justify-center rounded text-white md:hidden"
-      aria-expanded="false"
-      aria-controls="nav-mobile"
-      aria-label="Ouvrir le menu"
-      hidden
-    >
-      {# One icon, no open/close swap: the panel below is `fixed inset-0 z-50` and
-         covers this header (z-40), so the button is never visible while the menu
-         is open. `hidden` is also invalid on <svg> — it is an HTMLElement
-         attribute, so setting it from script would have done nothing anyway. #}
-      <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
-        <line x1="3" y1="6" x2="21" y2="6"></line>
-        <line x1="3" y1="12" x2="21" y2="12"></line>
-        <line x1="3" y1="18" x2="21" y2="18"></line>
-      </svg>
-    </button>
+    <div class="flex items-center gap-1 md:hidden">
+      {# Phones only: on the home page the hero's call button sits below the fold,
+         so the sticky bar keeps the call one tap away on every page. A plain link,
+         so it works without script, unlike the menu toggle next to it. #}
+      <a
+        href="tel:{{ site.phone | phoneE164 }}"
+        data-umami-event="appel"
+        data-umami-event-emplacement="en-tete"
+        class="flex h-11 w-11 items-center justify-center rounded text-white"
+        aria-label="Appeler le {{ site.phone | phoneDisplay }}"
+      >
+        <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+        </svg>
+      </a>
+
+      {# Hidden until nav.js reveals it: the panel it opens only exists with script,
+         so without JS this would be a dead control. Navigation stays reachable in
+         the footer. Valid here — unlike on the <svg> below, a <button> is an
+         HTMLElement, so `toggle.hidden = false` really does clear the attribute.
+         The fixed slot reserves its room, so the call link beside it does not
+         shift when the script reveals it. #}
+      <div class="h-11 w-11">
+        <button
+          type="button"
+          id="nav-toggle"
+          class="flex h-11 w-11 items-center justify-center rounded text-white md:hidden"
+          aria-expanded="false"
+          aria-controls="nav-mobile"
+          aria-label="Ouvrir le menu"
+          hidden
+        >
+          {# One icon, no open/close swap: the panel below is `fixed inset-0 z-50` and
+             covers this header (z-40), so the button is never visible while the menu
+             is open. `hidden` is also invalid on <svg> — it is an HTMLElement
+             attribute, so setting it from script would have done nothing anyway. #}
+          <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
   </div>
 
   {# role="dialog" keeps assistive technology from reaching the page behind this overlay. #}
