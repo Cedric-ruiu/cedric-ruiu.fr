@@ -25,12 +25,6 @@ faq:
       confier entièrement la rédaction à partir d'un échange sur votre
       activité. Dans les deux cas, vous validez chaque page avant la mise en
       ligne.
-  - question: "Pouvez-vous modifier un site que vous n'avez pas créé ?"
-    answer: >-
-      Oui, quelle que soit sa technologie web, pour une correction ponctuelle
-      comme pour une évolution plus importante. Je commence par examiner le
-      site, pour vous dire ce qui se fait simplement et ce qui demande davantage
-      de travail.
   - question: "Travaillez-vous avec les associations ?"
     answer: >-
       Oui. J'interviens auprès des associations exactement comme auprès des
@@ -119,17 +113,14 @@ plus de raisons de mettre en avant : c'est le point de départ d'un bon
 
 ## Vous avez déjà un site ? Je le fais évoluer
 
-Inutile de tout refaire quand une base fonctionne. J'interviens sur les sites
-existants, quelle que soit leur technologie web — WordPress, Shopify,
-PrestaShop, framework JavaScript ou code écrit sur mesure — pour :
-
-- corriger ce qui ne fonctionne plus ;
-- ajouter une page, une fonctionnalité ou une langue ;
-- moderniser l'apparence ou l'adapter au téléphone ;
-- [accélérer un site devenu lent](/performance-web/).
+Inutile de tout refaire quand une base fonctionne : j'interviens sur les sites
+existants, quelle que soit leur technologie web, pour corriger ce qui ne
+fonctionne plus, ajouter une page ou une fonctionnalité, ou
+[accélérer un site devenu lent](/performance-web/).
 
 Et si une refonte est vraiment la meilleure option, je vous le dirai — mais ce
-n'est jamais la réponse par défaut.
+n'est jamais la réponse par défaut. Comment je la mène, sans perdre votre place
+sur Google : [refonte de site internet](/refonte-site-internet/).
 
 ## Ce que chaque site comprend
 
