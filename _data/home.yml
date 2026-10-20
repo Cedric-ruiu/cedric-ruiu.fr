@@ -19,16 +19,16 @@ expertise:
   # nothing is said twice. `service` is a key from services.yml, which supplies
   # the icon and the URL; `link` is the card's own descriptive anchor text.
   items:
-    - service: "creation"
-      title: "Création de site internet"
-      text: >-
-        Je conçois et développe votre site de A à Z, du premier échange à la mise en ligne : site vitrine, boutique en ligne, application web ou mobile, textes compris si vous le souhaitez. Vous échangez directement avec la personne qui réalise le projet, sans intermédiaire.
-      link: "Découvrir la création de site"
     - service: "seo"
       title: "Référencement SEO"
       text: >-
         Être présent sur Google ne suffit pas : encore faut-il apparaître devant les bonnes personnes. Mon audit SEO identifie précisément ce qui freine votre visibilité, et vous remet un rapport d'actions hiérarchisé — que vous pouvez appliquer vous-même ou me confier.
       link: "Tout savoir sur l'audit SEO"
+    - service: "creation"
+      title: "Création de site internet"
+      text: >-
+        Je conçois et développe votre site de A à Z, du premier échange à la mise en ligne : site vitrine, boutique en ligne, application web ou mobile, textes compris si vous le souhaitez. Vous échangez directement avec la personne qui réalise le projet, sans intermédiaire.
+      link: "Découvrir la création de site"
     - service: "performance"
       title: "Performance"
       text: >-
