@@ -2,6 +2,7 @@
 #        Missing file → the card falls back to a neutral flat panel at the same ratio, no CLS.
 # year: leave empty when unknown — the template renders nothing rather than a guess.
 # services: keys from services.yml — each service page lists the projects tagged with it.
+#           The FIRST key is the service the portfolio card links to.
 
 - name: "Myrmecophoto"
   url: "https://myrmecophoto.fr/"
@@ -55,9 +56,9 @@
   tag: "Site vitrine"
   year: 2014
   stack: "WordPress, thème sur mesure"
-  services: [creation]
+  services: [refonte, creation]
   description: >-
-    Site conçu et développé pour une école d'arts martiaux traditionnels
+    Refonte complète du site d'une école d'arts martiaux traditionnels
     sino-vietnamiens à Strasbourg. Il regroupe les cours proposés aux adultes
     et aux enfants, les horaires et tarifs, les démonstrations publiques et
     l'histoire de l'école. Comme le précédent, il repose sur un thème écrit
@@ -70,14 +71,15 @@
   tag: "Application web"
   year: 2026
   stack: "Vue 3, Vite"
-  services: [creation]
+  services: [application, creation]
   description: >-
     Calculateur de dosage eau et plâtre pour la fabrication de moules en
     céramique. On saisit les dimensions du moule et de la pièce à mouler, le
     rapport plâtre/eau souhaité et une marge de sécurité ; l'outil en déduit
     les quantités exactes, en s'appuyant sur la masse volumique réelle du
     gypse plutôt que sur une règle de trois. Tout le calcul se fait dans le
-    navigateur, aucune donnée n'est envoyée.
+    navigateur, aucune donnée n'est envoyée. Installable sur téléphone, il
+    s'ouvre depuis l'écran d'accueil comme une application.
   image: "/portfolio/gyp-sum.webp"
   imageAlt: "Interface de GypSum, avec les champs de dimensions du moule et le résultat en litres d'eau et kilos de plâtre."
 
@@ -86,13 +88,13 @@
   tag: "Application web"
   year: 2026
   stack: "Vue 3, Vite"
-  services: [creation]
+  services: [application, creation]
   description: >-
     Simulateur de distributeur de billets, pensé pour que des personnes en
     difficulté cognitive s'entraînent à retirer de l'argent sans aucun enjeu.
     Il reproduit le parcours complet — insertion de la carte, code, choix du
     montant, retrait des billets et du ticket — au rythme de la personne et
-    autant de fois qu'elle le souhaite. Gratuit, open source, sans publicité
-    et utilisable directement sur tablette.
+    autant de fois qu'elle le souhaite. Gratuit, open source, sans publicité,
+    utilisable directement sur tablette et installable sur téléphone.
   image: "/portfolio/atm-trainer.webp"
   imageAlt: "Écran du simulateur DAB Trainer, avec le clavier numérique et la fente à billets."
