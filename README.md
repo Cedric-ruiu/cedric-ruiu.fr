@@ -63,6 +63,7 @@ runs.
 | Mobile app | 100 | 100 | 100 | 100 | 1.35 s | 0 |
 | Portfolio | 100 | 100 | 100 | 100 | 1.73 s | 0 |
 | Contact | 100 | 100 | 100 | 100 | 1.35 s | 0 |
+| Visibility guide | 100 | 100 | 100 | 100 | 1.36 s | 0 |
 | Legal notice | 100 | 100 | 100 | 100 | 1.35 s | 0 |
 | 404 | 100 | 100 | 100 | 66 | 1.35 s | 0 |
 | Thank-you | 100 | 100 | 100 | 66 | 1.35 s | 0 |
@@ -72,20 +73,22 @@ The 404 and thank-you pages are `noindex` by design, which Lighthouse scores dow
 
 | Page | Requests | Transferred | Budget used |
 |---|---|---|---|
-| Home | 10 | **95.6 kB** | 32 % |
-| Website creation | 12 | 151.7 kB | 51 % |
-| SEO audit | 9 | 85.1 kB | 28 % |
-| Web performance | 11 | 133.9 kB | 45 % |
-| Website redesign | 9 | 82.4 kB | 27 % |
-| Mobile app | 11 | 110.5 kB | 37 % |
-| Portfolio | 15 | 211.8 kB | 71 % |
-| Contact | 9 | 79.8 kB | 27 % |
-| Legal notice | 9 | 80.6 kB | 27 % |
-| 404 | 9 | 78.6 kB | 26 % |
-| Thank-you | 9 | 78.8 kB | 26 % |
+| Home | 10 | **95.7 kB** | 32 % |
+| Website creation | 12 | 151.9 kB | 51 % |
+| SEO audit | 9 | 85.4 kB | 28 % |
+| Web performance | 11 | 134.1 kB | 45 % |
+| Website redesign | 9 | 82.6 kB | 28 % |
+| Mobile app | 11 | 110.6 kB | 37 % |
+| Portfolio | 15 | 211.9 kB | 71 % |
+| Contact | 9 | 79.9 kB | 27 % |
+| Visibility guide | 9 | 82.6 kB | 28 % |
+| Legal notice | 9 | 80.7 kB | 27 % |
+| 404 | 9 | 78.8 kB | 26 % |
+| Thank-you | 9 | 79.0 kB | 26 % |
 
 Both tables were re-measured in full on **2026-10-20**, after two more service pages (website
-redesign, mobile app) and services in the menu. The first three service pages' charts
+redesign, mobile app), services in the menu, then a visibility guide linked from the footer, which
+adds 0.1 to 0.3 kB to every page. The first three service pages' charts
 — a Search Console curve, Core Web Vitals figures and a page-weight comparison — are inline SVG and HTML, with no image and no
 request; what they cost is stylesheet, 0.75 kB on the wire, paid by every page. The website creation
 page is the heaviest service page because it shows three portfolio thumbnails, lazy-loaded and
@@ -97,7 +100,7 @@ set, which Lighthouse fetches to test installability and a browser does not — 
 one icon and caches it. The portfolio figure scrolls the whole page, so it counts all six
 screenshots, where a visitor who lands and stays put loads three: about 154 kB in practice.
 
-One stylesheet per page, **32,012 bytes** minified and **7,661 bytes** over the wire (gzip -9). One script,
+One stylesheet per page, **31,982 bytes** minified and **7,625 bytes** over the wire (gzip -9). One script,
 **1,119 bytes** minified and **510 bytes** over the wire. On the home page the two self-hosted fonts
 account for 57.9 kB, leaving 37 kB for the document, stylesheet, scripts, portrait and icons
 combined. The hero's second kelp is 8.5 kB of inline path data that
