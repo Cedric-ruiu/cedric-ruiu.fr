@@ -1,7 +1,7 @@
 ---
 layout: service
-title: "Audit SEO pour artisans et petites entreprises | Cédric Ruiu"
-description: "Un audit SEO complet et un rapport d'actions précis, pas à pas, pour rendre votre site visible sur Google. Pour artisans, boutiques en ligne et TPE."
+title: "Audit SEO près de Vannes pour artisans et petites entreprises"
+description: "Un audit SEO complet et un rapport d'actions pas à pas pour être trouvé sur Google. Près de Vannes, dans le Morbihan, ou à distance partout en France."
 permalink: /audit-seo/
 service: "seo"
 eyebrow: "Audit SEO"
@@ -11,7 +11,8 @@ lead: >-
   Google : technique, contenu, vitesse, présence locale. Vous ne recevez pas une
   liste de scores, mais un rapport d'actions précis et hiérarchisé — quoi
   corriger, où, dans quel ordre et pourquoi. Je peux aussi appliquer ces actions
-  moi-même.
+  moi-même. Installé à Séné, près de Vannes, je réalise ces audits pour les
+  entreprises du Morbihan et, à distance, partout en France.
 faq:
   - question: "Qu'est-ce qu'un audit SEO ?"
     answer: >-
