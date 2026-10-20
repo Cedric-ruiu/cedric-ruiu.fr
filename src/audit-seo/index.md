@@ -27,7 +27,9 @@ faq:
       toutes vos pages, elles ne reprennent pas les mots que tapent vos clients,
       d'autres sites répondent mieux à la question ou sont davantage cités
       ailleurs sur le web, ou, pour les recherches locales, votre fiche Google
-      est incomplète ou sans avis. L'audit sert à savoir laquelle vous concerne.
+      est incomplète ou sans avis. Mon <a href="/etre-visible-sur-google/" class="font-medium text-ocean underline underline-offset-2">guide
+      pour être visible sur Google</a> les détaille ; l'audit sert à savoir
+      laquelle vous concerne.
   - question: "Combien coûte un audit SEO ?"
     answer: >-
       Le prix d'un audit SEO dépend surtout de la taille du site et de ce qu'il
