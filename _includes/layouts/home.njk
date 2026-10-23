@@ -5,7 +5,8 @@ layout: base
 {% import "partials/icons.njk" as iconPartial %}
 
 {# Background rhythm, not to be reordered: ocean nav → ocean-deep hero → sand cards → tide band → sand CTA → ink footer. `hero-water` carries that ocean-deep, plus the depth gradient — see main.css. #}
-<section class="hero-water relative overflow-hidden">
+{# From lg up the hero fills the screen under the 3.5rem nav, content centred. #}
+<section class="hero-water relative overflow-hidden lg:flex lg:min-h-[calc(100dvh-3.5rem)] lg:flex-col lg:justify-center">
   {# Two kelp fronds, and they must stay adjacent in the source: the symbol is
      8.5 kB of path data, and the second copy costs 148 bytes on the wire only
      because gzip matches it against the first. Move them apart and the match
@@ -42,9 +43,11 @@ layout: base
   {# The hero logo is hidden below sm: the nav right above already carries the
      same lockup and label, and on a phone it pushed the call button below the
      fold. From lg up the text column widens so the h1 and intro wrap on fewer
-     lines, and the logo shrinks, for the same reason. #}
-  <div class="relative mx-auto flex max-w-5xl flex-col items-center px-4 pt-10 pb-16 text-center sm:px-6 sm:pt-16 sm:pb-24 lg:pt-8">
-    {{ logoPartial.logo(variant="full", size=214, class="hidden h-auto w-[min(78vw,420px)] text-white sm:block lg:w-[200px]") }}
+     lines, and the logo height follows the viewport height: whatever the text
+     stack (~27rem), the nav and the padding leave, between 6rem and 17rem, so
+     the call button stays above the fold on a 1366×768 laptop. #}
+  <div class="relative mx-auto flex w-full max-w-5xl flex-col items-center px-4 pt-10 pb-16 text-center sm:px-6 sm:pt-16 sm:pb-24 lg:py-8">
+    {{ logoPartial.logo(variant="full", size=214, class="hidden h-auto w-[min(78vw,420px)] text-white sm:block lg:h-[clamp(6rem,100dvh_-_36.25rem,17rem)] lg:w-auto") }}
 
     <p class="eyebrow text-eyebrow-on-ocean-deep sm:mt-10 lg:mt-6">{{ home.hero.eyebrow }}</p>
     <h1 class="text-h1-hero mt-4 font-serif text-white">{{ home.hero.title }}</h1>
