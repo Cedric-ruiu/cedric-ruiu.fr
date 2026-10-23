@@ -39,17 +39,21 @@ layout: base
     <span class="bubble bubble-12 hidden lg:block"></span>
   </div>
 
-  <div class="relative mx-auto flex max-w-3xl flex-col items-center px-4 pt-14 pb-16 text-center sm:px-6 sm:pt-20 sm:pb-24">
-    {{ logoPartial.logo(variant="full", size=214, class="w-[min(78vw,420px)] h-auto text-white") }}
+  {# The hero logo is hidden below sm: the nav right above already carries the
+     same lockup and label, and on a phone it pushed the call button below the
+     fold. From lg up the text column widens so the h1 and intro wrap on fewer
+     lines, and the logo shrinks, for the same reason. #}
+  <div class="relative mx-auto flex max-w-5xl flex-col items-center px-4 pt-10 pb-16 text-center sm:px-6 sm:pt-16 sm:pb-24 lg:pt-8">
+    {{ logoPartial.logo(variant="full", size=214, class="hidden h-auto w-[min(78vw,420px)] text-white sm:block lg:w-[200px]") }}
 
-    <p class="eyebrow mt-10 text-eyebrow-on-ocean-deep">{{ home.hero.eyebrow }}</p>
+    <p class="eyebrow text-eyebrow-on-ocean-deep sm:mt-10 lg:mt-6">{{ home.hero.eyebrow }}</p>
     <h1 class="text-h1-hero mt-4 font-serif text-white">{{ home.hero.title }}</h1>
-    <p class="text-body mt-6 max-w-xl text-on-ocean-deep">{{ home.hero.intro }}</p>
+    <p class="text-body mt-6 max-w-xl text-on-ocean-deep lg:max-w-3xl">{{ home.hero.intro }}</p>
 
     {# The call comes first: it is the conversion the site is built for, and one
        tap away on a phone. Wraps from sm up, the three labels being too wide for
        a single row at 640px. #}
-    <div class="mt-9 flex w-full flex-col gap-3 sm:w-auto sm:flex-row sm:flex-wrap sm:justify-center sm:gap-4">
+    <div class="mt-9 flex w-full flex-col gap-3 sm:w-auto lg:mt-8 sm:flex-row sm:flex-wrap sm:justify-center sm:gap-4">
       <a href="tel:{{ site.phone | phoneE164 }}" data-umami-event="appel" data-umami-event-emplacement="heros" class="btn-primary w-full sm:w-auto">Appeler&nbsp;le&nbsp;{{ site.phone | phoneDisplay }}</a>
       {# border-white/40: 3.48:1 against ocean-deep, clears WCAG 1.4.11's 3:1. #}
       <a href="{{ home.hero.contact.url }}" class="btn-secondary w-full border-white/40 text-white hover:border-white hover:text-white sm:w-auto">{{ home.hero.contact.label }}</a>
