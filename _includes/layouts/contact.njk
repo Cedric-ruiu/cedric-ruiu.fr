@@ -14,13 +14,13 @@ layout: base
         <div>
           <dt class="font-serif text-sm font-extrabold uppercase tracking-wider text-ink">Email</dt>
           <dd>
-            <a href="mailto:{{ site.email }}" class="tap text-body font-medium text-ocean"><span class="link-underline">{{ site.email }}</span></a>
+            <a href="mailto:{{ site.email }}" data-umami-event="email" data-umami-event-emplacement="contact" class="tap text-body font-medium text-ocean"><span class="link-underline">{{ site.email }}</span></a>
           </dd>
         </div>
         <div>
           <dt class="font-serif text-sm font-extrabold uppercase tracking-wider text-ink">Téléphone</dt>
           <dd>
-            <a href="tel:{{ site.phone | phoneE164 }}" class="tap text-body font-medium text-ocean"><span class="link-underline">{{ site.phone | phoneDisplay }}</span></a>
+            <a href="tel:{{ site.phone | phoneE164 }}" data-umami-event="appel" data-umami-event-emplacement="contact" class="tap text-body font-medium text-ocean"><span class="link-underline">{{ site.phone | phoneDisplay }}</span></a>
           </dd>
         </div>
         <div>

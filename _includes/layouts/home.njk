@@ -5,7 +5,8 @@ layout: base
 {% import "partials/icons.njk" as iconPartial %}
 
 {# Background rhythm, not to be reordered: ocean nav → ocean-deep hero → sand cards → tide band → sand CTA → ink footer. `hero-water` carries that ocean-deep, plus the depth gradient — see main.css. #}
-<section class="hero-water relative overflow-hidden">
+{# From lg up the hero fills the screen under the 3.5rem nav, content centred. #}
+<section class="hero-water relative overflow-hidden lg:flex lg:min-h-[calc(100dvh-3.5rem)] lg:flex-col lg:justify-center">
   {# Two kelp fronds, and they must stay adjacent in the source: the symbol is
      8.5 kB of path data, and the second copy costs 148 bytes on the wire only
      because gzip matches it against the first. Move them apart and the match
@@ -39,17 +40,27 @@ layout: base
     <span class="bubble bubble-12 hidden lg:block"></span>
   </div>
 
-  <div class="relative mx-auto flex max-w-3xl flex-col items-center px-4 pt-14 pb-16 text-center sm:px-6 sm:pt-20 sm:pb-24">
-    {{ logoPartial.logo(variant="full", size=214, class="w-[min(78vw,420px)] h-auto text-white") }}
+  {# The hero logo is hidden below sm: the nav right above already carries the
+     same lockup and label, and on a phone it pushed the call button below the
+     fold. From lg up the text column widens so the h1 and intro wrap on fewer
+     lines, and the logo height follows the viewport height: whatever the text
+     stack (~27rem), the nav and the padding leave, between 6rem and 17rem, so
+     the call button stays above the fold on a 1366×768 laptop. #}
+  <div class="relative mx-auto flex w-full max-w-5xl flex-col items-center px-4 pt-10 pb-16 text-center sm:px-6 sm:pt-16 sm:pb-24 lg:py-8">
+    {{ logoPartial.logo(variant="full", size=214, class="hidden h-auto w-[min(78vw,420px)] text-white sm:block lg:h-[clamp(6rem,100dvh_-_36.25rem,17rem)] lg:w-auto") }}
 
-    <p class="eyebrow mt-10 text-eyebrow-on-ocean-deep">{{ home.hero.eyebrow }}</p>
+    <p class="eyebrow text-eyebrow-on-ocean-deep sm:mt-10 lg:mt-6">{{ home.hero.eyebrow }}</p>
     <h1 class="text-h1-hero mt-4 font-serif text-white">{{ home.hero.title }}</h1>
-    <p class="text-body mt-6 max-w-xl text-on-ocean-deep">{{ home.hero.intro }}</p>
+    <p class="text-body mt-6 max-w-xl text-on-ocean-deep lg:max-w-3xl">{{ home.hero.intro }}</p>
 
-    <div class="mt-9 flex w-full flex-col gap-3 sm:w-auto sm:flex-row sm:gap-4">
-      <a href="{{ home.hero.primary.url }}" class="btn-primary w-full sm:w-auto">{{ home.hero.primary.label }}</a>
+    {# The call comes first: it is the conversion the site is built for, and one
+       tap away on a phone. Wraps from sm up, the three labels being too wide for
+       a single row at 640px. #}
+    <div class="mt-9 flex w-full flex-col gap-3 sm:w-auto lg:mt-8 sm:flex-row sm:flex-wrap sm:justify-center sm:gap-4">
+      <a href="tel:{{ site.phone | phoneE164 }}" data-umami-event="appel" data-umami-event-emplacement="heros" class="btn-primary w-full sm:w-auto">Appeler&nbsp;le&nbsp;{{ site.phone | phoneDisplay }}</a>
       {# border-white/40: 3.48:1 against ocean-deep, clears WCAG 1.4.11's 3:1. #}
-      <a href="{{ home.hero.secondary.url }}" class="btn-secondary w-full border-white/40 text-white hover:border-white hover:text-white sm:w-auto">{{ home.hero.secondary.label }}</a>
+      <a href="{{ home.hero.contact.url }}" class="btn-secondary w-full border-white/40 text-white hover:border-white hover:text-white sm:w-auto">{{ home.hero.contact.label }}</a>
+      <a href="{{ home.hero.projects.url }}" class="btn-secondary w-full border-white/40 text-white hover:border-white hover:text-white sm:w-auto">{{ home.hero.projects.label }}</a>
     </div>
   </div>
 </section>
@@ -69,6 +80,11 @@ layout: base
 
       <h3 class="text-h3 mt-6 font-serif">{{ item.title }}</h3>
       <p class="text-body mt-4">{{ item.text }}</p>
+      {% if item.related %}
+      <p class="text-body mt-3">Voir aussi :
+        {% for key in item.related %}{% for other in services %}{% if other.key == key %}<a href="{{ other.url }}" class="font-medium text-ocean underline underline-offset-2">{{ other.title }}</a>{% endif %}{% endfor %}{% if not loop.last %} · {% endif %}{% endfor %}
+      </p>
+      {% endif %}
       <p class="mt-auto pt-4">
         <a href="{{ service.url }}" class="tap font-medium text-ocean"><span class="link-underline">{{ item.link }} <span aria-hidden="true">→</span></span></a>
       </p>

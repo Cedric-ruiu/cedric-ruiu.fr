@@ -15,18 +15,18 @@
     "format": "biome format --write . && biome check . --write"
   },
   "devDependencies": {
-    "@11ty/eleventy": "^3.1.6",
+    "@11ty/eleventy": "^3.1.7",
     "@11ty/eleventy-img": "^7.0.0",
-    "@biomejs/biome": "^2.5.11",
+    "@biomejs/biome": "^2.5.15",
     "@fontsource-variable/bitter": "^5.3.0",
     "@fontsource-variable/manrope": "^5.3.0",
     "@tailwindcss/postcss": "^4.3.3",
     "html-minifier-terser": "^7.2.0",
-    "postcss": "^8.5.26",
-    "sharp": "^0.35.4",
+    "postcss": "^8.5.31",
+    "sharp": "^0.35.5",
     "tailwindcss": "^4.3.3",
     "terser": "^5.51.2",
-    "yaml": "^2.9.0"
+    "yaml": "^2.9.1"
   },
   "packageManager": "yarn@4.13.0"
 }

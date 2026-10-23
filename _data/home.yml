@@ -1,12 +1,12 @@
 hero:
   eyebrow: "Création de sites internet · Référencement SEO · Performance web"
-  title: "Artisan du web, je conçois des sites sur mesure pour votre activité"
+  title: "Développeur web freelance près de Vannes, je conçois des sites sur mesure pour votre activité"
   intro: >-
-    Je suis Cédric Ruiu, développeur web indépendant à Séné, dans le Morbihan. Je conçois des sites internet pour les artisans, indépendants et petites entreprises, en Bretagne comme partout en France. Développement, référencement et performance : vous avez un seul interlocuteur, du premier échange à la mise en ligne.
-  primary:
+    Artisan du web, je suis Cédric Ruiu, développeur web indépendant à Séné, dans le Morbihan. Je conçois des sites internet pour les artisans, indépendants et petites entreprises, en Bretagne comme partout en France. Développement, référencement et performance : vous avez un seul interlocuteur, du premier échange à la mise en ligne.
+  contact:
     label: "Me contacter"
     url: "/contact/"
-  secondary:
+  projects:
     label: "Voir mes projets"
     url: "/portfolio/"
 
@@ -19,16 +19,18 @@ expertise:
   # nothing is said twice. `service` is a key from services.yml, which supplies
   # the icon and the URL; `link` is the card's own descriptive anchor text.
   items:
-    - service: "creation"
-      title: "Création de site internet"
-      text: >-
-        Je conçois et développe votre site de A à Z, du premier échange à la mise en ligne : site vitrine, boutique en ligne, application web ou mobile, textes compris si vous le souhaitez. Vous échangez directement avec la personne qui réalise le projet, sans intermédiaire.
-      link: "Découvrir la création de site"
     - service: "seo"
       title: "Référencement SEO"
       text: >-
         Être présent sur Google ne suffit pas : encore faut-il apparaître devant les bonnes personnes. Mon audit SEO identifie précisément ce qui freine votre visibilité, et vous remet un rapport d'actions hiérarchisé — que vous pouvez appliquer vous-même ou me confier.
       link: "Tout savoir sur l'audit SEO"
+    - service: "creation"
+      title: "Création de site internet"
+      text: >-
+        Je conçois et développe votre site de A à Z, du premier échange à la mise en ligne : site vitrine, boutique en ligne, application web ou mobile, textes compris si vous le souhaitez. Vous échangez directement avec la personne qui réalise le projet, sans intermédiaire.
+      link: "Découvrir la création de site"
+      # Services this card's text leads to, listed under it (keys of services.yml).
+      related: ["refonte", "application"]
     - service: "performance"
       title: "Performance"
       text: >-
@@ -55,7 +57,7 @@ why:
         Vous expliquez votre activité une seule fois. Pas d'intermédiaire ni de relais entre plusieurs prestataires : la personne qui comprend votre besoin est aussi celle qui conçoit, développe et met en ligne votre site.
     - title: "Vingt ans de métier"
       text: >-
-        Je développe des sites et des applications web depuis de nombreuses années, avec une expertise particulière en développement frontend, SEO technique et performance. Cette expérience me permet d'aborder un projet avec une vraie exigence technique, tout en restant adapté aux besoins d'une petite structure.
+        Je code depuis 2005 et j'en ai fait mon métier en 2008. Depuis, j'ai réalisé des dizaines de sites et de jeux Facebook, dirigé mon propre studio web, Opla, de 2010 à 2015, puis passé onze ans sur le frontend de sites grand public, avec une expertise particulière en SEO technique et performance. J'aborde chaque projet avec cette exigence, à la mesure d'une petite structure.
     - title: "Un site qui vous appartient"
       text: >-
         Le code, les textes, les images et le nom de domaine sont à vous. Vous pouvez reprendre la main, changer de prestataire ou faire évoluer votre site : rien n'est enfermé dans un abonnement ou un outil dont vous n'auriez pas les clés.

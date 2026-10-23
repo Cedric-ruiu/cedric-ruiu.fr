@@ -1,6 +1,6 @@
 ---
 layout: home
-title: "Cédric Ruiu — Développeur web indépendant en Bretagne"
-description: "Création de site internet, référencement et performance pour artisans et TPE. Développeur web indépendant à Séné, près de Vannes, partout en France."
+title: "Cédric Ruiu — Développeur web freelance près de Vannes"
+description: "Développeur web freelance à Séné, près de Vannes : audit SEO, création de site et performance web pour artisans, TPE et associations."
 permalink: /
 ---

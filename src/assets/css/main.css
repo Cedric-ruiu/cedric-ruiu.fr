@@ -59,7 +59,9 @@
   --color-on-ink-muted: oklch(0.7 0.01 160);
   --color-on-ink-subtle: oklch(0.6 0.01 160);
   --color-on-ocean-deep: oklch(0.9 0.02 152);
-  --color-eyebrow-on-ocean-deep: oklch(0.75 0.09 232);
+  /* 0.82, not 0.75: without the hero logo on phones, the eyebrow sits in the
+     surface glow. Worst measured background gives 5.78:1 (4.54:1 at 0.75). */
+  --color-eyebrow-on-ocean-deep: oklch(0.82 0.09 232);
   --color-tag-bg: oklch(0.9 0.03 232);
   --color-tag-text: oklch(0.3 0.09 232);
 

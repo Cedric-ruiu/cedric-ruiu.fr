@@ -13,24 +13,31 @@ lead: >-
   votre projet de bout en bout, textes compris, et je peux aussi reprendre un
   site existant pour le faire évoluer.
 faq:
+  - question: "Combien coûte un site internet ?"
+    answer: >-
+      Tout dépend de ce que le site doit faire : nombre de pages, rédaction des
+      textes, boutique en ligne, réservation ou formulaire sur mesure. Un site
+      vitrine de quelques pages n'a pas le prix d'une boutique. Après un premier
+      appel, je vous remets un devis détaillé.
+  - question: "Quel site choisir quand on est artisan ?"
+    answer: >-
+      Pour la plupart des artisans, un site vitrine suffit : vos services, vos
+      réalisations, votre zone d'intervention et un numéro qu'on peut appeler
+      d'un geste depuis son téléphone. Une boutique en ligne n'a de sens que si
+      vous vendez des produits. L'essentiel : qu'on vous trouve, puis qu'on vous
+      appelle.
   - question: "Pouvez-vous créer une application mobile ?"
     answer: >-
-      Oui. Selon le besoin, il peut s'agir d'une application installable depuis
-      les stores, ou d'une application web qui s'utilise depuis le navigateur du
-      téléphone sans passer par un store. Nous choisissons ensemble la solution
-      la plus adaptée à votre usage et à votre budget.
+      Oui : une application installable sur l'écran d'accueil du téléphone, ou
+      publiée sur les stores selon le besoin. Les deux options sont comparées
+      sur la page <a href="/application-mobile/" class="font-medium text-ocean
+      underline underline-offset-2">application mobile</a>.
   - question: "Faut-il que je fournisse les textes ?"
     answer: >-
       Non. Vous pouvez fournir vos textes, que je relis et adapte au web, ou me
       confier entièrement la rédaction à partir d'un échange sur votre
       activité. Dans les deux cas, vous validez chaque page avant la mise en
       ligne.
-  - question: "Pouvez-vous modifier un site que vous n'avez pas créé ?"
-    answer: >-
-      Oui, quelle que soit sa technologie web, pour une correction ponctuelle
-      comme pour une évolution plus importante. Je commence par examiner le
-      site, pour vous dire ce qui se fait simplement et ce qui demande davantage
-      de travail.
   - question: "Travaillez-vous avec les associations ?"
     answer: >-
       Oui. J'interviens auprès des associations exactement comme auprès des
@@ -76,8 +83,8 @@ Quelques exemples de ce que je réalise :
   rendez-vous ou de décrire leur demande.
 - **Application web** — un outil métier, un calculateur, un espace client : un
   logiciel qui s'ouvre dans le navigateur.
-- **Application mobile** — quand votre projet doit vivre sur l'écran d'accueil
-  d'un téléphone.
+- **[Application mobile](/application-mobile/)** — quand votre projet doit
+  vivre sur l'écran d'accueil d'un téléphone.
 - **Intégrations** — relier votre site aux services que vous utilisez déjà :
   paiement, agenda, emailing, outils de gestion.
 
@@ -119,17 +126,14 @@ plus de raisons de mettre en avant : c'est le point de départ d'un bon
 
 ## Vous avez déjà un site ? Je le fais évoluer
 
-Inutile de tout refaire quand une base fonctionne. J'interviens sur les sites
-existants, quelle que soit leur technologie web — WordPress, Shopify,
-PrestaShop, framework JavaScript ou code écrit sur mesure — pour :
-
-- corriger ce qui ne fonctionne plus ;
-- ajouter une page, une fonctionnalité ou une langue ;
-- moderniser l'apparence ou l'adapter au téléphone ;
-- [accélérer un site devenu lent](/performance-web/).
+Inutile de tout refaire quand une base fonctionne : j'interviens sur les sites
+existants, quelle que soit leur technologie web, pour corriger ce qui ne
+fonctionne plus, ajouter une page ou une fonctionnalité, ou
+[accélérer un site devenu lent](/performance-web/).
 
 Et si une refonte est vraiment la meilleure option, je vous le dirai — mais ce
-n'est jamais la réponse par défaut.
+n'est jamais la réponse par défaut. Comment je la mène, sans perdre votre place
+sur Google : [refonte de site internet](/refonte-site-internet/).
 
 ## Ce que chaque site comprend
 

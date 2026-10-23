@@ -51,6 +51,13 @@ layout: base
                 <span aria-hidden="true">→</span></span>
             </a>
           </p>
+          {# The project's first service: from the proof back to the offer. #}
+          {% for service in services %}{% if service.key == project.services[0] %}
+          <p class="-mt-2 text-sm text-muted">
+            Service :
+            <a href="{{ service.url }}" class="tap font-medium text-ocean"><span class="link-underline">{{ service.title }}</span></a>
+          </p>
+          {% endif %}{% endfor %}
         </div>
       </article>
     </li>

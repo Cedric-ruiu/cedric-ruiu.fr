@@ -12,10 +12,14 @@ baselineShort: "Web / Référencement / Performance"
 # Public source repository, linked discreetly from the footer.
 repository: "https://github.com/Cedric-ruiu/cedric-ruiu.fr"
 
-# Looped by header.njk and footer.njk; the legal notice link is added separately.
+# Looped by header.njk (through the navLinks filter) and footer.njk; the legal
+# notice link is added separately. A `service` entry is a key of services.yml:
+# the header shows it, the footer leaves it to its own "Expertise" column.
 nav:
   - name: "Accueil"
     url: "/"
+  - service: "seo"
+  - service: "creation"
   - name: "Portfolio"
     url: "/portfolio/"
   - name: "Contact"
@@ -30,6 +34,25 @@ department: "Morbihan"
 departmentCode: "56"
 region: "Bretagne"
 country: "FR"
+postalCode: "56860"
+
+# Mirrors the service area of the Google Business Profile (JSON-LD areaServed),
+# plus remote work across France.
+areaServed:
+  - "Séné"
+  - "Vannes"
+  - "Ploeren"
+  - "Plescop"
+  - "Saint-Avé"
+  - "Theix-Noyalo"
+  - "Auray"
+  - "Lorient"
+  - "Ploërmel"
+  - "Morbihan"
+  - "France"
+
+# Google Business Profile listing, linked from the JSON-LD (sameAs).
+googleBusinessProfile: "https://www.google.com/maps/search/?api=1&query=C%C3%A9dric%20Ruiu&query_place_id=ChIJo5ZOXTPHOykRzNiKWDhv35s"
 
 # web3formsKey is a public key by design, safe to version.
 web3formsKey: "d0e8982f-f4d2-43ca-978f-1b633b25de54"

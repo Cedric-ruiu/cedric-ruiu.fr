@@ -1,4 +1,4 @@
-# The three service pages. Read by the footer ("Expertise"), the home cards and
+# The service pages. Read by the footer ("Expertise"), the home cards and
 # the "other services" block of each service page, so a URL or a name is only
 # ever written here. `key` matches `service` in each page's front matter, the
 # `services` list in projects.yml and `service` in home.yml. `icon` selects a
@@ -13,6 +13,15 @@
   url: "/creation-site-internet/"
   icon: "site"
 
+- key: "refonte"
+  name: "Refonte de site"
+  title: "Refonte de site internet"
+  summary: >-
+    Moderniser ou refaire entièrement un site existant, sans perdre ce qui vous
+    amène des visiteurs depuis Google.
+  url: "/refonte-site-internet/"
+  icon: "refonte"
+
 - key: "seo"
   name: "Audit SEO"
   title: "Audit SEO"
@@ -21,6 +30,15 @@
     gagner en visibilité sur Google.
   url: "/audit-seo/"
   icon: "seo"
+
+- key: "application"
+  name: "Application mobile"
+  title: "Application mobile"
+  summary: >-
+    Une application installable sur l'écran d'accueil du téléphone, ou publiée
+    sur les stores, conçue et développée sur mesure.
+  url: "/application-mobile/"
+  icon: "app"
 
 - key: "performance"
   name: "Performance web"

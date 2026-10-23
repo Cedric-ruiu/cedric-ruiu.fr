@@ -1,7 +1,7 @@
 ---
 layout: service
-title: "Audit SEO pour artisans et petites entreprises | Cédric Ruiu"
-description: "Un audit SEO complet et un rapport d'actions précis, pas à pas, pour rendre votre site visible sur Google. Pour artisans, boutiques en ligne et TPE."
+title: "Audit SEO près de Vannes pour artisans et petites entreprises"
+description: "Un audit SEO complet et un rapport d'actions pas à pas pour être trouvé sur Google. Près de Vannes, dans le Morbihan, ou à distance partout en France."
 permalink: /audit-seo/
 service: "seo"
 eyebrow: "Audit SEO"
@@ -11,7 +11,8 @@ lead: >-
   Google : technique, contenu, vitesse, présence locale. Vous ne recevez pas une
   liste de scores, mais un rapport d'actions précis et hiérarchisé — quoi
   corriger, où, dans quel ordre et pourquoi. Je peux aussi appliquer ces actions
-  moi-même.
+  moi-même. Installé à Séné, près de Vannes, je réalise ces audits pour les
+  entreprises du Morbihan et, à distance, partout en France.
 faq:
   - question: "Qu'est-ce qu'un audit SEO ?"
     answer: >-
@@ -20,6 +21,21 @@ faq:
       insuffisants, lenteur, présence locale négligée. Son intérêt ne tient pas
       au diagnostic seul, mais au plan d'action qui en découle : quoi corriger,
       dans quel ordre, et pourquoi.
+  - question: "Pourquoi mon site n'apparaît pas sur Google ?"
+    answer: >-
+      Le plus souvent pour l'une de ces raisons : Google ne connaît pas encore
+      toutes vos pages, elles ne reprennent pas les mots que tapent vos clients,
+      d'autres sites répondent mieux à la question ou sont davantage cités
+      ailleurs sur le web, ou, pour les recherches locales, votre fiche Google
+      est incomplète ou sans avis. Mon <a href="/etre-visible-sur-google/" class="font-medium text-ocean underline underline-offset-2">guide
+      pour être visible sur Google</a> les détaille ; l'audit sert à savoir
+      laquelle vous concerne.
+  - question: "Combien coûte un audit SEO ?"
+    answer: >-
+      Le prix d'un audit SEO dépend surtout de la taille du site et de ce qu'il
+      faut examiner : nombre de pages, boutique en ligne ou non, présence
+      locale, accès à Search Console. Après un premier échange sur votre site,
+      je vous donne un prix ferme, avant tout engagement.
   - question: "Combien de temps avant de voir des résultats ?"
     answer: >-
       Comptez plusieurs semaines, parfois quelques mois : Google doit d'abord
@@ -46,6 +62,12 @@ faq:
       Oui, et c'est même là qu'il est le plus rentable. Sur un petit site,
       chaque page compte, et quelques corrections bien choisies peuvent suffire
       à changer sa visibilité.
+  - question: "Peut-on se rencontrer ?"
+    answer: >-
+      Oui, si vous êtes dans le secteur de Vannes et du Golfe du Morbihan : je
+      me déplace volontiers. Ailleurs en France, l'audit se fait entièrement à
+      distance, par téléphone ou en visio. Il ne demande que l'adresse de votre
+      site et, si possible, un accès à vos outils Google.
 cta:
   title: "Votre site mérite d'être trouvé"
   text: >-
@@ -157,6 +179,10 @@ envies et votre temps, trois options :
   interface d'administration, je mets en œuvre les corrections moi-même.
 - **Un mélange des deux.** Je me charge des points techniques, vous gardez la
   main sur ce qui vous revient : vos textes, vos photos, votre fiche Google.
+
+Et si le rapport conclut que le site doit être refait, je peux m'en charger :
+c'est une [refonte de site internet](/refonte-site-internet/), préparée pour
+garder votre place sur Google.
 
 ## Comment se déroule un audit ?
 

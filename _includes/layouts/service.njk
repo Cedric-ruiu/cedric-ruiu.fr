@@ -11,12 +11,13 @@ layout: base
      — and a search engine looking for a snippet — should get first. #}
   <p class="text-body mt-5">{{ lead }}</p>
 
-  {# Call stays above the fold on a phone, one tap away: the audience is local
-     and mostly mobile. No-break spaces keep the label on one line, as the
+  {# Call stays above the fold on a phone, one tap away, and comes first: the
+     audience is local and mostly mobile, and the call is the conversion the
+     site is built for. No-break spaces keep the label on one line, as the
      number itself already is. #}
   <div class="mt-8 flex flex-col gap-3 sm:flex-row sm:gap-4">
-    <a href="/contact/" class="btn-primary w-full sm:w-auto">Me contacter</a>
-    <a href="tel:{{ site.phone | phoneE164 }}" class="btn-secondary w-full sm:w-auto">Appeler&nbsp;le&nbsp;{{ site.phone | phoneDisplay }}</a>
+    <a href="tel:{{ site.phone | phoneE164 }}" data-umami-event="appel" data-umami-event-emplacement="heros" class="btn-primary w-full sm:w-auto">Appeler&nbsp;le&nbsp;{{ site.phone | phoneDisplay }}</a>
+    <a href="/contact/" class="btn-secondary w-full sm:w-auto">Me contacter</a>
   </div>
 </section>
 
@@ -88,13 +89,16 @@ layout: base
     <div class="mt-8 grid grid-cols-1 gap-6 md:grid-cols-2">
       {% for item in services %}
       {% if item.key != service %}
-      <a href="{{ item.url }}" class="card group flex items-start gap-5 p-6 transition-colors hover:border-ocean sm:p-7">
+      {# Only the title is the link, so its anchor text stays short; its ::after
+         stretches over the card to keep the whole card clickable, and the focus
+         ring moves to the card to match that clickable area. #}
+      <div class="card group relative flex items-start gap-5 p-6 transition-colors hover:border-ocean has-focus-visible:outline-2 has-focus-visible:outline-offset-2 has-focus-visible:outline-ocean sm:p-7">
         {{ iconPartial.icon(item.icon, class="h-12 w-12 shrink-0 text-ocean") }}
-        <span>
-          <span class="block font-serif text-h3 font-bold text-ink group-hover:text-ocean">{{ item.title }}</span>
-          <span class="text-body mt-2 block">{{ item.summary }}</span>
-        </span>
-      </a>
+        <div>
+          <h3 class="font-serif text-h3 font-bold"><a href="{{ item.url }}" class="text-ink group-hover:text-ocean after:absolute after:inset-0 focus-visible:outline-none focus-visible:shadow-none">{{ item.title }}</a></h3>
+          <p class="text-body mt-2">{{ item.summary }}</p>
+        </div>
+      </div>
       {% endif %}
       {% endfor %}
     </div>
@@ -106,6 +110,6 @@ layout: base
   <p class="text-body mx-auto mt-4 max-w-xl">{{ cta.text }}</p>
   <div class="mt-8 flex flex-col gap-3 sm:flex-row sm:justify-center sm:gap-4">
     <a href="/contact/" class="btn-primary w-full sm:w-auto">Me contacter</a>
-    <a href="tel:{{ site.phone | phoneE164 }}" class="btn-secondary w-full sm:w-auto">Appeler&nbsp;le&nbsp;{{ site.phone | phoneDisplay }}</a>
+    <a href="tel:{{ site.phone | phoneE164 }}" data-umami-event="appel" data-umami-event-emplacement="cta" class="btn-secondary w-full sm:w-auto">Appeler&nbsp;le&nbsp;{{ site.phone | phoneDisplay }}</a>
   </div>
 </section>
