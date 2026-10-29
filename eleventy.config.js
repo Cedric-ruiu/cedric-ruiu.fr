@@ -84,6 +84,35 @@ export default function (eleventyConfig) {
     });
   }
 
+  // French typography: the space before : ; ? ! » and after « becomes a
+  // no-break space (narrow before ; ? ! »), so a mark never wraps away from
+  // its word. Text nodes only: tags, their attributes, <script> (the JSON-LD)
+  // and <style> stay as written. Added after the minifier so its whitespace
+  // collapsing never sees the new characters.
+  eleventyConfig.addTransform("french-spacing", function (content) {
+    const { outputPath } = this;
+    if (typeof outputPath !== "string" || !outputPath.endsWith(".html")) {
+      return content;
+    }
+
+    let raw = false;
+    return content
+      .split(/(<[^>]*>)/)
+      .map((part) => {
+        if (part.startsWith("<")) {
+          if (/^<(script|style)\b/i.test(part)) raw = true;
+          else if (/^<\/(script|style)>/i.test(part)) raw = false;
+          return part;
+        }
+        if (raw) return part;
+        return part
+          .replace(/ :/g, " :")
+          .replace(/ ([;!?»])/g, " $1")
+          .replace(/« /g, "« ");
+      })
+      .join("");
+  });
+
   // Everything in public/ lands at the root of _site/ (CNAME, robots.txt…).
   eleventyConfig.addPassthroughCopy({ public: "." });
   // Images live next to the page that uses them, and ship exactly as authored.
