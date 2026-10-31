@@ -1,0 +1,23 @@
+{% import "partials/logo.njk" as logoPartial with context %}
+<div class="kelp-forest pointer-events-none absolute inset-0 -z-10 select-none" aria-hidden="true">
+  {% if kelpSide == "left" %}
+  <div class="kelp kelp-far absolute -bottom-24 -left-40 text-abyss opacity-50 sm:-left-24 lg:-bottom-44 lg:-left-28">
+    {{ logoPartial.logo(variant="mark", size=520, alt="", id="kelp-shape", class="kelp-blade h-[26rem] w-auto sm:h-[32rem] lg:h-[30rem]") }}
+  </div>
+  <div class="kelp absolute -bottom-48 left-[38%] hidden text-foam opacity-15 lg:block">
+    {{ logoPartial.reuse("kelp-shape", size=520, class="kelp-blade h-[28rem] w-auto") }}
+  </div>
+  {% else %}
+  <div class="kelp kelp-far absolute -right-40 -bottom-24 text-abyss opacity-50 sm:-right-24 lg:right-auto lg:-bottom-36 lg:left-[max(58rem,calc(100%-30rem))]">
+    {{ logoPartial.logo(variant="mark", size=520, alt="", id="kelp-shape", class="kelp-blade h-[26rem] w-auto sm:h-[32rem] lg:h-[44rem]") }}
+  </div>
+  <div class="kelp absolute -right-16 -bottom-28 hidden text-foam opacity-15 lg:block">
+    {{ logoPartial.reuse("kelp-shape", size=520, class="kelp-blade h-[30rem] w-auto") }}
+  </div>
+  {% endif %}
+  <span class="bubble bubble-4"></span>
+  <span class="bubble bubble-6"></span>
+  <span class="bubble bubble-2 hidden sm:block"></span>
+  <span class="bubble bubble-8 hidden lg:block"></span>
+  <span class="bubble bubble-10 hidden lg:block"></span>
+</div>

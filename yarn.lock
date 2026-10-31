@@ -304,17 +304,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@fontsource-variable/bitter@npm:^5.3.0":
+"@fontsource-variable/albert-sans@npm:^5.3.0":
   version: 5.3.0
-  resolution: "@fontsource-variable/bitter@npm:5.3.0"
-  checksum: 10c0/133f6f4f1686a46547bbd78d6317ac82dc177e91e2c0dec4f0e2a01405f85f64cd8b3b8dfd24cc0bfba3f982dc813fee88a6858a40f1f9b62aee94a47d825560
-  languageName: node
-  linkType: hard
-
-"@fontsource-variable/manrope@npm:^5.3.0":
-  version: 5.3.0
-  resolution: "@fontsource-variable/manrope@npm:5.3.0"
-  checksum: 10c0/8b760dff605c6d43c64e39243568c89f7806e59e86ac80e83a0dab42dfadfb1498d8f1816c78c24875e2f743b5340653c8bdd33cd75d051a1af56ed3802bfd0d
+  resolution: "@fontsource-variable/albert-sans@npm:5.3.0"
+  checksum: 10c0/3929b420a164c0d5dddc7957227dfe06cfa02fd283906020dd70c783244252c5b3ec252e628d264788d296699fc42405096e3bb9a966a8a6955c48176c592ff0
   languageName: node
   linkType: hard
 
@@ -1183,8 +1176,7 @@ __metadata:
     "@11ty/eleventy": "npm:^3.1.7"
     "@11ty/eleventy-img": "npm:^7.0.0"
     "@biomejs/biome": "npm:^2.5.15"
-    "@fontsource-variable/bitter": "npm:^5.3.0"
-    "@fontsource-variable/manrope": "npm:^5.3.0"
+    "@fontsource-variable/albert-sans": "npm:^5.3.0"
     "@tailwindcss/postcss": "npm:^4.3.3"
     html-minifier-terser: "npm:^7.2.0"
     postcss: "npm:^8.5.31"

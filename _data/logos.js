@@ -1,9 +1,3 @@
-/**
- * Logo variants, derived from the SVG sources in assets/logos/ (ratio comes
- * from each file's viewBox, never hand-copied). A .js data file rather than
- * YAML because it reads the filesystem.
- */
-
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
@@ -15,12 +9,10 @@ const sourceDir = path.join(
   "logos",
 );
 
-// hasText marks lockups that spell out "cédric ruiu", so the partial can default
-// their accessible name to the site name and leave the symbol-only one decorative.
 const variants = {
-  full: { file: "logo.svg", hasText: true }, // symbol + wordmark + baseline
-  default: { file: "logo-light.svg", hasText: true }, // symbol + wordmark
-  mark: { file: "logo-mark.svg", hasText: false }, // symbol alone
+  full: { file: "logo.svg", hasText: true },
+  default: { file: "logo-light.svg", hasText: true },
+  mark: { file: "logo-mark.svg", hasText: false },
 };
 
 export default function () {
@@ -44,8 +36,6 @@ export default function () {
         );
       }
 
-      // Drop the source's own <svg> wrapper: the partial writes its own with
-      // the sizing, colour and accessibility attributes it needs.
       const body = svg
         .replace(/^[\s\S]*?<svg\b[^>]*>/, "")
         .replace(/<\/svg>[\s\S]*$/, "")

@@ -3,64 +3,46 @@ layout: base
 ---
 {% import "partials/logo.njk" as logoPartial with context %}
 
-<section class="mx-auto max-w-6xl px-4 pt-12 pb-8 sm:px-6 sm:pt-16 lg:px-8">
-  <p class="eyebrow">{{ eyebrow }}</p>
-  <h1 class="text-h1 mt-3 font-serif">{{ heading }}</h1>
-  <div class="text-body mt-5 max-w-2xl">{{ content | safe }}</div>
+<section class="surface scene on-dark relative isolate overflow-hidden" aria-labelledby="page-title" data-scene>
+  {% include "partials/surface-kelp.njk" %}
+  <div class="wrap pt-[calc(var(--header-h)+2rem)] pb-16 sm:pt-[calc(var(--header-h)+4rem)] sm:pb-20 lg:pt-[calc(var(--header-h)+4.5rem)] lg:pb-28">
+    <h1 id="page-title" class="rise text-display-s max-w-[20ch] text-foam">{{ heading }}</h1>
+    <div class="rise text-body mt-6 max-w-[60ch] [--i:1] lg:text-lead">{{ content | safe }}</div>
+  </div>
 </section>
 
-<section class="mx-auto max-w-6xl px-4 pb-16 sm:px-6 sm:pb-20 lg:px-8">
-  <ul class="grid list-none grid-cols-1 gap-6 sm:grid-cols-[repeat(auto-fit,minmax(20rem,1fr))]">
-    {% for project in projects %}
-    <li class="flex">
-      <article class="card flex w-full flex-col overflow-hidden">
-        <a
-          href="{{ project.url }}"
-          target="_blank"
-          rel="noopener"
-          {# Focus ring drawn with a negative outline-offset: the card's overflow-hidden
-             (needed to clip the thumbnail corners and hover zoom) would otherwise cut it off. #}
-          class="group relative block aspect-16/10 w-full overflow-hidden bg-tide focus-visible:-outline-offset-4 focus-visible:shadow-none"
-        >
-          {% if project.image | hasImage %}
-          {# `sizes` mirrors the grid tracks above (container max-w-6xl, gap 1.5rem, tracks
-             minmax(20rem,1fr)) so the browser fetches the 480/640/800 rung that actually
-             matches the rendered card width — verified at 286px/320w, 466px/1024w, 345px/1280w. #}
-          {% responsiveImage project.image, project.imageAlt, { sizes: "(min-width: 1152px) 21.5rem, (min-width: 1072px) calc((100vw - 7rem) / 3), (min-width: 1024px) calc((100vw - 5.5rem) / 2), (min-width: 712px) calc((100vw - 4.5rem) / 2), (min-width: 640px) calc(100vw - 3rem), calc(100vw - 2rem)", className: "absolute inset-0 h-full w-full object-cover object-top transition-transform duration-300 group-hover:scale-[1.03] motion-reduce:transition-none motion-reduce:group-hover:scale-100", eager: loop.first } %}
-          {% else %}
-          <span class="absolute inset-0 flex items-center justify-center">
-            {{ logoPartial.logo(variant="mark", size=56, alt="", class="text-ink opacity-15") }}
-          </span>
-          {% endif %}
-          <span class="sr-only">Voir le site {{ project.name }} (nouvel onglet)</span>
-        </a>
+<ul class="wrap flex list-none flex-col gap-(--section-gap-s) py-(--section-gap-s)">
+  {% for project in projects %}
+  <li>
+    <article class="grid gap-6 lg:grid-cols-12 lg:items-center lg:gap-x-8">
+      <a href="{{ project.url }}" target="_blank" rel="noopener" class="group relative block aspect-16/10 overflow-hidden rounded-2xl bg-paper-2 ring-1 ring-border lg:col-span-7">
+        {% if project.image | hasImage %}
+        {% responsiveImage project.image, project.imageAlt, { sizes: "(min-width: 1440px) 752px, (min-width: 1024px) calc(58.33vw - 88px), (min-width: 960px) calc(100vw - 128px), (min-width: 640px) calc(100vw - 48px), calc(100vw - 32px)", className: "absolute inset-0 h-full w-full object-cover object-top transition-transform duration-300 group-hover:scale-[1.03] motion-reduce:transition-none motion-reduce:group-hover:scale-100", eager: loop.first } %}
+        {% else %}
+        <span class="absolute inset-0 flex items-center justify-center">
+          {{ logoPartial.reuse("kelp-shape", size=56, class="text-ink opacity-15") }}
+        </span>
+        {% endif %}
+        <span class="sr-only">Voir le site {{ project.name }} (nouvel onglet)</span>
+      </a>
 
-        <div class="flex flex-1 flex-col p-6">
-          <div class="flex flex-wrap items-center gap-3">
-            <span class="tag">{{ project.tag }}</span>
-            {% if project.year %}<span class="text-sm text-muted">{{ project.year }}</span>{% endif %}
-          </div>
+      <div class="lg:col-span-5 lg:pl-4">
+        <h2 class="text-heading">{{ project.name }}</h2>
+        <p class="mt-2 flex flex-wrap gap-x-4 text-sm"><span class="text-copy">{{ project.tag }}</span>{% if project.year %}<span class="text-muted">{{ project.year }}</span>{% endif %}</p>
+        <p class="text-body mt-5">{{ project.description }}</p>
+        {% if project.stack %}<p class="mt-3 text-sm text-muted">{{ project.stack }}</p>{% endif %}
 
-          <h2 class="text-h3 mt-4 font-serif">{{ project.name }}</h2>
-          <p class="text-body mt-3">{{ project.description }}</p>
-          {% if project.stack %}<p class="mt-3 text-sm text-muted">{{ project.stack }}</p>{% endif %}
-
-          <p class="mt-3">
-            <a href="{{ project.url }}" target="_blank" rel="noopener" class="tap font-medium text-ocean">
-              <span class="link-underline">Voir le site<span class="sr-only"> {{ project.name }} (nouvel onglet)</span>
-                <span aria-hidden="true">→</span></span>
-            </a>
-          </p>
-          {# The project's first service: from the proof back to the offer. #}
+        <div class="mt-4 flex flex-wrap items-center gap-x-8">
+          <a href="{{ project.url }}" target="_blank" rel="noopener" class="tap"><span class="link-plain">Voir le site<span class="sr-only"> {{ project.name }} (nouvel onglet)</span></span></a>
           {% for service in services %}{% if service.key == project.services[0] %}
-          <p class="-mt-2 text-sm text-muted">
+          <p class="text-sm text-muted">
             Service :
-            <a href="{{ service.url }}" class="tap font-medium text-ocean"><span class="link-underline">{{ service.title }}</span></a>
+            <a href="{{ service.url }}" class="tap font-semibold text-ocean"><span class="link-underline">{{ service.title }}</span></a>
           </p>
           {% endif %}{% endfor %}
         </div>
-      </article>
-    </li>
-    {% endfor %}
-  </ul>
-</section>
+      </div>
+    </article>
+  </li>
+  {% endfor %}
+</ul>

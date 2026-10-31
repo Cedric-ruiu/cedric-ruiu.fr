@@ -1,8 +1,3 @@
-# image: public URL of the screenshot ("/portfolio/x.webp" maps to src/portfolio/x.webp).
-#        Missing file → the card falls back to a neutral flat panel at the same ratio, no CLS.
-# year: leave empty when unknown — the template renders nothing rather than a guess.
-# services: keys from services.yml — each service page lists the projects tagged with it.
-#           The FIRST key is the service the portfolio card links to.
 
 - name: "Myrmecophoto"
   url: "https://myrmecophoto.fr/"
@@ -34,7 +29,7 @@
     serveur, aucune mise à jour à surveiller, et une robustesse à toute
     épreuve, même en cas d'afflux de visiteurs.
   image: "/portfolio/akselsan-tattoo.webp"
-  imageAlt: "Page d'accueil du site Aksel San Tattoo, avec le portfolio de tatouages en couleur."
+  imageAlt: "Page d'accueil du site Aksel San Tattoo, avec le titre « tatoueur à Ostwald, près de Strasbourg » sur une photo du tatoueur au travail."
 
 - name: "Danse de la Licorne"
   url: "https://lion-dance.fr/"

@@ -1,23 +1,18 @@
 hero:
-  eyebrow: "Création de sites internet · Référencement SEO · Performance web"
-  title: "Développeur web freelance près de Vannes, je conçois des sites sur mesure pour votre activité"
+  title: "Développeur web freelance près de Vannes, je conçois des sites sur mesure pour votre activité"
+  services: "Création de sites internet · Référencement SEO · Performance web"
   intro: >-
-    Artisan du web, je suis Cédric Ruiu, développeur web indépendant à Séné, dans le Morbihan. Je conçois des sites internet pour les artisans, indépendants et petites entreprises, en Bretagne comme partout en France. Développement, référencement et performance : vous avez un seul interlocuteur, du premier échange à la mise en ligne.
+    Artisan du web, je suis Cédric Ruiu, développeur web indépendant à Séné, dans le Morbihan. Je conçois des sites internet pour les artisans, indépendants et petites entreprises, en Bretagne comme partout en France. Développement, référencement et performance : vous avez un seul interlocuteur, du premier échange à la mise en ligne.
   contact:
     label: "Me contacter"
     url: "/contact/"
   projects:
     label: "Voir mes projets"
     url: "/portfolio/"
-
 expertise:
-  eyebrow: "Ce que je fais"
   title: "Trois expertises, une seule personne"
   intro: >-
     Créer un site, le rendre visible et le garder rapide sont trois expertises différentes. Je les réunis au même endroit pour que votre site reste cohérent de la conception jusqu'à ses performances.
-  # One teaser paragraph per card: the detail lives on the service page, so
-  # nothing is said twice. `service` is a key from services.yml, which supplies
-  # the icon and the URL; `link` is the card's own descriptive anchor text.
   items:
     - service: "seo"
       title: "Référencement SEO"
@@ -29,7 +24,6 @@ expertise:
       text: >-
         Je conçois et développe votre site de A à Z, du premier échange à la mise en ligne : site vitrine, boutique en ligne, application web ou mobile, textes compris si vous le souhaitez. Vous échangez directement avec la personne qui réalise le projet, sans intermédiaire.
       link: "Découvrir la création de site"
-      # Services this card's text leads to, listed under it (keys of services.yml).
       related: ["refonte", "application"]
     - service: "performance"
       title: "Performance"
@@ -38,14 +32,9 @@ expertise:
       link: "En savoir plus sur la performance web"
 
 why:
-  eyebrow: "Pourquoi travailler avec moi"
   title: "La personne qui code est celle à qui vous parlez"
   intro: >-
     Je suis installé à Séné, dans le Morbihan. Je privilégie les échanges directs et je peux me déplacer dans le secteur de Vannes et du Golfe du Morbihan. Pour les projets ailleurs en France, je travaille simplement à distance, par téléphone ou en visio.
-  # Served as delivered, bypassing `responsiveImage`: re-encoding (AVIF included)
-  # came out heavier at equal quality. The number in each filename IS its pixel
-  # width, repeated by the template as the srcset `w` descriptor — keep them in
-  # sync when renaming a file.
   photo:
     alt: "Cédric Ruiu, développeur web indépendant à Séné, dans le Morbihan."
     landscape: "/cedric-ruiu-portrait-paysage-600.webp"

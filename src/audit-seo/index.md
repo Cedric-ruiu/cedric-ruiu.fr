@@ -4,7 +4,6 @@ title: "Audit SEO près de Vannes pour artisans et petites entreprises"
 description: "Un audit SEO complet et un rapport d'actions pas à pas pour être trouvé sur Google. Près de Vannes, dans le Morbihan, ou à distance partout en France."
 permalink: /audit-seo/
 service: "seo"
-eyebrow: "Audit SEO"
 heading: "Audit SEO : savoir précisément quoi faire pour être trouvé sur Google"
 lead: >-
   Un audit SEO passe en revue tout ce qui freine la visibilité de votre site sur
@@ -27,7 +26,7 @@ faq:
       toutes vos pages, elles ne reprennent pas les mots que tapent vos clients,
       d'autres sites répondent mieux à la question ou sont davantage cités
       ailleurs sur le web, ou, pour les recherches locales, votre fiche Google
-      est incomplète ou sans avis. Mon <a href="/etre-visible-sur-google/" class="font-medium text-ocean underline underline-offset-2">guide
+      est incomplète ou sans avis. Mon <a href="/etre-visible-sur-google/" class="font-semibold text-ocean underline underline-offset-2">guide
       pour être visible sur Google</a> les détaille ; l'audit sert à savoir
       laquelle vous concerne.
   - question: "Combien coûte un audit SEO ?"
