@@ -3,7 +3,6 @@ layout: page
 title: "Être visible sur Google quand on est artisan ou TPE"
 description: "Pourquoi votre activité n'apparaît pas sur Google, et ce qui marche vraiment pour y remédier : fiche Google, pages de votre site, avis de vos clients."
 permalink: /etre-visible-sur-google/
-eyebrow: "Guide"
 heading: "Pourquoi votre entreprise n'apparaît pas sur Google, et comment y remédier"
 lead: >-
   Pour être visible sur Google, il faut trois choses : que Google connaisse vos

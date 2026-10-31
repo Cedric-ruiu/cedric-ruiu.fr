@@ -2,76 +2,75 @@
 layout: base
 ---
 
-<section class="mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8">
-  <div class="grid grid-cols-1 gap-10 lg:grid-cols-2 lg:gap-16">
+{% set kelpSide = "left" %}
+<section class="surface scene on-dark relative isolate overflow-hidden" aria-labelledby="page-title" data-scene>
+  {% include "partials/surface-kelp.njk" %}
+  <div class="wrap grid gap-12 pt-[calc(var(--header-h)+2rem)] pb-(--section-gap) sm:pt-[calc(var(--header-h)+4rem)] lg:grid-cols-12 lg:gap-x-8 lg:pt-[calc(var(--header-h)+3rem)] lg:pb-16">
 
-    <div>
-      <p class="eyebrow">{{ eyebrow }}</p>
-      <h1 class="text-h1 mt-3 font-serif">{{ heading }}</h1>
-      <div class="text-body mt-5 max-w-xl">{{ content | safe }}</div>
+    <div class="lg:col-span-5">
+      <h1 id="page-title" class="rise text-display-s text-foam">{{ heading }}</h1>
+      <div class="rise text-body mt-6 max-w-[56ch] [--i:1] lg:text-lead [&_p+p]:mt-4 [&_strong]:font-semibold [&_strong]:text-foam">{{ content | safe }}</div>
 
-      <dl class="mt-8 flex flex-col gap-4">
+      <dl class="rise mt-10 flex flex-col gap-5 [--i:2]">
         <div>
-          <dt class="font-serif text-sm font-extrabold uppercase tracking-wider text-ink">Email</dt>
+          <dt class="text-sm font-semibold text-on-water">Email</dt>
           <dd>
-            <a href="mailto:{{ site.email }}" data-umami-event="email" data-umami-event-emplacement="contact" class="tap text-body font-medium text-ocean"><span class="link-underline">{{ site.email }}</span></a>
+            <a href="mailto:{{ site.email }}" data-umami-event="email" data-umami-event-emplacement="contact" class="tap text-lead"><span class="link-plain">{{ site.email }}</span></a>
           </dd>
         </div>
         <div>
-          <dt class="font-serif text-sm font-extrabold uppercase tracking-wider text-ink">Téléphone</dt>
+          <dt class="text-sm font-semibold text-on-water">Téléphone</dt>
           <dd>
-            <a href="tel:{{ site.phone | phoneE164 }}" data-umami-event="appel" data-umami-event-emplacement="contact" class="tap text-body font-medium text-ocean"><span class="link-underline">{{ site.phone | phoneDisplay }}</span></a>
+            <a href="tel:{{ site.phone | phoneE164 }}" data-umami-event="appel" data-umami-event-emplacement="contact" class="tap text-lead"><span class="link-plain">{{ site.phone | phoneDisplay }}</span></a>
           </dd>
         </div>
         <div>
-          <dt class="font-serif text-sm font-extrabold uppercase tracking-wider text-ink">Où je suis</dt>
+          <dt class="text-sm font-semibold text-on-water">Où je suis</dt>
           <dd class="text-body mt-1">{{ site.locality }}, {{ site.department }} ({{ site.departmentCode }}) — et à distance partout en France.</dd>
         </div>
       </dl>
     </div>
 
-    <div class="rounded border border-border bg-tide p-6 sm:p-8">
-      <h2 class="text-h2 font-serif">{{ formHeading }}</h2>
+    <div class="on-paper rounded-panel bg-paper p-6 sm:p-10 lg:col-span-6 lg:col-start-7 lg:self-start lg:p-8 xl:px-10">
+      <h2 class="text-heading">{{ formHeading }}</h2>
 
       <form action="https://api.web3forms.com/submit" method="POST" class="mt-6 flex flex-col gap-5">
         <input type="hidden" name="access_key" value="{{ site.web3formsKey }}">
         <input type="hidden" name="subject" value="{{ site.web3formsSubject }}">
         <input type="hidden" name="redirect" value="{{ site.web3formsRedirect }}">
 
-        {# Honeypot (Web3Forms markup). `hidden` removes it from the a11y tree, avoiding a
-           "field without label" audit flag. `autocomplete` is dropped: invalid on a checkbox. #}
         <input type="checkbox" name="botcheck" class="hidden" tabindex="-1">
 
         <div>
-          <label for="nom" class="mb-2 block font-medium text-ink">Votre nom</label>
+          <label for="nom" class="mb-2 block font-semibold text-ink">Votre nom</label>
           <input type="text" id="nom" name="nom" class="field" required autocomplete="name" autocapitalize="words">
         </div>
 
         <div>
-          <label for="email" class="mb-2 block font-medium text-ink">Votre email</label>
+          <label for="email" class="mb-2 block font-semibold text-ink">Votre email</label>
           <input type="email" id="email" name="email" class="field" required autocomplete="email" inputmode="email" spellcheck="false" aria-describedby="email-aide">
           <p id="email-aide" class="mt-2 text-sm text-muted">Pour que je puisse vous répondre.</p>
         </div>
 
         <div>
-          <label for="sujet" class="mb-2 block font-medium text-ink">Sujet <span class="font-normal text-muted">(facultatif)</span></label>
+          <label for="sujet" class="mb-2 block font-semibold text-ink">Sujet <span class="font-normal text-muted">(facultatif)</span></label>
           <input type="text" id="sujet" name="sujet" class="field" autocomplete="off" aria-describedby="sujet-aide">
           <p id="sujet-aide" class="mt-2 text-sm text-muted">Par exemple : création d'un site, ou état des lieux d'un site existant.</p>
         </div>
 
         <div>
-          <label for="message" class="mb-2 block font-medium text-ink">Votre message</label>
-          <textarea id="message" name="message" rows="6" class="field" required aria-describedby="message-aide"></textarea>
+          <label for="message" class="mb-2 block font-semibold text-ink">Votre message</label>
+          <textarea id="message" name="message" rows="5" class="field" required aria-describedby="message-aide"></textarea>
           <p id="message-aide" class="mt-2 text-sm text-muted">Dites-moi ce que vous faites et ce que vous aimeriez montrer. Quelques lignes suffisent.</p>
         </div>
 
         <div class="flex items-start gap-3">
           <input type="checkbox" id="consentement" name="consentement" value="oui" required class="mt-0.5 h-5 w-5 shrink-0 rounded border border-border-field accent-ocean">
-          <label for="consentement" class="text-[0.8125rem] leading-normal">
+          <label for="consentement" class="text-sm leading-normal">
             J'accepte que les informations saisies soient utilisées pour me
             recontacter. Elles transitent par Web3Forms et ne sont ni revendues,
             ni utilisées à d'autres fins — voir les
-            <a href="/mentions-legales/" class="link-underline font-medium text-ocean">mentions légales</a>.
+            <a href="/mentions-legales/" class="font-semibold whitespace-nowrap text-ocean underline underline-offset-2">mentions légales</a>.
           </label>
         </div>
 

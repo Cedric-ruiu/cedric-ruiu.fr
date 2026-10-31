@@ -22,7 +22,7 @@
 
 ## Overview
 
-An eleven-page site — home, five service pages, portfolio, contact, thank-you, legal notice, 404 — for a freelance web
+A twelve-page site — home, five service pages, portfolio, a visibility guide, contact, thank-you, legal notice, 404 — for a freelance web
 developer working with tradespeople, sole traders and very small businesses, based in Brittany and
 serving the whole of France.
 
@@ -30,81 +30,86 @@ The brief was self-imposed and set before the first line of code: a site that se
 search visibility has no business being slow, breaking on a cheap phone, or dropping a cookie it
 does not need. Everything below follows from that.
 
-- **No runtime dependencies.** No framework, no CDN, no third-party script. The 1.1 kB mobile menu
-  is the only JavaScript the site itself needs, beside a small audience-measurement script, and
-  every page works without either — the menu button is only
-  revealed once the script runs, and the footer carries the same navigation.
+- **No runtime dependencies.** No framework, no CDN, no third-party script. Two small hand-written
+  scripts are all the JavaScript the site itself needs — the menu and the off-screen pause of
+  the underwater scenes, 1.5 kB on the wire together — beside a small audience-measurement script,
+  and every page works without any of them: the menu button is only revealed
+  once its script runs, and the footer carries the same navigation.
 - **No tracking.** No pixel, no cookie, no third-party tracker — and therefore no consent banner.
   Audience is measured with a cookieless, privacy-friendly tool run by the site owner: aggregate,
   anonymous statistics only, shared with no one.
 - **A budget, not an aspiration.** 300 kB per page on mobile, images included. The heaviest page
-  currently uses 71 % of it; the home page, 32 %.
-- **Motion that never leaves the compositor.** The home page hero is an underwater scene: two kelp
-  fronds from the logo swaying around their holdfast, twelve bubbles rising. `transform` and
-  `opacity` only — no image, no script, no library, 1.2 kB on the wire, Lighthouse still 100 and CLS
-  still 0.000. It goes still under `prefers-reduced-motion`.
+  currently uses 68 % of it; the home page, 26 %.
+- **Motion that never leaves the compositor.** Every page opens under water: kelp fronds from the
+  logo swaying around their holdfast, bubbles rising, sunlight coming down from the surface; the home
+  page is a whole dive, from the surface to the seabed of the footer. `transform` and `opacity` only
+  — no image, no library, Lighthouse still 100 and CLS still 0.000. Slow and discreet, it pauses on
+  its own off screen, and it goes still under `prefers-reduced-motion`.
 - **Mobile-first in the strict sense.** Unprefixed utilities are the mobile case; breakpoints only
   ever widen. Verified from 320 px up.
 - **WCAG 2.1 AA.** Every colour pair in the palette is contrast-checked, form fields included.
 
 ## Measured results
 
-Measured **2026-10-20** against the production build, served locally with gzip as in production,
-under mobile emulation (Moto G Power, slow 4G, 4× CPU throttle). Lighthouse 13.5.0, median of three
+Measured **2026-10-30** against the production build, served locally with gzip as in production,
+under mobile emulation (Moto G Power, slow 4G, 4× CPU throttle). Lighthouse 13.6.0, median of three
 runs.
 
 | Page | Performance | Accessibility | Best practices | SEO | LCP | CLS |
 |---|---|---|---|---|---|---|
-| Home | 100 | 100 | 100 | 100 | 1.58 s | 0 |
-| Website creation | 100 | 100 | 100 | 100 | 1.35 s | 0 |
-| SEO audit | 100 | 100 | 100 | 100 | 1.35 s | 0 |
-| Web performance | 100 | 100 | 100 | 100 | 1.35 s | 0 |
-| Website redesign | 100 | 100 | 100 | 100 | 1.35 s | 0 |
-| Mobile app | 100 | 100 | 100 | 100 | 1.35 s | 0 |
-| Portfolio | 100 | 100 | 100 | 100 | 1.73 s | 0 |
-| Contact | 100 | 100 | 100 | 100 | 1.35 s | 0 |
-| Visibility guide | 100 | 100 | 100 | 100 | 1.36 s | 0 |
-| Legal notice | 100 | 100 | 100 | 100 | 1.35 s | 0 |
-| 404 | 100 | 100 | 100 | 66 | 1.35 s | 0 |
-| Thank-you | 100 | 100 | 100 | 66 | 1.35 s | 0 |
+| Home | 100 | 100 | 100 | 100 | 0.91 s | 0 |
+| Website creation | 100 | 100 | 100 | 100 | 0.91 s | 0 |
+| SEO audit | 100 | 100 | 100 | 100 | 0.91 s | 0 |
+| Web performance | 100 | 100 | 100 | 100 | 0.90 s | 0 |
+| Website redesign | 100 | 100 | 100 | 100 | 0.90 s | 0 |
+| Mobile app | 100 | 100 | 100 | 100 | 0.92 s | 0 |
+| Portfolio | 100 | 100 | 100 | 100 | 1.88 s | 0 |
+| Contact | 100 | 100 | 100 | 100 | 0.76 s | 0 |
+| Visibility guide | 100 | 100 | 100 | 100 | 0.90 s | 0 |
+| Legal notice | 100 | 100 | 100 | 100 | 0.76 s | 0 |
+| 404 | 100 | 100 | 100 | 66 | 0.76 s | 0 |
+| Thank-you | 100 | 100 | 100 | 66 | 0.77 s | 0 |
 
 The 404 and thank-you pages are `noindex` by design, which Lighthouse scores down through its
 `is-crawlable` audit. That is the intended outcome, not a defect.
 
 | Page | Requests | Transferred | Budget used |
 |---|---|---|---|
-| Home | 10 | **95.7 kB** | 32 % |
-| Website creation | 12 | 151.9 kB | 51 % |
-| SEO audit | 9 | 85.4 kB | 28 % |
-| Web performance | 11 | 134.1 kB | 45 % |
-| Website redesign | 9 | 82.6 kB | 28 % |
-| Mobile app | 11 | 110.6 kB | 37 % |
-| Portfolio | 15 | 211.9 kB | 71 % |
-| Contact | 9 | 79.9 kB | 27 % |
-| Visibility guide | 9 | 82.6 kB | 28 % |
-| Legal notice | 9 | 80.7 kB | 27 % |
-| 404 | 9 | 78.8 kB | 26 % |
-| Thank-you | 9 | 79.0 kB | 26 % |
+| Home | 10 | **79.5 kB** | 26 % |
+| Website creation | 12 | 144.7 kB | 48 % |
+| SEO audit | 9 | 70.6 kB | 24 % |
+| Web performance | 11 | 121.7 kB | 41 % |
+| Website redesign | 9 | 67.8 kB | 23 % |
+| Mobile app | 11 | 93.6 kB | 31 % |
+| Portfolio | 15 | 203.3 kB | 68 % |
+| Contact | 9 | 62.3 kB | 21 % |
+| Visibility guide | 9 | 65.4 kB | 22 % |
+| Legal notice | 9 | 63.5 kB | 21 % |
+| 404 | 9 | 61.2 kB | 20 % |
+| Thank-you | 9 | 61.3 kB | 20 % |
 
-Both tables were re-measured in full on **2026-10-20**, after two more service pages (website
-redesign, mobile app), services in the menu, then a visibility guide linked from the footer, which
-adds 0.1 to 0.3 kB to every page. The first three service pages' charts
-— a Search Console curve, Core Web Vitals figures and a page-weight comparison — are inline SVG and HTML, with no image and no
-request; what they cost is stylesheet, 0.75 kB on the wire, paid by every page. The website creation
-page is the heaviest service page because it shows three portfolio thumbnails, lazy-loaded and
-counted here. Since 2026-10-03, every page has gained 0.5 to 0.9 kB on the wire, mostly the two new
-menu entries and the structured data describing the business; the home page, 0.8 kB.
+Both tables were re-measured in full on **2026-10-30**, after the redesign: one variable typeface
+instead of two (31.3 kB on the wire instead of 57.9), and every page opening in an animated
+underwater band. The redesign left every page 15.8 to 18.8 kB lighter than on 2026-10-20; the
+menu's gliding underline and its opening animation, added the same day, then took 0.9 to 1.2 kB
+per page back, and the portfolio's sharper screenshots, retaken the same day, 2.4 to 9 kB on the
+pages that show them (the app page lost 2.2 kB). The service pages'
+charts — a Search Console curve, Core Web Vitals figures and a page-weight comparison — are inline
+SVG and HTML, with no image and no request. The website creation page is the heaviest service page
+because it shows three portfolio screenshots, lazy-loaded and counted here.
 
 Both tables are deliberately pessimistic. The request count includes the manifest and the full icon
 set, which Lighthouse fetches to test installability and a browser does not — a real client picks
 one icon and caches it. The portfolio figure scrolls the whole page, so it counts all six
-screenshots, where a visitor who lands and stays put loads three: about 154 kB in practice.
+screenshots, where a visitor who lands and stays put loads the first one or two.
 
-One stylesheet per page, **31,982 bytes** minified and **7,625 bytes** over the wire (gzip -9). One script,
-**1,119 bytes** minified and **510 bytes** over the wire. On the home page the two self-hosted fonts
-account for 57.9 kB, leaving 37 kB for the document, stylesheet, scripts, portrait and icons
-combined. The hero's second kelp is 8.5 kB of inline path data that
-costs 148 bytes on the wire, because it sits next to the first copy and gzip matches it.
+One stylesheet per page, **48,725 bytes** minified and **10,623 bytes** over the wire (gzip -9). Two
+scripts: the menu, **2,889 bytes** minified and **1,293 bytes** over the wire, and the scenes' off-screen
+pause, **296 bytes** and **229 bytes**. On the home page the self-hosted typeface accounts for
+31.3 kB, leaving 48 kB for the document, stylesheet, scripts, portrait and icons combined. The kelp
+is 8.5 kB of inline path data: on the home page its copies sit next to each other, so gzip matches
+each one after the first for about 150 bytes; every other page draws it once and repeats it through
+`<use>`, a few bytes each.
 
 ## Stack
 
@@ -115,8 +120,8 @@ costs 148 bytes on the wire, because it sits next to the first copy and gzip mat
 | Styling | [Tailwind CSS](https://tailwindcss.com/) 4, CSS-first | No `tailwind.config.js`: the theme lives in `@theme`, in standard CSS. Only classes actually present in the templates are emitted. |
 | Colour | Native **OKLCH** tokens | Perceptually uniform, so adjusting a hue does not silently break a contrast ratio — which matters when the whole palette must hold AA. |
 | Content data | YAML in `_data/` | Copy and projects are data, not code. Raw values only; every derived form is an Eleventy filter, so there is one source of truth. |
-| JavaScript | None, beyond one hand-written file | The mobile menu. Portfolio tiles are links and the contact form is a plain `POST`. |
-| Fonts | Bitter + Manrope, self-hosted | Variable, latin subset, 57.9 kB for both. No Google Fonts request, so no user data leaves the site. |
+| JavaScript | None, beyond two hand-written files | The mobile menu and the off-screen pause of the underwater scenes. Portfolio tiles are links and the contact form is a plain `POST`. |
+| Fonts | Albert Sans, self-hosted | Variable, latin subset, 31.3 kB. No Google Fonts request, so no user data leaves the site. |
 | Contact form | [Web3Forms](https://web3forms.com/) | Static hosting cannot send mail. Web3Forms takes the POST and forwards it, without JavaScript and without a cookie. |
 | Hosting | GitHub Pages + GitHub Actions | Free, HTTPS included, CDN-served. The repository is the source of truth: a merge deploys, and the Git history is the site's history. |
 | Tooling | [Biome](https://biomejs.dev/) 2 | One tool for JS, CSS and JSON, in a fraction of the ESLint + Prettier runtime. |
@@ -156,7 +161,7 @@ yarn dev          # http://localhost:8080, live reload
 │   └── logos.js              #   logo variants, derived from the SVG sources
 ├── _includes/
 │   ├── layouts/              # base layout plus one per page type
-│   └── partials/             # header, footer, logo, icons
+│   └── partials/             # header, footer, logo, icons, the kelp, the section list
 ├── src/                      # Eleventy input: pages, images, stylesheet, sitemap
 │   ├── index.md              #   home
 │   ├── portfolio/            #   page + six screenshots
@@ -167,7 +172,7 @@ yarn dev          # http://localhost:8080, live reload
 │   └── assets/css/main.css   #   the entire Tailwind theme: palette, scale, components
 ├── assets/
 │   ├── logos/                # three SVG sources, inlined into the HTML
-│   ├── js/nav.js             # mobile menu source, minified at build
+│   ├── js/                   # menu and off-screen scene pause, minified at build
 │   └── banner.png            # this file's header, rendered from logo.svg
 ├── public/                   # copied verbatim to the site root
 │   ├── CNAME robots.txt favicon.* site.webmanifest
@@ -194,11 +199,13 @@ Copy lives in `_data/`, so most changes touch no template at all.
 | Body text of a page | The corresponding `.md` file under `src/` |
 | A page's `title` or `description` | The front matter of that `.md` file |
 
-Adding a project means dropping an 800 px-wide screenshot into `src/portfolio/` and appending a
-block to `_data/projects.yml`. The source keeps whatever ratio it was captured at; the card is 16:10
-and crops from the top, so the captured site's own header always survives. The build derives the
-AVIF and WebP variants at 480 / 640 / 800 px, so no manual compression is needed, and the sources
-themselves are never copied to the output. A project without a screenshot renders a neutral
+Adding a project means dropping a 1600×1000 screenshot into `src/portfolio/` and appending a
+block to `_data/projects.yml`. Capture it at twice the CSS width, in a 16:10 window, at the
+narrowest width where the site still shows its desktop menu: the text then reads at its largest
+in the frame, which is 16:10 too and crops from the top if a source runs taller. The build derives
+the AVIF and WebP variants at 480 / 640 / 800 / 1200 / 1600 px — the top rungs for 2x and 3x
+screens — so no manual compression is needed, and the sources themselves are never copied to the
+output. A project without a screenshot renders a neutral
 fixed-ratio placeholder, so nothing shifts on the day the image arrives.
 
 ## Deployment
@@ -229,5 +236,5 @@ Two regimes, set out in **[LICENSE.md](LICENSE.md)**:
 - **the content** — copy, photographs, logo and visual identity — is the **exclusive property of
   Cédric Ruiu** and is not covered by the MIT licence.
 
-Bitter and Manrope are distributed under the SIL Open Font License 1.1, whose texts ship alongside
-the generated font files.
+Albert Sans is distributed under the SIL Open Font License 1.1, whose text ships alongside the
+generated font file.

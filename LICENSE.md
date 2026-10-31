@@ -47,9 +47,8 @@ que ce soit, est interdite sans autorisation écrite préalable de Cédric Ruiu.
 
 ## 3. Composants tiers
 
-Les polices de caractères **Bitter** et **Manrope** sont distribuées sous
-**SIL Open Font License 1.1**.
+La police de caractères **Albert Sans** est distribuée sous **SIL Open Font License 1.1**.
 
-Elles ne sont pas versionnées dans ce dépôt : elles sont copiées depuis leurs paquets npm au moment
-du build. Le texte intégral de leur licence accompagne les fichiers de police sur le site publié, aux
-adresses `/fonts/OFL-Bitter.txt` et `/fonts/OFL-Manrope.txt`.
+Elle n'est pas versionnée dans ce dépôt : elle est copiée depuis son paquet npm au moment du build.
+Le texte intégral de sa licence accompagne le fichier de police sur le site publié, à l'adresse
+`/fonts/OFL-AlbertSans.txt`.

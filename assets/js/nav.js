@@ -1,11 +1,3 @@
-/**
- * Mobile menu. No Tailwind class is ever toggled here — assets/js/ isn't a
- * @source path of main.css, so state rides on the `hidden` attribute,
- * aria-expanded, and body.style.overflow instead.
- *
- * No click-outside handler: the panel is `fixed inset-0` and covers the
- * viewport edge to edge, so such a handler could never fire.
- */
 (() => {
   const toggle = document.getElementById("nav-toggle");
   const closeBtn = document.getElementById("nav-close");
@@ -13,7 +5,6 @@
 
   if (!toggle || !panel) return;
 
-  // The button ships hidden so it never sits there inert without JS.
   toggle.hidden = false;
 
   const focusableSelector = "a[href], button:not([disabled])";
@@ -51,7 +42,6 @@
     toggle.setAttribute("aria-label", "Fermer le menu");
     document.body.style.overflow = "hidden";
 
-    // Focus the close button, not the first focusable node (the logo link).
     const first = closeBtn || getFocusable()[0];
     if (first) first.focus();
 
@@ -81,5 +71,120 @@
 
   panel.querySelectorAll("a").forEach((link) => {
     link.addEventListener("click", closeMenu);
+  });
+})();
+
+(() => {
+  const list = document.querySelector("[data-nav-list]");
+  if (!list) return;
+
+  const reduced = matchMedia("(prefers-reduced-motion: reduce)");
+  let mark = list.querySelector(".nav-mark");
+  let home = mark ? mark.parentElement : null;
+  const resting = Boolean(mark);
+  let target = home;
+  let pinned = false;
+
+  list.dataset.glide = "";
+
+  function bar(link) {
+    const box = link.getBoundingClientRect();
+    const style = getComputedStyle(link);
+    const left = parseFloat(style.paddingLeft);
+    const right = parseFloat(style.paddingRight);
+    return { x: box.left + left, w: box.width - left - right };
+  }
+
+  // The mark stays laid out under `home`; every position is a transform from it.
+  function transform({ x, w }) {
+    const origin = bar(home);
+    return `translateX(${x - origin.x}px) scaleX(${w / origin.w})`;
+  }
+
+  function now() {
+    const origin = bar(home);
+    const matrix = new DOMMatrixReadOnly(getComputedStyle(mark).transform);
+    return { x: origin.x + matrix.m41, w: origin.w * matrix.a };
+  }
+
+  function go(link) {
+    if (link === target) return;
+    target = link;
+
+    if (!mark) {
+      if (!link) return;
+      mark = document.createElement("span");
+      mark.className = "nav-mark";
+      mark.setAttribute("aria-hidden", "true");
+      link.append(mark);
+      home = link;
+      const start = bar(link);
+      mark.style.transform = transform({ x: start.x + start.w / 2, w: 0 });
+    }
+
+    const from = now();
+    let to;
+    if (link) to = bar(link);
+    else if (resting) to = bar(home);
+    else to = { x: from.x + from.w / 2, w: 0 };
+
+    const end = link === home || (!link && resting) ? "none" : transform(to);
+    for (const animation of mark.getAnimations()) animation.cancel();
+    mark.style.transform = end;
+    if (reduced.matches) return;
+
+    const frames = [{ transform: transform(from) }];
+    if (from.w && to.w) {
+      const left = Math.min(from.x, to.x);
+      const right = Math.max(from.x + from.w, to.x + to.w);
+      frames.push({ transform: transform({ x: left, w: right - left }) });
+    }
+    frames.push({ transform: end });
+    mark.animate(
+      frames.map((frame) => ({
+        ...frame,
+        easing: "cubic-bezier(0.5, 0, 0.2, 1)",
+      })),
+      { duration: frames.length === 3 ? 460 : 260 },
+    );
+  }
+
+  list.addEventListener("pointerover", (event) => {
+    const link = event.target.closest("a");
+    if (link && event.pointerType === "mouse" && !pinned) go(link);
+  });
+  list.addEventListener("pointerleave", (event) => {
+    if (event.pointerType === "mouse" && !pinned) go(null);
+  });
+  list.addEventListener("focusin", (event) => {
+    if (!pinned) go(event.target.closest("a"));
+  });
+  list.addEventListener("focusout", (event) => {
+    if (
+      !pinned &&
+      !list.contains(event.relatedTarget) &&
+      !list.matches(":hover")
+    )
+      go(null);
+  });
+  list.addEventListener("click", (event) => {
+    if (
+      event.button ||
+      event.metaKey ||
+      event.ctrlKey ||
+      event.shiftKey ||
+      event.altKey
+    )
+      return;
+    const link = event.target.closest("a");
+    if (!link) return;
+    pinned = true;
+    go(link);
+  });
+
+  addEventListener("pageshow", (event) => {
+    if (!event.persisted) return;
+    pinned = false;
+    go(null);
   });
 })();

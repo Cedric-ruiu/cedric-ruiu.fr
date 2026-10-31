@@ -1,8 +1,3 @@
-# The service pages. Read by the footer ("Expertise"), the home cards and
-# the "other services" block of each service page, so a URL or a name is only
-# ever written here. `key` matches `service` in each page's front matter, the
-# `services` list in projects.yml and `service` in home.yml. `icon` selects a
-# pictogram from _includes/partials/icons.njk by name.
 
 - key: "creation"
   name: "Création de site"

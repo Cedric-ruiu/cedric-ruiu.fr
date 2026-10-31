@@ -1,35 +1,32 @@
 {% import "partials/logo.njk" as logoPartial with context %}
 
-<header class="safe-x sticky top-0 z-40 bg-ocean">
-  <div class="mx-auto flex h-14 max-w-6xl items-center justify-between px-4 sm:px-6 lg:px-8">
-    <a href="/" class="tap shrink-0" aria-label="{{ site.name }} — accueil">
-      {{ logoPartial.logo(variant="default", size=40, alt="", class="text-white") }}
+<header class="safe-x on-dark fixed inset-x-0 top-0 z-40 pt-3">
+  <div class="wrap">
+  <div class="-mx-2 flex h-14 items-center justify-between rounded-full {% if drenched %}bg-abyss/40 ring-foam/20{% else %}bg-abyss/90 ring-foam/10{% endif %} pr-1 pl-3 ring-1 backdrop-blur-md sm:-mx-4 sm:pl-4 lg:-mx-5 lg:pr-3 lg:pl-5">
+    <a href="/" class="tap shrink-0" aria-label="{{ site.name }}, accueil">
+      {{ logoPartial.logo(variant="default", size=36, alt="", class="text-foam") }}
     </a>
 
     <nav aria-label="Navigation principale" class="hidden md:block">
-      <ul class="flex items-center gap-9">
+      <ul class="flex items-center gap-1 lg:gap-2" data-nav-list>
         {% for item in site.nav | navLinks(services) %}
         <li>
-          {# text-white/85 measures 4.66:1 on ocean, clearing WCAG 1.4.3. #}
           <a
             href="{{ item.url }}"
-            class="tap font-serif text-[15px] font-extrabold {% if page.url == item.url %}text-white{% else %}text-white/85 hover:text-white{% endif %}"
+            class="nav-link tap relative px-3 text-[0.9375rem] font-semibold {% if page.url == item.url %}text-foam{% else %}text-on-water hover:text-foam{% endif %}"
             {% if page.url == item.url %}aria-current="page"{% endif %}
-          ><span class="link-underline">{{ item.name }}</span></a>
+          >{{ item.name }}{% if page.url == item.url %}<span class="nav-mark" aria-hidden="true"></span>{% endif %}</a>
         </li>
         {% endfor %}
       </ul>
     </nav>
 
     <div class="flex items-center gap-1 md:hidden">
-      {# Phones only: on the home page the hero's call button sits below the fold,
-         so the sticky bar keeps the call one tap away on every page. A plain link,
-         so it works without script, unlike the menu toggle next to it. #}
       <a
         href="tel:{{ site.phone | phoneE164 }}"
         data-umami-event="appel"
         data-umami-event-emplacement="en-tete"
-        class="flex h-11 w-11 items-center justify-center rounded text-white"
+        class="flex h-11 w-11 items-center justify-center rounded-full text-foam"
         aria-label="Appeler le {{ site.phone | phoneDisplay }}"
       >
         <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -37,26 +34,16 @@
         </svg>
       </a>
 
-      {# Hidden until nav.js reveals it: the panel it opens only exists with script,
-         so without JS this would be a dead control. Navigation stays reachable in
-         the footer. Valid here — unlike on the <svg> below, a <button> is an
-         HTMLElement, so `toggle.hidden = false` really does clear the attribute.
-         The fixed slot reserves its room, so the call link beside it does not
-         shift when the script reveals it. #}
       <div class="h-11 w-11">
         <button
           type="button"
           id="nav-toggle"
-          class="flex h-11 w-11 items-center justify-center rounded text-white md:hidden"
+          class="flex h-11 w-11 items-center justify-center rounded-full text-foam md:hidden"
           aria-expanded="false"
           aria-controls="nav-mobile"
           aria-label="Ouvrir le menu"
           hidden
         >
-          {# One icon, no open/close swap: the panel below is `fixed inset-0 z-50` and
-             covers this header (z-40), so the button is never visible while the menu
-             is open. `hidden` is also invalid on <svg> — it is an HTMLElement
-             attribute, so setting it from script would have done nothing anyway. #}
           <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
             <line x1="3" y1="6" x2="21" y2="6"></line>
             <line x1="3" y1="12" x2="21" y2="12"></line>
@@ -66,24 +53,25 @@
       </div>
     </div>
   </div>
+  </div>
 
-  {# role="dialog" keeps assistive technology from reaching the page behind this overlay. #}
   <div
     id="nav-mobile"
-    class="safe-all fixed inset-0 z-50 flex flex-col bg-ocean-deep"
+    class="menu-sheet safe-all fixed inset-0 z-50 flex flex-col bg-abyss"
     role="dialog"
     aria-modal="true"
     aria-label="Menu"
     hidden
   >
-    <div class="flex h-14 items-center justify-between px-4">
-      <a href="/" class="tap" aria-label="{{ site.name }} — accueil">
-        {{ logoPartial.logo(variant="default", size=36, alt="", class="text-white") }}
+    <div class="wrap pt-3">
+    <div class="-mx-2 flex h-14 items-center justify-between pr-1 pl-3 sm:-mx-4 sm:pl-4">
+      <a href="/" class="tap shrink-0" aria-label="{{ site.name }}, accueil">
+        {{ logoPartial.logo(variant="default", size=36, alt="", class="text-foam") }}
       </a>
       <button
         type="button"
         id="nav-close"
-        class="flex h-11 w-11 items-center justify-center rounded text-white"
+        class="flex h-11 w-11 items-center justify-center rounded-full text-foam"
         aria-label="Fermer le menu"
       >
         <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
@@ -92,20 +80,21 @@
         </svg>
       </button>
     </div>
+    </div>
 
     <nav aria-label="Navigation mobile" class="flex flex-1 flex-col justify-center px-8 pb-20">
       <ul class="flex flex-col gap-2">
         {% for item in site.nav | navLinks(services) %}
-        <li>
+        <li class="menu-rise">
           <a
             href="{{ item.url }}"
-            class="block py-3 font-serif text-2xl font-extrabold {% if page.url == item.url %}text-white{% else %}text-white/80{% endif %}"
+            class="block py-3 text-3xl font-light tracking-[-0.02em] {% if page.url == item.url %}text-foam{% else %}text-on-water{% endif %}"
             {% if page.url == item.url %}aria-current="page"{% endif %}
           >{{ item.name }}</a>
         </li>
         {% endfor %}
       </ul>
-      <a href="/contact/" class="btn-primary mt-10">Me contacter</a>
+      <a href="/contact/" class="menu-rise btn-primary mt-10 [--i:6]">Me contacter</a>
     </nav>
   </div>
 </header>

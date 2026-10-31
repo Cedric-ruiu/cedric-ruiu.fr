@@ -4,28 +4,22 @@ layout: base
 {% import "partials/logo.njk" as logoPartial with context %}
 {% import "partials/icons.njk" as iconPartial %}
 
-{# Background rhythm, not to be reordered: ocean nav → ocean-deep hero → sand cards → tide band → sand CTA → ink footer. `hero-water` carries that ocean-deep, plus the depth gradient — see main.css. #}
-{# From lg up the hero fills the screen under the 3.5rem nav, content centred. #}
-<section class="hero-water relative overflow-hidden lg:flex lg:min-h-[calc(100dvh-3.5rem)] lg:flex-col lg:justify-center">
-  {# Two kelp fronds, and they must stay adjacent in the source: the symbol is
-     8.5 kB of path data, and the second copy costs 148 bytes on the wire only
-     because gzip matches it against the first. Move them apart and the match
-     falls out of the 32 kB window — measured 31/08/2026.
+<div class="dive on-dark">
 
-     The far one is mirrored, much larger and much fainter than the near one:
-     size and opacity are what put the two in different planes. Both hang
-     outside the frame; overflow-hidden on the section clips them instead of
-     causing horizontal scroll. #}
-  <div class="kelp kelp-far pointer-events-none absolute -bottom-8 -left-24 select-none opacity-7 lg:-bottom-20 lg:-left-48 lg:opacity-6 xl:-left-36" aria-hidden="true">
-    {{ logoPartial.logo(variant="mark", size=520, alt="", class="kelp-blade h-[34rem] w-auto text-white lg:h-[46rem] xl:h-[52rem]") }}
-  </div>
-  <div class="kelp pointer-events-none absolute -right-16 -bottom-24 select-none opacity-12 sm:-right-8 lg:right-8" aria-hidden="true">
-    {{ logoPartial.logo(variant="mark", size=520, alt="", class="kelp-blade h-[clamp(20rem,55vw,34rem)] w-auto text-white") }}
-  </div>
+<section class="scene relative isolate flex min-h-svh flex-col overflow-hidden" data-scene>
+  {# Keep the three frond <svg> adjacent: gzip then stores each copy after the
+     first in ~150 bytes instead of 8.5 kB. #}
+  <div class="kelp-forest pointer-events-none absolute inset-0 -z-10 select-none" aria-hidden="true">
+    <div class="kelp kelp-far absolute -bottom-16 -left-44 text-abyss opacity-45 sm:-left-32 lg:-bottom-32 lg:-left-40">
+      {{ logoPartial.logo(variant="mark", size=520, alt="", class="kelp-blade h-[38rem] w-auto lg:h-[60rem]") }}
+    </div>
+    <div class="kelp kelp-mid absolute right-[22%] -bottom-24 hidden text-ocean-deep opacity-70 lg:block">
+      {{ logoPartial.logo(variant="mark", size=520, alt="", class="kelp-blade h-[40rem] w-auto") }}
+    </div>
+    <div class="kelp absolute -right-28 -bottom-20 text-foam opacity-20 sm:-right-16 lg:-right-10 lg:-bottom-24">
+      {{ logoPartial.logo(variant="mark", size=520, alt="", class="kelp-blade h-[28rem] w-auto sm:h-[34rem] lg:h-[50rem]") }}
+    </div>
 
-  {# Six bubbles everywhere, six more from lg up — every one of them a
-     composited layer, so the phone gets half the column. #}
-  <div class="pointer-events-none absolute inset-0" aria-hidden="true">
     <span class="bubble bubble-1"></span>
     <span class="bubble bubble-2"></span>
     <span class="bubble bubble-3"></span>
@@ -40,105 +34,108 @@ layout: base
     <span class="bubble bubble-12 hidden lg:block"></span>
   </div>
 
-  {# The hero logo is hidden below sm: the nav right above already carries the
-     same lockup and label, and on a phone it pushed the call button below the
-     fold. From lg up the text column widens so the h1 and intro wrap on fewer
-     lines, and the logo height follows the viewport height: whatever the text
-     stack (~27rem), the nav and the padding leave, between 6rem and 17rem, so
-     the call button stays above the fold on a 1366×768 laptop. #}
-  <div class="relative mx-auto flex w-full max-w-5xl flex-col items-center px-4 pt-10 pb-16 text-center sm:px-6 sm:pt-16 sm:pb-24 lg:py-8">
-    {{ logoPartial.logo(variant="full", size=214, class="hidden h-auto w-[min(78vw,420px)] text-white sm:block lg:h-[clamp(6rem,100dvh_-_36.25rem,17rem)] lg:w-auto") }}
+  <div class="wrap flex flex-1 flex-col pt-[calc(var(--header-h)+1.5rem)] pb-28 sm:pt-[calc(var(--header-h)+3rem)] lg:justify-end lg:pt-[calc(var(--header-h)+2.5rem)] lg:pb-16">
+    {{ logoPartial.logo(variant="full", size=128, class="rise mb-10 hidden text-foam lg:block") }}
+    <h1 class="rise text-display-s max-w-[24ch] text-foam [--i:1]">{{ home.hero.title }}</h1>
+    <p class="rise text-lead mt-4 font-semibold text-foam [--i:1] lg:mt-5">{% for item in home.hero.services.split(" · ") %}<span class="whitespace-nowrap">{{ item }}</span>{% if not loop.last %} · {% endif %}{% endfor %}</p>
+    <p class="rise text-body mt-5 max-w-[58ch] [--i:2] lg:mt-8">{{ home.hero.intro }}</p>
 
-    <p class="eyebrow text-eyebrow-on-ocean-deep sm:mt-10 lg:mt-6">{{ home.hero.eyebrow }}</p>
-    <h1 class="text-h1-hero mt-4 font-serif text-white">{{ home.hero.title }}</h1>
-    <p class="text-body mt-6 max-w-xl text-on-ocean-deep lg:max-w-3xl">{{ home.hero.intro }}</p>
+    <div class="rise mt-8 flex flex-col gap-3 [--i:3] sm:flex-row sm:flex-wrap sm:items-center sm:gap-4 lg:mt-10">
+      <a href="tel:{{ site.phone | phoneE164 }}" data-umami-event="appel" data-umami-event-emplacement="heros" class="btn-primary w-full sm:w-auto">{{ iconPartial.icon("phone", class="h-5 w-5 shrink-0") }}Appeler&nbsp;le&nbsp;{{ site.phone | phoneDisplay }}</a>
+      <a href="{{ home.hero.contact.url }}" class="btn-secondary w-full sm:w-auto">{{ home.hero.contact.label }}</a>
+      <a href="{{ home.hero.projects.url }}" class="tap self-start sm:ml-2 sm:self-auto"><span class="link-plain">{{ home.hero.projects.label }}</span></a>
+    </div>
+  </div>
 
-    {# The call comes first: it is the conversion the site is built for, and one
-       tap away on a phone. Wraps from sm up, the three labels being too wide for
-       a single row at 640px. #}
-    <div class="mt-9 flex w-full flex-col gap-3 sm:w-auto lg:mt-8 sm:flex-row sm:flex-wrap sm:justify-center sm:gap-4">
-      <a href="tel:{{ site.phone | phoneE164 }}" data-umami-event="appel" data-umami-event-emplacement="heros" class="btn-primary w-full sm:w-auto">Appeler&nbsp;le&nbsp;{{ site.phone | phoneDisplay }}</a>
-      {# border-white/40: 3.48:1 against ocean-deep, clears WCAG 1.4.11's 3:1. #}
-      <a href="{{ home.hero.contact.url }}" class="btn-secondary w-full border-white/40 text-white hover:border-white hover:text-white sm:w-auto">{{ home.hero.contact.label }}</a>
-      <a href="{{ home.hero.projects.url }}" class="btn-secondary w-full border-white/40 text-white hover:border-white hover:text-white sm:w-auto">{{ home.hero.projects.label }}</a>
+</section>
+
+<section class="relative isolate overflow-hidden pt-6 pb-(--section-gap-l) lg:pt-[calc(var(--section-gap-l)-4rem)]" aria-labelledby="expertise-title" data-scene>
+  <div class="kelp-forest pointer-events-none absolute inset-0 -z-10 select-none" aria-hidden="true">
+    <div class="kelp kelp-far absolute -right-40 -bottom-24 text-ocean opacity-20 lg:right-[4%]">
+      {{ logoPartial.logo(variant="mark", size=520, alt="", class="kelp-blade h-[44rem] w-auto lg:h-[64rem]") }}
+    </div>
+    <span class="bubble bubble-1"></span>
+    <span class="bubble bubble-2"></span>
+    <span class="bubble bubble-6 hidden lg:block"></span>
+    <span class="bubble bubble-9 hidden lg:block"></span>
+  </div>
+
+  <div class="wrap">
+    <div class="grid gap-6 lg:grid-cols-12 lg:items-end lg:gap-x-8">
+      <h2 id="expertise-title" class="text-section text-foam lg:col-span-6">{{ home.expertise.title }}</h2>
+      <p class="text-lead max-w-[52ch] lg:col-span-5 lg:col-start-8">{{ home.expertise.intro }}</p>
+    </div>
+
+    <div class="mt-12 grid gap-12 lg:mt-20 lg:grid-cols-3 lg:items-start lg:gap-x-12">
+      {% for item in home.expertise.items %}
+      {% set step = loop.index %}
+      {% for service in services %}{% if service.key == item.service %}
+      <article class="flex flex-col border-t border-foam/25 pt-6 {% if step == 2 %}lg:mt-20{% elif step == 3 %}lg:mt-40{% endif %}">
+        <div class="flex items-center gap-4">
+          {{ iconPartial.icon(service.icon, class="-ml-1.5 h-12 w-12 shrink-0 text-foam") }}
+          <h3 class="text-title text-foam">{{ item.title }}</h3>
+        </div>
+        <p class="text-lead mt-5">{{ item.text }}</p>
+        {% if item.related %}
+        <p class="text-lead mt-3">Voir aussi :
+          {% for key in item.related %}{% for other in services %}{% if other.key == key %}<a href="{{ other.url }}" class="link-plain">{{ other.title }}</a>{% endif %}{% endfor %}{% if not loop.last %} et {% endif %}{% endfor %}
+        </p>
+        {% endif %}
+        <p class="mt-auto pt-6">
+          <a href="{{ service.url }}" class="tap"><span class="link-plain">{{ item.link }}</span></a>
+        </p>
+      </article>
+      {% endif %}{% endfor %}
+      {% endfor %}
     </div>
   </div>
 </section>
 
-<section class="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
-  <div class="max-w-2xl">
-    <p class="eyebrow">{{ home.expertise.eyebrow }}</p>
-    <h2 class="text-h2 mt-3 font-serif">{{ home.expertise.title }}</h2>
-    <p class="text-body mt-4">{{ home.expertise.intro }}</p>
-  </div>
+<section aria-labelledby="why-title">
+  <div class="wrap">
+    <h2 id="why-title" class="text-display-s max-w-[22ch] text-foam">{{ home.why.title }}</h2>
 
-  <div class="mt-10 grid grid-cols-1 gap-6 md:grid-cols-3">
-    {% for item in home.expertise.items %}
-    {% for service in services %}{% if service.key == item.service %}
-    <article class="card flex flex-col p-6 sm:p-7">
-      {{ iconPartial.icon(service.icon, class="h-14 w-14 text-ocean") }}
+    <div class="mt-12 grid gap-10 lg:mt-20 lg:grid-cols-12 lg:gap-x-8">
+      <div class="sm:max-w-sm lg:col-span-5 lg:-ml-[calc(var(--gutter)+max(0px,(100vw-var(--container))/2))] lg:max-w-none">
+        <div class="relative aspect-[600/406] overflow-hidden rounded-panel sm:aspect-[787/1000] lg:aspect-auto lg:h-full lg:min-h-[36rem] lg:rounded-l-none">
+          <picture>
+            <source media="(min-width: 640px)" srcset="{{ home.why.photo.portrait }} 787w, {{ home.why.photo.portraitLarge }} 1559w" sizes="(min-width: 1024px) 40rem, 24rem">
+            <img src="{{ home.why.photo.landscape }}" width="600" height="406" alt="{{ home.why.photo.alt }}" loading="lazy" decoding="async" class="absolute inset-0 h-full w-full object-cover object-[50%_25%]">
+          </picture>
+        </div>
+      </div>
 
-      <h3 class="text-h3 mt-6 font-serif">{{ item.title }}</h3>
-      <p class="text-body mt-4">{{ item.text }}</p>
-      {% if item.related %}
-      <p class="text-body mt-3">Voir aussi :
-        {% for key in item.related %}{% for other in services %}{% if other.key == key %}<a href="{{ other.url }}" class="font-medium text-ocean underline underline-offset-2">{{ other.title }}</a>{% endif %}{% endfor %}{% if not loop.last %} · {% endif %}{% endfor %}
-      </p>
-      {% endif %}
-      <p class="mt-auto pt-4">
-        <a href="{{ service.url }}" class="tap font-medium text-ocean"><span class="link-underline">{{ item.link }} <span aria-hidden="true">→</span></span></a>
-      </p>
-    </article>
-    {% endif %}{% endfor %}
-    {% endfor %}
-  </div>
-</section>
-
-<section class="bg-tide">
-  <div class="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
-    <div class="grid grid-cols-1 items-start gap-10 lg:grid-cols-2 lg:gap-14">
-      <div>
-        <p class="eyebrow">{{ home.why.eyebrow }}</p>
-        <h2 class="text-h2 mt-3 font-serif">{{ home.why.title }}</h2>
-        <p class="text-body mt-4">{{ home.why.intro }}</p>
-
-        <dl class="mt-8 flex flex-col gap-6">
+      <div class="lg:col-span-6 lg:col-start-7">
+        <p class="text-lead text-foam">{{ home.why.intro }}</p>
+        <dl class="mt-10 flex flex-col">
           {% for item in home.why.items %}
-          <div>
-            <dt class="font-serif text-h3 font-bold text-ink">{{ item.title }}</dt>
-            <dd class="text-body mt-2">{{ item.text }}</dd>
+          <div class="border-t border-foam/20 py-7 last:pb-0">
+            <dt class="text-title text-foam">{{ item.title }}</dt>
+            <dd class="text-lead mt-3">{{ item.text }}</dd>
           </div>
           {% endfor %}
         </dl>
       </div>
-
-      {# Art-directed portrait: wide crop on phones, tall crop from 640px up. The
-         aspect-* below switches at the same 640px breakpoint as the <source>
-         media query, so reserved space always matches the picked crop — zero
-         CLS. The <img> is absolutely positioned, so its intrinsic ratio never
-         drives layout. #}
-      {# `mx-auto` must stay on the inner div, not this grid item: an auto
-         margin on the grid item would downgrade `justify-self: stretch` to
-         `start` (CSS Box Alignment §6.2), sizing it to its absolutely-positioned
-         (i.e. empty) content and collapsing the card to zero width ≥640px. #}
-      <div class="order-first lg:order-last">
-        <div class="overflow-hidden rounded border border-border bg-white sm:mx-auto sm:max-w-sm lg:max-w-none">
-          <div class="relative aspect-[600/406] w-full sm:aspect-[787/1000]">
-            <picture>
-              <source media="(min-width: 640px)" srcset="{{ home.why.photo.portrait }} 787w, {{ home.why.photo.portraitLarge }} 1559w" sizes="(min-width: 1024px) 33rem, 24rem">
-              <img src="{{ home.why.photo.landscape }}" width="600" height="406" alt="{{ home.why.photo.alt }}" loading="lazy" decoding="async" class="absolute inset-0 h-full w-full object-cover">
-            </picture>
-          </div>
-        </div>
-      </div>
     </div>
   </div>
 </section>
 
-<section class="mx-auto max-w-3xl px-4 py-16 text-center sm:px-6 sm:py-20">
-  <h2 class="text-h2 font-serif">{{ home.cta.title }}</h2>
-  <p class="text-body mx-auto mt-4 max-w-xl">{{ home.cta.text }}</p>
-  <a href="{{ home.cta.button.url }}" class="btn-primary mt-8 w-full sm:w-auto">{{ home.cta.button.label }}</a>
+<section class="relative isolate overflow-hidden pt-(--section-gap-l) pb-(--section-gap-l) text-center" aria-labelledby="cta-title">
+  <div class="pointer-events-none absolute inset-0 -z-10 hidden select-none sm:block" aria-hidden="true">
+    <div class="absolute bottom-0 left-0 text-ocean-deep lg:left-[6%]">
+      {{ logoPartial.logo(variant="mark", size=520, alt="", class="h-[20rem] w-auto lg:h-[30rem]") }}
+    </div>
+    <div class="absolute right-0 bottom-0 -scale-x-100 text-ocean-deep opacity-70 lg:right-[8%]">
+      {{ logoPartial.logo(variant="mark", size=520, alt="", class="h-[16rem] w-auto lg:h-[24rem]") }}
+    </div>
+  </div>
+  <div class="wrap">
+    <h2 id="cta-title" class="text-display mx-auto text-foam">{{ home.cta.title }}</h2>
+    <p class="text-lead mx-auto mt-6 max-w-[52ch]">{{ home.cta.text }}</p>
+    <a href="{{ home.cta.button.url }}" class="btn-primary mt-10 w-full sm:w-auto">{{ home.cta.button.label }}</a>
+  </div>
 </section>
+
+</div>
 
 {{ content | safe }}

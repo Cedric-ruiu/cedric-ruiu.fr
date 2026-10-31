@@ -2,20 +2,30 @@
 layout: base
 ---
 
-<section class="mx-auto max-w-3xl px-4 py-12 sm:px-6 sm:py-16">
-  {% if eyebrow %}<p class="eyebrow">{{ eyebrow }}</p>{% endif %}
-  <h1 class="text-h1 mt-3 font-serif">{{ heading }}</h1>
-  {% if lead %}<p class="text-body mt-5 text-muted">{{ lead }}</p>{% endif %}
-
-  <div class="prose-site mt-8">
-    {{ content | safe }}
+<section class="surface scene on-dark relative isolate overflow-hidden" aria-labelledby="page-title" data-scene>
+  {% include "partials/surface-kelp.njk" %}
+  <div class="wrap pt-[calc(var(--header-h)+2rem)] pb-16 sm:pt-[calc(var(--header-h)+4rem)] sm:pb-20 lg:pt-[calc(var(--header-h)+4.5rem)] lg:pb-28">
+    <h1 id="page-title" class="rise text-display-s max-w-[24ch] text-foam">{{ heading }}</h1>
+    {% if lead %}<p class="rise text-body mt-6 max-w-[56ch] [--i:1] lg:text-lead">{{ lead }}</p>{% endif %}
   </div>
-
-  {% if actions %}
-  <div class="mt-10 flex flex-col gap-3 sm:flex-row sm:gap-4">
-    {% for action in actions %}
-    <a href="{{ action.url }}" class="{% if loop.first %}btn-primary{% else %}btn-secondary{% endif %} w-full sm:w-auto">{{ action.label }}</a>
-    {% endfor %}
-  </div>
-  {% endif %}
 </section>
+
+{% set toc = content | headings %}
+<div class="wrap grid gap-x-8 pt-(--section-gap-s) pb-(--section-gap) xl:grid-cols-12">
+  <div class="xl:col-span-7">
+    <div class="prose-site">
+      {{ content | safe }}
+    </div>
+
+    {% if actions %}
+    <div class="mt-12 flex flex-col gap-3 sm:flex-row sm:gap-4">
+      {% for action in actions %}
+      <a href="{{ action.url }}" class="{% if loop.first %}btn-primary{% else %}btn-secondary{% endif %} w-full sm:w-auto">{{ action.label }}</a>
+      {% endfor %}
+    </div>
+    {% endif %}
+  </div>
+  {% if toc.length >= 3 %}
+  {% include "partials/toc.njk" %}
+  {% endif %}
+</div>
