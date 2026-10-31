@@ -1,29 +1,13 @@
-/**
- * Search Console curve of the SEO-audit case study on /audit-seo/, derived from
- * _data/audit-case.csv. A .js data file rather than YAML because it reads the
- * filesystem and computes the chart geometry — nothing here is drawn by hand.
- *
- * The CSV holds weekly impressions as an index (100 = weekly average before the
- * actions were applied), never raw volumes: the client stays anonymous and the
- * repository is public.
- */
-
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
-// Week the audit's actions went live (Cédric): the dotted marker on the chart.
 const ACTIONS_APPLIED = "2026-05-04";
-// First week impressions clearly left their old level. The shaded band between
-// the two dates is the wait for Google to take the changes into account — the
-// chart is there to show it, not to suggest an overnight effect.
 const FIRST_EFFECTS = "2026-06-29";
 
-// Plot area, in viewBox units. The SVG is stretched to its box
-// (preserveAspectRatio="none"), so these only set the proportions of the data.
 const WIDTH = 600;
 const HEIGHT = 200;
-const TOP = 12; // headroom above the highest week
+const TOP = 12;
 
 const source = path.join(
   path.dirname(fileURLToPath(import.meta.url)),
@@ -52,7 +36,6 @@ export default function () {
 
   const points = weeks.map((w) => `${round(x(w.week))},${round(y(w.value))}`);
 
-  // One label per calendar month covered, in French ("mars", "avr."…).
   const monthFormat = new Intl.DateTimeFormat("fr-FR", {
     month: "short",
     timeZone: "UTC",

@@ -3,7 +3,6 @@ layout: portfolio
 title: "Portfolio — sites et applications réalisés | Cédric Ruiu"
 description: "Sites vitrines, sites éditoriaux et applications web conçus et développés par Cédric Ruiu, développeur web indépendant à Séné, dans le Morbihan."
 permalink: /portfolio/
-eyebrow: "Portfolio"
 heading: "Des projets réels, en ligne, que vous pouvez ouvrir."
 ---
 

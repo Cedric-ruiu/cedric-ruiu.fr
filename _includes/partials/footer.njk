@@ -1,64 +1,58 @@
 {% import "partials/logo.njk" as logoPartial with context %}
 {% import "partials/icons.njk" as iconPartial with context %}
 
-<footer class="safe-x bg-ink">
-  <div class="mx-auto max-w-6xl px-4 py-14 sm:px-6 lg:px-8">
-    <div class="grid grid-cols-1 gap-10 lg:grid-cols-[1.4fr_1fr_1fr_1.2fr]">
-      <div>
-        <a href="/" class="tap mb-4" aria-label="{{ site.name }} — accueil">
-          {{ logoPartial.logo(variant="default", size=42, alt="", class="text-white") }}
+<footer class="safe-x on-dark border-t border-foam/12 bg-seabed">
+  <div class="wrap pt-16 pb-10 lg:pt-20">
+    <div class="grid gap-10 lg:grid-cols-12 lg:gap-x-8">
+      <div class="lg:col-span-5">
+        <a href="/" class="tap" aria-label="{{ site.name }}, accueil">
+          {{ logoPartial.logo(variant="default", size=56, alt="", class="text-foam") }}
         </a>
-        <p class="max-w-xs text-sm leading-relaxed text-on-ink-muted">Développeur web indépendant à Séné, dans le Morbihan. Création de sites internet, référencement SEO et performance web, en Bretagne et partout en France.</p>
+        <p class="mt-4 max-w-sm text-sm leading-relaxed text-on-water-muted">Développeur web indépendant à Séné, dans le Morbihan. Création de sites internet, référencement SEO et performance web, en Bretagne et partout en France.</p>
       </div>
 
-      <div>
-        <div class="mb-2 font-serif text-[13px] font-extrabold uppercase tracking-wider text-white">Pages</div>
-        {# `tap`'s invisible padding (to reach 44px) would double into visible gaps between
-           stacked items; -mt-3 pulls each one back to a 12px rhythm. #}
-        <ul class="flex flex-col text-sm [&>li+li]:-mt-3">
-          {# Service entries of the menu are already listed under "Expertise". #}
+      <div class="lg:col-span-6 lg:col-start-7">
+        <div class="text-sm font-semibold text-on-water-muted">Contact</div>
+        <ul class="text-lead mt-2 flex flex-col font-semibold text-foam">
+          <li><a href="mailto:{{ site.email }}" data-umami-event="email" data-umami-event-emplacement="pied-de-page" class="tap w-fit"><span class="link-underline">{{ site.email }}</span></a></li>
+          <li><a href="tel:{{ site.phone | phoneE164 }}" data-umami-event="appel" data-umami-event-emplacement="pied-de-page" class="tap w-fit"><span class="link-underline">{{ site.phone | phoneDisplay }}</span></a></li>
+          <li class="flex min-h-11 items-center font-normal text-on-water">{{ site.locality }}, {{ site.department }} ({{ site.departmentCode }})</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="mt-12 grid gap-8 border-t border-foam/12 pt-8 sm:grid-cols-2 lg:mt-16 lg:grid-cols-12 lg:gap-x-8">
+      <div class="lg:col-span-5">
+        <div class="text-sm font-semibold text-on-water-muted">Pages</div>
+        <ul class="mt-2 flex flex-col text-on-water [&>li+li]:-mt-3">
           {% for item in site.nav %}
           {% if not item.service %}
-          <li><a href="{{ item.url }}" class="tap w-fit text-on-ink"><span class="link-underline">{{ item.name }}</span></a></li>
+          <li><a href="{{ item.url }}" class="tap w-fit"><span class="link-underline">{{ item.name }}</span></a></li>
           {% endif %}
           {% endfor %}
-          <li><a href="/etre-visible-sur-google/" class="tap w-fit text-on-ink"><span class="link-underline">Être visible sur Google</span></a></li>
-          <li><a href="/mentions-legales/" class="tap w-fit text-on-ink"><span class="link-underline">Mentions légales</span></a></li>
+          <li><a href="/etre-visible-sur-google/" class="tap w-fit"><span class="link-underline">Être visible sur Google</span></a></li>
+          <li><a href="/mentions-legales/" class="tap w-fit"><span class="link-underline">Mentions légales</span></a></li>
         </ul>
       </div>
 
-      <div>
-        <div class="mb-2 font-serif text-[13px] font-extrabold uppercase tracking-wider text-white">Expertise</div>
-        {# Same -mt-3 correction as the Pages list. #}
-        <ul class="flex flex-col text-sm [&>li+li]:-mt-3">
+      <div class="lg:col-span-6 lg:col-start-7">
+        <div class="text-sm font-semibold text-on-water-muted">Expertise</div>
+        <ul class="mt-2 flex flex-col text-on-water [&>li+li]:-mt-3">
           {% for service in services %}
-          <li><a href="{{ service.url }}" class="tap w-fit text-on-ink" {% if page.url == service.url %}aria-current="page"{% endif %}><span class="link-underline">{{ service.name }}</span></a></li>
+          <li><a href="{{ service.url }}" class="tap w-fit" {% if page.url == service.url %}aria-current="page"{% endif %}><span class="link-underline">{{ service.name }}</span></a></li>
           {% endfor %}
-        </ul>
-      </div>
-
-      <div>
-        <div class="mb-2 font-serif text-[13px] font-extrabold uppercase tracking-wider text-white">Contact</div>
-        {# Same -mt-3 correction as the Pages list, but only between two `tap` links. #}
-        <ul class="flex flex-col text-sm text-on-ink">
-          <li><a href="mailto:{{ site.email }}" data-umami-event="email" data-umami-event-emplacement="pied-de-page" class="tap w-fit"><span class="link-underline">{{ site.email }}</span></a></li>
-          <li class="-mt-3"><a href="tel:{{ site.phone | phoneE164 }}" data-umami-event="appel" data-umami-event-emplacement="pied-de-page" class="tap w-fit"><span class="link-underline">{{ site.phone | phoneDisplay }}</span></a></li>
-          <li>{{ site.locality }}, {{ site.department }} ({{ site.departmentCode }})</li>
         </ul>
       </div>
     </div>
   </div>
 
-  <div class="border-t border-white/10">
-    {# Deliberately understated: same subtle grey as the copyright, no underline
-       animation. It's a credit for the curious, not a call to action. #}
-    {# py-3 rather than py-6: `tap` already carries the link to a 44px target,
-       which is what sets this bar's height now. #}
-    <div class="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-x-6 gap-y-1 px-4 py-3 text-[13px] text-on-ink-subtle sm:px-6 lg:px-8">
-      <span>© {% year %} {{ site.name }} — {{ site.baselineShort }}</span>
-      {# Same tab on purpose, unlike the portfolio cards: this is a credit at the
-         very bottom of the page, not a link you are meant to come back from. #}
-      <a href="{{ site.repository }}" class="tap gap-2 text-on-ink-subtle transition-colors hover:text-on-ink">
+  <div class="border-t border-foam/12">
+    <div class="wrap flex flex-wrap items-center justify-between gap-x-6 gap-y-1 py-3 text-sm text-on-water-subtle">
+      <p class="flex flex-wrap gap-x-6 gap-y-1">
+        <span>© {% year %} {{ site.name }}</span>
+        <span>{{ site.baselineShort }}</span>
+      </p>
+      <a href="{{ site.repository }}" class="tap gap-2 text-on-water-subtle hover:text-on-water">
         {{ iconPartial.icon("github", class="h-4 w-4 shrink-0") }}
         Code source
       </a>

@@ -1,102 +1,129 @@
-/* Tailwind CSS v4, CSS-first config — no tailwind.config.js. */
-
-/* Automatic source detection starts from cwd, which is unpredictable; declare
-   sources explicitly instead. Paths are relative to this stylesheet. */
 @import "tailwindcss" source(none);
 
 @source "../../../src";
 @source "../../../_includes";
 @source "../../../_data";
 
-/* Copied from Fontsource by scripts/copy-fonts.mjs. Latin subset only. */
-
 @font-face {
-  font-family: "Bitter";
+  font-family: "Albert Sans";
   font-style: normal;
   font-display: swap;
   font-weight: 100 900;
-  src: url("/fonts/bitter-latin-wght-normal.woff2") format("woff2");
+  src: url("/fonts/albert-sans-latin-wght-normal.woff2") format("woff2");
   unicode-range:
     U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
     U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191,
     U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
-@font-face {
-  font-family: "Manrope";
-  font-style: normal;
-  font-display: swap;
-  font-weight: 200 800;
-  src: url("/fonts/manrope-latin-wght-normal.woff2") format("woff2");
-  unicode-range:
-    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
-    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191,
-    U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-
-/* `static` forces every variable into :root so they stay usable from
-   hand-written CSS, not only through generated utilities. */
 @theme static {
-  --font-sans: "Manrope", ui-sans-serif, system-ui, sans-serif;
-  --font-serif: "Bitter", ui-serif, Georgia, serif;
+  --font-sans: "Albert Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Albert Sans", ui-sans-serif, system-ui, sans-serif;
 
-  --color-ink: oklch(0.16 0.02 160);
+  --color-surface-light: oklch(0.46 0.095 230);
   --color-ocean: oklch(0.5 0.09 232);
-  --color-ocean-hover: oklch(0.4 0.09 232);
-  --color-ocean-deep: oklch(0.28 0.07 232);
-  --color-tide: oklch(0.95 0.015 232);
-  --color-sand: oklch(0.98 0.012 95);
-  /* `copy`, not `body`: a --color-body here would collide with the --text-body
-     size token below, and `text-body` would resolve to the colour, silently
-     dropping the type scale from every paragraph on the site. */
-  --color-copy: oklch(0.4 0.02 160);
-  --color-muted: oklch(0.5 0.02 160);
-  --color-border: oklch(0.9 0.02 152);
-  --color-border-field: oklch(0.62 0.02 152);
+  --color-ocean-hover: oklch(0.42 0.09 234);
+  --color-ocean-deep: oklch(0.28 0.07 236);
+  --color-abyss: oklch(0.2 0.055 242);
+  --color-seabed: oklch(0.15 0.04 246);
+  --color-foam: oklch(0.975 0.008 220);
+  --color-on-water: oklch(0.91 0.02 224);
+  --color-on-water-muted: oklch(0.76 0.035 228);
+  --color-on-water-subtle: oklch(0.68 0.03 230);
+  --color-sun: oklch(0.93 0.055 88);
+  --color-sun-hover: oklch(0.87 0.08 85);
 
-  /* Dark-background declensions (nav/hero/footer sit on ink or ocean-deep). */
-  --color-on-ink: oklch(0.85 0.01 160);
-  --color-on-ink-muted: oklch(0.7 0.01 160);
-  --color-on-ink-subtle: oklch(0.6 0.01 160);
-  --color-on-ocean-deep: oklch(0.9 0.02 152);
-  /* 0.82, not 0.75: without the hero logo on phones, the eyebrow sits in the
-     surface glow. Worst measured background gives 5.78:1 (4.54:1 at 0.75). */
-  --color-eyebrow-on-ocean-deep: oklch(0.82 0.09 232);
-  --color-tag-bg: oklch(0.9 0.03 232);
-  --color-tag-text: oklch(0.3 0.09 232);
+  --color-paper: oklch(0.975 0.008 220);
+  --color-paper-2: oklch(0.94 0.02 225);
+  --color-ink: oklch(0.22 0.05 245);
+  --color-copy: oklch(0.38 0.04 240);
+  --color-muted: oklch(0.5 0.03 238);
+  --color-border: oklch(0.89 0.02 228);
+  --color-border-field: oklch(0.6 0.03 235);
+  --color-surface: oklch(0.995 0.004 220);
 
-  /* Fluid type scale: clamp() between 360px and 1280px viewports. */
-  --text-h1-hero: clamp(2rem, 1.462rem + 2.3913vw, 3.375rem);
-  --text-h1-hero--line-height: 1.08;
-  --text-h1-hero--font-weight: 800;
+  --color-white: oklch(0.99 0.004 225);
+  --color-focus-ink: oklch(0.48 0.13 240);
+  --color-focus-light: oklch(0.9 0.05 220);
+  --color-focus: var(--color-focus-ink);
 
-  --text-h1: clamp(1.75rem, 1.4076rem + 1.5217vw, 2.625rem);
-  --text-h1--line-height: 1.1;
-  --text-h1--font-weight: 800;
+  --text-display: clamp(2.375rem, 1.1rem + 5vw, 5.25rem);
+  --text-display--line-height: 1;
+  --text-display--letter-spacing: -0.04em;
+  --text-display--font-weight: 300;
 
-  --text-h2: clamp(1.5rem, 1.3043rem + 0.8696vw, 2rem);
-  --text-h2--line-height: 1.15;
-  --text-h2--font-weight: 800;
+  --text-display-s: clamp(2.125rem, 1.25rem + 3vw, 3.75rem);
+  --text-display-s--line-height: 1.04;
+  --text-display-s--letter-spacing: -0.035em;
+  --text-display-s--font-weight: 300;
 
-  --text-h3: clamp(1.125rem, 1.0272rem + 0.4348vw, 1.375rem);
-  --text-h3--line-height: 1.2;
-  --text-h3--font-weight: 700;
+  --text-section: clamp(2rem, 1rem + 2.5vw, 3.25rem);
+  --text-section--line-height: 1.06;
+  --text-section--letter-spacing: -0.03em;
+  --text-section--font-weight: 300;
+
+  --text-title: clamp(1.25rem, 1rem + 0.5vw, 1.5rem);
+  --text-title--line-height: 1.2;
+  --text-title--letter-spacing: -0.01em;
+  --text-title--font-weight: 600;
+
+  --text-lead: clamp(1.125rem, 1rem + 0.35vw, 1.3125rem);
+  --text-lead--line-height: 1.5;
+
+  --text-heading: clamp(1.75rem, 1.25rem + 1.5vw, 2.5rem);
+  --text-heading--line-height: 1.1;
+  --text-heading--letter-spacing: -0.025em;
+  --text-heading--font-weight: 300;
+
+  --text-figure: clamp(1.125rem, 0.8rem + 1.5vw, 2.25rem);
+  --text-figure--line-height: 1.1;
+  --text-figure--letter-spacing: -0.02em;
+  --text-figure--font-weight: 300;
 
   --text-body: clamp(1rem, 0.9511rem + 0.2174vw, 1.125rem);
   --text-body--line-height: 1.625;
 
-  --text-eyebrow: clamp(0.75rem, 0.7011rem + 0.2174vw, 0.875rem);
-  --text-eyebrow--line-height: 1.4;
-  --text-eyebrow--font-weight: 700;
-  --text-eyebrow--letter-spacing: 0.1em;
+  --radius-panel: 1.5rem;
+}
+
+:root {
+  --container: 1440px;
+  --gutter: 16px;
+  --section-gap-s: 56px;
+  --section-gap: 72px;
+  --section-gap-l: 96px;
+  --header-h: 5rem;
+  --dur-micro: 120ms;
+  --dur-short: 220ms;
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@media (min-width: 40rem) {
+  :root {
+    --gutter: 24px;
+    --section-gap-s: 80px;
+    --section-gap: 96px;
+    --section-gap-l: 120px;
+  }
+}
+
+@media (min-width: 60rem) {
+  :root {
+    --gutter: 64px;
+    --section-gap-s: 120px;
+    --section-gap: 144px;
+    --section-gap-l: 176px;
+  }
 }
 
 @layer base {
+  html,
+  body {
+    overflow-x: clip;
+  }
+
   html {
-    /* Keeps the skip-link target, and any anchor jump, clear of the sticky nav. */
-    scroll-padding-top: 4rem;
-    /* Palette is light-only; stops mobile browsers with forced dark mode from
-       re-tinting form controls and backgrounds. */
+    scroll-padding-top: calc(var(--header-h) + 1rem);
     color-scheme: light;
   }
 
@@ -104,6 +131,8 @@
   h2,
   h3 {
     text-wrap: balance;
+    overflow-wrap: break-word;
+    min-width: 0;
     color: var(--color-ink);
   }
 
@@ -111,48 +140,93 @@
     text-wrap: pretty;
   }
 
-  /* Two rings, not one: a single ocean outline is invisible on the ocean nav and
-     ocean-deep hero. The white ring covers dark backgrounds, the ocean outline
-     covers light ones — together always clearing WCAG 1.4.11's 3:1. */
+  html {
+    scrollbar-color: var(--color-muted) var(--color-paper);
+  }
+
+  body {
+    caret-color: var(--color-ocean);
+  }
+
+  ::selection {
+    background-color: color-mix(in oklab, var(--color-ocean) 22%, transparent);
+    color: var(--color-ink);
+  }
+
   :focus-visible {
-    outline: 2px solid var(--color-ocean);
+    outline: 2px solid var(--color-focus);
     outline-offset: 2px;
-    box-shadow: 0 0 0 2px var(--color-white);
   }
 }
 
-@utility eyebrow {
-  display: block;
-  font-size: var(--text-eyebrow);
-  line-height: var(--text-eyebrow--line-height);
-  font-weight: var(--text-eyebrow--font-weight);
-  letter-spacing: var(--text-eyebrow--letter-spacing);
-  text-transform: uppercase;
-  color: var(--color-ocean);
+@utility on-dark {
+  --color-focus: var(--color-focus-light);
+  --btn-bg: var(--color-sun);
+  --btn-bg-hover: var(--color-sun-hover);
+  --btn-ink: var(--color-abyss);
+  --btn-line: color-mix(in oklab, var(--color-on-water) 55%, transparent);
+  --btn-line-hover: var(--color-foam);
+  --btn-line-ink: var(--color-foam);
+  --link-ink: var(--color-foam);
+  --link-ink-hover: var(--color-on-water);
+}
+
+@utility on-paper {
+  --color-focus: var(--color-focus-ink);
+  --btn-bg: initial;
+  --btn-bg-hover: initial;
+  --btn-ink: initial;
+  --btn-line: initial;
+  --btn-line-hover: initial;
+  --btn-line-ink: initial;
+  --link-ink: initial;
+  --link-ink-hover: initial;
+  color: var(--color-copy);
+}
+
+@utility wrap {
+  width: 100%;
+  max-width: var(--container);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
 }
 
 @utility btn-primary {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
-  min-height: 2.75rem;
-  padding-inline: 1.625rem;
-  padding-block: 0.875rem;
-  border-radius: 4px;
-  background-color: var(--color-ocean);
-  color: white;
-  font-family: var(--font-serif);
-  font-weight: 700;
-  font-size: 0.9375rem;
+  gap: 0.625rem;
+  min-height: 3rem;
+  padding-inline: 1.5rem;
+  padding-block: 0.625rem;
+  border: 2px solid transparent;
+  border-radius: 9999px;
+  background-color: var(--btn-bg, var(--color-ocean));
+  color: var(--btn-ink, var(--color-white));
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 1rem;
+  line-height: 1.25;
   text-align: center;
-  /* <button> defaults to cursor: default, unlike the <a> elements using this
-     utility elsewhere — set explicitly so both element types match. */
+  white-space: nowrap;
   cursor: pointer;
-  transition: background-color 0.2s ease;
+  transition:
+    background-color var(--dur-short) var(--ease-out),
+    transform var(--dur-micro) var(--ease-out);
 
   &:hover {
-    background-color: var(--color-ocean-hover);
+    background-color: var(--btn-bg-hover, var(--color-ocean-hover));
+  }
+
+  &:active {
+    transform: translateY(1px);
+  }
+
+  &:disabled,
+  &[aria-disabled="true"] {
+    opacity: 0.55;
+    cursor: not-allowed;
+    transform: none;
   }
 }
 
@@ -160,50 +234,43 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
-  min-height: 2.75rem;
+  gap: 0.625rem;
+  min-height: 3rem;
   padding-inline: 1.5rem;
-  padding-block: calc(0.875rem - 2px);
-  border-radius: 4px;
+  padding-block: 0.625rem;
+  border-radius: 9999px;
   border-width: 2px;
   border-style: solid;
-  /* border-field, not the decorative border: this 2px rule IS the button, so it
-     needs WCAG 1.4.11's 3:1 contrast, which --color-border fails at 1.27:1. */
-  border-color: var(--color-border-field);
+  border-color: var(--btn-line, var(--color-border-field));
   background-color: transparent;
-  color: var(--color-ink);
-  font-family: var(--font-serif);
-  font-weight: 700;
-  font-size: 0.9375rem;
+  color: var(--btn-line-ink, var(--color-ink));
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 1rem;
+  line-height: 1.25;
   text-align: center;
+  white-space: nowrap;
   cursor: pointer;
   transition:
-    border-color 0.2s ease,
-    color 0.2s ease;
+    border-color var(--dur-short) var(--ease-out),
+    color var(--dur-short) var(--ease-out),
+    transform var(--dur-micro) var(--ease-out);
 
   &:hover {
-    border-color: var(--color-ocean);
-    color: var(--color-ocean);
+    border-color: var(--btn-line-hover, var(--color-ocean));
+    color: var(--btn-line-ink, var(--color-ocean));
   }
-}
 
-@utility card {
-  border-radius: 4px;
-  border-width: 1px;
-  border-style: solid;
-  border-color: var(--color-border);
-  background-color: white;
-}
+  &:active {
+    transform: translateY(1px);
+  }
 
-@utility tag {
-  display: inline-block;
-  border-radius: 9999px;
-  padding-inline: 0.875rem;
-  padding-block: 0.375rem;
-  background-color: var(--color-tag-bg);
-  color: var(--color-tag-text);
-  font-size: 0.8125rem;
-  font-weight: 700;
+  &:disabled,
+  &[aria-disabled="true"] {
+    opacity: 0.55;
+    cursor: not-allowed;
+    transform: none;
+  }
 }
 
 @utility field {
@@ -212,19 +279,16 @@
   min-height: 2.75rem;
   padding-inline: 0.875rem;
   padding-block: 0.625rem;
-  border-radius: 4px;
+  border-radius: 0.75rem;
   border-width: 1px;
   border-style: solid;
   border-color: var(--color-border-field);
-  background-color: white;
+  background-color: var(--color-surface);
   font-family: var(--font-sans);
-  /* 16px minimum, or iOS zooms the page on focus. */
   font-size: 1rem;
   color: var(--color-ink);
 }
 
-/* Display-notch safe area: applied on the outer element so the inner max-width
-   container shifts with it instead of fighting the responsive px-* utilities. */
 @utility safe-x {
   padding-left: env(safe-area-inset-left);
   padding-right: env(safe-area-inset-right);
@@ -235,17 +299,10 @@
     env(safe-area-inset-bottom) env(safe-area-inset-left);
 }
 
-/*
- * Long-form prose (service pages, legal notice, thank-you page, 404). Written
- * by hand instead of pulled from @tailwindcss/typography — that plugin ships
- * 13 kB of rules (code, definition lists…) these pages never use. Values match
- * its prose-base scale, so nothing shifts visually; a Markdown element not
- * covered here (a blockquote, a code block) needs a rule added.
- */
 @utility prose-site {
   color: var(--color-copy);
-  font-size: 1rem;
-  line-height: 1.75;
+  font-size: var(--text-body);
+  line-height: 1.7;
 
   & p,
   & ul,
@@ -253,22 +310,32 @@
     margin-block: 1.25em;
   }
 
+  & > * {
+    max-width: 58ch;
+  }
+
+  & > :is(figure, div) {
+    max-width: none;
+  }
+
   & :is(h2, h3) {
-    font-family: var(--font-serif);
+    font-family: var(--font-display);
     color: var(--color-ink);
-    font-weight: 700;
   }
 
   & h2 {
-    font-size: 1.5em;
-    line-height: 1.3333;
-    margin-block: 2em 1em;
+    font-size: var(--text-heading);
+    line-height: var(--text-heading--line-height);
+    letter-spacing: var(--text-heading--letter-spacing);
+    font-weight: var(--text-heading--font-weight);
+    margin-block: 1.75em 0.6em;
   }
 
   & h3 {
-    font-size: 1.25em;
-    line-height: 1.6;
-    margin-block: 1.6em 0.6em;
+    font-size: 1.2em;
+    line-height: 1.35;
+    font-weight: 600;
+    margin-block: 1.75em 0.5em;
   }
 
   & :is(ul, ol) {
@@ -288,9 +355,6 @@
     color: var(--color-border-field);
   }
 
-  /* Ordered lists read as numbered steps — the prose only uses them for a
-     sequence (how a project or an audit unfolds). The disc is sized to one
-     line of text, so it sits level with the first line whatever wraps. */
   & ol {
     list-style: none;
     padding-left: 0;
@@ -314,16 +378,13 @@
     width: 1.75rem;
     height: 1.75rem;
     border-radius: 9999px;
-    background-color: var(--color-tide);
+    background-color: var(--color-paper-2);
     color: var(--color-ocean);
-    font-family: var(--font-serif);
+    font-family: var(--font-display);
     font-size: 0.875rem;
-    font-weight: 800;
+    font-weight: 600;
   }
 
-  /* Wrapped in an overflow-x-auto <div> in the Markdown, so a table too wide
-     for a phone scrolls inside its own box instead of the page. The spacing
-     sits on that wrapper: a margin can't collapse out of a scroll container. */
   & :has(> table) {
     margin-block: 1.75em;
   }
@@ -331,6 +392,7 @@
   & table {
     width: 100%;
     border-collapse: collapse;
+    font-variant-numeric: tabular-nums;
     font-size: 0.9375em;
     line-height: 1.6;
   }
@@ -354,7 +416,7 @@
 
   & a {
     color: var(--color-ocean);
-    font-weight: 500;
+    font-weight: 600;
     text-decoration: underline;
     text-decoration-thickness: 1px;
     text-underline-offset: 2px;
@@ -370,7 +432,6 @@
     margin-block: 3em;
   }
 
-  /* The frame around this block owns the outer spacing. */
   & > :first-child {
     margin-top: 0;
   }
@@ -380,8 +441,6 @@
   }
 }
 
-/* 44px touch target as a flex box, rather than padding the anchor: padding
-   would drag `link-underline`'s rule away from the text on an inner <span>. */
 @utility tap {
   display: inline-flex;
   align-items: center;
@@ -389,67 +448,221 @@
 }
 
 @utility link-underline {
-  padding-bottom: 2px;
-  background-image: linear-gradient(currentcolor, currentcolor);
-  background-repeat: no-repeat;
-  background-position: 0 100%;
-  background-size: 0% 2px;
-  transition: background-size 0.25s ease;
+  text-decoration-line: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.25em;
+  text-decoration-color: transparent;
+  transition: text-decoration-color var(--dur-short) var(--ease-out);
 
-  /* No reduced-motion guard here: the global block below sits outside every
-     @layer, so its transition-property already drops background-size. */
   &:hover {
-    background-size: 100% 2px;
+    text-decoration-color: currentcolor;
   }
 }
 
-/*
- * Home hero — underwater scene.
- *
- * Three ingredients, in order of cost: a static background (free), two kelp
- * fronds swaying (4 composited layers, phone included) and bubbles (6 layers on
- * a phone, 12 on desktop). Every animation moves `transform` and `opacity`
- * only, so none of them touches layout or paint — they all run on the
- * compositor.
- *
- * Reduced motion is handled by the global block below: it cuts every duration
- * to 0.01ms with no fill mode, so the kelp settles upright and the bubbles keep
- * the `opacity: 0` they rest at, i.e. the scene goes still rather than broken.
- */
+@utility link-plain {
+  color: var(--link-ink, var(--color-ocean));
+  font-weight: 600;
+  text-decoration-line: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.25em;
+  transition: color var(--dur-short) var(--ease-out);
+
+  &:hover {
+    color: var(--link-ink-hover, var(--color-ocean-hover));
+    text-decoration-thickness: 2px;
+  }
+}
+
 @layer components {
-  /* Depth, painted rather than animated: light from the surface at the top —
-     which also carries the ocean nav down into the ocean-deep hero — and the
-     water darkening toward the seabed. Measured on the painted pixels: the glow
-     is spent by 22% of the height and the eyebrow — the first text — starts at
-     28%, so no contrast pair in the palette sees a lighter background than it
-     was checked against. Below 42% the water only gets darker, which is why the
-     secondary button's white/40 border went from 2.97:1 to 3.21:1 on a phone,
-     where the near frond had been washing it out. */
-  .hero-water {
-    background-color: var(--color-ocean-deep);
-    background-image:
-      radial-gradient(
-        84% 44% at 50% -6%,
-        color-mix(in oklab, var(--color-ocean) 62%, transparent),
-        transparent 70%
-      ),
-      linear-gradient(
-        to bottom,
-        transparent 30%,
-        color-mix(in oklab, var(--color-ink) 74%, transparent)
-      );
+  .nav-link::after,
+  .nav-mark {
+    position: absolute;
+    right: 0.75rem;
+    bottom: 0.5rem;
+    left: 0.75rem;
+    height: 2px;
+    border-radius: 1px;
+    background: var(--color-foam);
   }
 
-  /*
-   * Kelp. The holdfast is the pivot: both transforms share a bottom-centre
-   * origin, so displacement grows with height — nothing at the base, most at
-   * the tip. Two of them, nested, because one rotation reads as a metronome:
-   * the frond turns (.kelp) while the blade lags behind it (.kelp-blade), on
-   * periods with no common factor so the pair never settles into a visible
-   * loop. Measured travel at the tip: ~17px on a phone, ~25 to 45px on a
-   * desktop, over the several seconds of a half-cycle — a couple of pixels a
-   * second, which is the speed the whole scene is tuned to.
-   */
+  .nav-link::after {
+    content: "";
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform var(--dur-short) var(--ease-out);
+  }
+
+  .nav-link:hover::after {
+    transform: none;
+    transform-origin: left;
+  }
+
+  .nav-link[aria-current]::after,
+  [data-glide] .nav-link::after {
+    content: none;
+  }
+
+  .nav-mark {
+    transform-origin: left;
+    view-transition-name: nav-mark;
+  }
+
+  .menu-sheet {
+    transition:
+      opacity var(--dur-short) var(--ease-out),
+      display var(--dur-short) allow-discrete;
+
+    &[hidden] {
+      opacity: 0;
+    }
+
+    @starting-style {
+      opacity: 0;
+    }
+  }
+
+  .menu-rise {
+    transition: transform 0.5s var(--ease-out);
+    transition-delay: calc(var(--i, 0) * 40ms);
+
+    @starting-style {
+      transform: translateY(1rem);
+    }
+
+    &:nth-child(2) {
+      --i: 1;
+    }
+    &:nth-child(3) {
+      --i: 2;
+    }
+    &:nth-child(4) {
+      --i: 3;
+    }
+    &:nth-child(5) {
+      --i: 4;
+    }
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  @view-transition {
+    navigation: auto;
+  }
+}
+
+::view-transition-old(root) {
+  display: none;
+}
+
+::view-transition-new(root) {
+  animation: none;
+}
+
+::view-transition-group(nav-mark) {
+  animation-duration: 0.45s;
+  animation-timing-function: var(--ease-out);
+}
+
+@layer components {
+  .dive {
+    --section-gap: 104px;
+    --section-gap-l: 128px;
+  }
+  @media (min-width: 40rem) {
+    .dive {
+      --section-gap: 136px;
+      --section-gap-l: 160px;
+    }
+  }
+  @media (min-width: 60rem) {
+    .dive {
+      --section-gap: 192px;
+      --section-gap-l: 224px;
+    }
+  }
+  .dive {
+    background-color: var(--color-abyss);
+    background-image: linear-gradient(
+      to bottom,
+      var(--color-surface-light) 0,
+      var(--color-ocean-deep) 24%,
+      var(--color-abyss) 62%,
+      var(--color-seabed) 100%
+    );
+    color: var(--color-on-water);
+  }
+
+  .surface {
+    background-color: var(--color-ocean-deep);
+    background-image: linear-gradient(
+      to bottom,
+      var(--color-surface-light),
+      var(--color-ocean-deep)
+    );
+    color: var(--color-on-water);
+  }
+
+  .deep {
+    background-color: var(--color-abyss);
+    background-image: linear-gradient(
+      to bottom,
+      var(--color-ocean-deep),
+      var(--color-abyss) 55%,
+      var(--color-seabed)
+    );
+    color: var(--color-on-water);
+  }
+
+  .scene {
+    &::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -20;
+      pointer-events: none;
+      background-image: radial-gradient(
+        70% 50% at 64% -8%,
+        color-mix(in oklab, var(--color-ocean) 75%, transparent),
+        transparent 72%
+      );
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      inset: 0 0 auto;
+      z-index: -1;
+      height: 80%;
+      pointer-events: none;
+      background-image:
+        repeating-conic-gradient(
+          from 150deg at 66% -35%,
+          transparent 0deg,
+          color-mix(in oklab, var(--color-sun) 10%, transparent) 2.2deg,
+          transparent 5deg
+        ),
+        repeating-conic-gradient(
+          from 155deg at 58% -45%,
+          transparent 0deg,
+          color-mix(in oklab, var(--color-sun) 7%, transparent) 3deg,
+          transparent 7.5deg
+        );
+      mask-image: radial-gradient(
+        90% 100% at 64% 0%,
+        var(--color-seabed) 10%,
+        transparent 80%
+      );
+    }
+  }
+
+  .kelp-forest {
+    mask-image: linear-gradient(
+      to bottom,
+      var(--color-seabed) 86%,
+      transparent
+    );
+  }
+
   .kelp {
     transform-origin: bottom center;
     animation: kelp-sway 17s ease-in-out -5s infinite;
@@ -460,12 +673,6 @@
     animation: kelp-lag 11s ease-in-out -4s infinite;
   }
 
-  /* The far frond: same drawing, so it is mirrored and put on slower periods
-     rather than reading as a clone. It is also much larger and fainter than the
-     near one, which is what separates the two planes — a big shape at 6% reads
-     as distance, a small one at 12% as foreground. `scale` (the independent
-     property) instead of a scaleX() transform, because `transform` is taken by
-     the animation and the two compose. */
   .kelp-far {
     scale: -1 1;
     animation-duration: 26s;
@@ -477,65 +684,63 @@
     }
   }
 
-  /*
-   * Bubbles — flat discs, not glass beads: same vocabulary as the symbol above
-   * them, which is a solid one-colour shape and nothing else. No rim, no
-   * highlight, no gradient; the element's own opacity does all the work.
-   *
-   * Position, size, travel and rhythm live in the numbered classes below rather
-   * than in a style attribute, so nothing is built by string concatenation and
-   * the Tailwind scanner has nothing to miss. `bottom` is a percentage of the
-   * hero, so the column stays evenly filled whether the hero is 890px tall on a
-   * phone or 900px on a desktop.
-   */
+  .kelp-mid {
+    animation-duration: 21s;
+    animation-delay: -2s;
+
+    & .kelp-blade {
+      animation-duration: 13s;
+      animation-delay: -7s;
+    }
+  }
+
   .bubble {
     position: absolute;
     border-radius: 9999px;
-    background-color: var(--color-white);
-    /* Rest state, and the state reduced motion falls back to: invisible. */
+    background-color: var(--color-foam);
     opacity: 0;
     animation: bubble-rise var(--bubble-duration) linear var(--bubble-delay)
       infinite;
   }
 
   .bubble-1 {
-    left: 6%;
-    bottom: 2%;
+    left: 7%;
+    bottom: 4%;
     width: 14px;
     height: 14px;
     --bubble-rise: 26rem;
     --bubble-drift: 0.9rem;
     --bubble-duration: 26s;
     --bubble-delay: -3s;
-    --bubble-peak: 0.16;
+    --bubble-peak: 0.28;
   }
 
   .bubble-2 {
-    left: 89%;
-    bottom: 22%;
+    left: 90%;
+    bottom: 20%;
     width: 9px;
     height: 9px;
     --bubble-rise: 19rem;
     --bubble-drift: -0.7rem;
     --bubble-duration: 21s;
     --bubble-delay: -13s;
-    --bubble-peak: 0.14;
+    --bubble-peak: 0.24;
   }
 
   .bubble-3 {
-    left: 17%;
-    bottom: 48%;
+    left: 18%;
+    bottom: 46%;
     width: 8px;
     height: 8px;
     --bubble-rise: 15rem;
     --bubble-drift: 0.6rem;
     --bubble-duration: 32s;
     --bubble-delay: -22s;
-    --bubble-peak: 0.12;
+    --bubble-peak: 0.2;
   }
 
   .bubble-4 {
-    left: 73%;
+    left: 76%;
     bottom: 6%;
     width: 17px;
     height: 17px;
@@ -543,71 +748,71 @@
     --bubble-drift: -1.1rem;
     --bubble-duration: 25s;
     --bubble-delay: -8s;
-    --bubble-peak: 0.15;
+    --bubble-peak: 0.26;
   }
 
   .bubble-5 {
-    left: 40%;
-    bottom: 34%;
+    left: 44%;
+    bottom: 30%;
     width: 10px;
     height: 10px;
     --bubble-rise: 22rem;
     --bubble-drift: 0.8rem;
     --bubble-duration: 35s;
     --bubble-delay: -17s;
-    --bubble-peak: 0.11;
+    --bubble-peak: 0.2;
   }
 
   .bubble-6 {
     left: 95%;
-    bottom: 58%;
+    bottom: 56%;
     width: 12px;
     height: 12px;
     --bubble-rise: 16rem;
     --bubble-drift: -0.6rem;
     --bubble-duration: 29s;
     --bubble-delay: -27s;
-    --bubble-peak: 0.13;
+    --bubble-peak: 0.22;
   }
 
   .bubble-7 {
-    left: 28%;
-    bottom: 12%;
+    left: 30%;
+    bottom: 10%;
     width: 11px;
     height: 11px;
     --bubble-rise: 24rem;
     --bubble-drift: 0.7rem;
     --bubble-duration: 23s;
     --bubble-delay: -6s;
-    --bubble-peak: 0.14;
+    --bubble-peak: 0.24;
   }
 
   .bubble-8 {
-    left: 62%;
-    bottom: 40%;
+    left: 64%;
+    bottom: 38%;
     width: 8px;
     height: 8px;
     --bubble-rise: 18rem;
     --bubble-drift: -0.5rem;
     --bubble-duration: 31s;
     --bubble-delay: -20s;
-    --bubble-peak: 0.11;
+    --bubble-peak: 0.2;
   }
 
   .bubble-9 {
     left: 12%;
-    bottom: 66%;
+    bottom: 64%;
     width: 13px;
     height: 13px;
     --bubble-rise: 14rem;
     --bubble-drift: 1rem;
     --bubble-duration: 27s;
     --bubble-delay: -11s;
-    --bubble-peak: 0.12;
+    --bubble-peak: 0.22;
   }
 
   .bubble-10 {
-    left: 82%;
+    left: 84%;
     bottom: 30%;
     width: 9px;
     height: 9px;
@@ -615,11 +820,11 @@
     --bubble-drift: -0.8rem;
     --bubble-duration: 34s;
     --bubble-delay: -25s;
-    --bubble-peak: 0.1;
+    --bubble-peak: 0.18;
   }
 
   .bubble-11 {
-    left: 52%;
+    left: 55%;
     bottom: 4%;
     width: 16px;
     height: 16px;
@@ -627,19 +832,32 @@
     --bubble-drift: 0.5rem;
     --bubble-duration: 24s;
     --bubble-delay: -15s;
-    --bubble-peak: 0.15;
+    --bubble-peak: 0.26;
   }
 
   .bubble-12 {
-    left: 33%;
-    bottom: 70%;
+    left: 36%;
+    bottom: 68%;
     width: 10px;
     height: 10px;
     --bubble-rise: 13rem;
     --bubble-drift: -0.9rem;
     --bubble-duration: 28s;
     --bubble-delay: -9s;
-    --bubble-peak: 0.11;
+    --bubble-peak: 0.2;
+  }
+
+  .rise {
+    transition: transform 0.9s var(--ease-out);
+    transition-delay: calc(var(--i, 0) * 70ms);
+
+    @starting-style {
+      transform: translateY(1.25rem);
+    }
+  }
+
+  [data-scene][data-paused] :is(.kelp, .kelp-blade, .bubble) {
+    animation-play-state: paused;
   }
 }
 
@@ -663,9 +881,6 @@
   }
 }
 
-/* Rises at a constant speed — a bubble reaches terminal velocity almost at
-   once — and bows sideways on the way, so the column reads as moving water
-   rather than a straight line of dots. */
 @keyframes bubble-rise {
   from {
     opacity: 0;
@@ -687,9 +902,6 @@
   }
 }
 
-/* Outside every @layer so it outranks the utilities without needing !important.
-   Only drops motion properties (transform, background-size…); colour
-   transitions stay since they're a state change, not motion. */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -698,7 +910,7 @@
     animation-iteration-count: 1;
     scroll-behavior: auto;
     transition-property:
-      color, background-color, border-color, outline-color, fill, stroke,
-      opacity;
+      color, background-color, border-color, text-decoration-color, fill,
+      stroke, opacity;
   }
 }

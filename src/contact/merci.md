@@ -1,9 +1,9 @@
 ---
 layout: confirmation
+check: true
 title: "Message envoyé — Cédric Ruiu"
 description: "Votre message a bien été envoyé."
 permalink: /contact/merci/
-eyebrow: "Message envoyé"
 heading: "Merci, votre message est parti."
 noindex: true
 excludeFromSitemap: true

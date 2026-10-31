@@ -4,7 +4,6 @@ title: "Développement d'application mobile près de Vannes"
 description: "Une application installable sur l'écran d'accueil du téléphone, ou publiée sur les stores, conçue sur mesure près de Vannes ou à distance."
 permalink: /application-mobile/
 service: "application"
-eyebrow: "Application mobile"
 heading: "Une application mobile installable, conçue et développée par une seule personne"
 lead: >-
   Une application mobile n'a pas toujours besoin de passer par l'App Store ou

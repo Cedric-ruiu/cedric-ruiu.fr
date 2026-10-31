@@ -4,7 +4,6 @@ title: "Création de site internet près de Vannes | Cédric Ruiu"
 description: "Site vitrine, boutique en ligne, application web ou mobile, textes compris : création sur mesure pour PME, artisans et associations, près de Vannes."
 permalink: /creation-site-internet/
 service: "creation"
-eyebrow: "Création de site internet"
 heading: "Un site internet sur mesure, conçu et développé par une seule personne"
 lead: >-
   Je conçois et développe des sites internet pour les petites et moyennes
@@ -30,7 +29,7 @@ faq:
     answer: >-
       Oui : une application installable sur l'écran d'accueil du téléphone, ou
       publiée sur les stores selon le besoin. Les deux options sont comparées
-      sur la page <a href="/application-mobile/" class="font-medium text-ocean
+      sur la page <a href="/application-mobile/" class="font-semibold text-ocean
       underline underline-offset-2">application mobile</a>.
   - question: "Faut-il que je fournisse les textes ?"
     answer: >-

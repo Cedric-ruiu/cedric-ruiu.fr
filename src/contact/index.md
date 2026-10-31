@@ -3,7 +3,6 @@ layout: contact
 title: "Contact — Cédric Ruiu, développeur web indépendant"
 description: "Création de site, référencement, performance : écrivez-moi ou appelez-moi. Réponse sous 48 heures. Séné, Morbihan, et à distance partout en France."
 permalink: /contact/
-eyebrow: "Contact"
 heading: "Parlons de votre projet."
 formHeading: "Écrivez-moi"
 ---

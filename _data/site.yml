@@ -1,5 +1,3 @@
-# Raw values only — derived formatting (phone, E.164, absolute URL, year) lives
-# in eleventy.config.js filters.
 
 name: "Cédric Ruiu"
 jobTitle: "Développeur web indépendant"
@@ -9,12 +7,8 @@ url: "https://cedric-ruiu.fr"
 baseline: "Création de site internet / Référencement / Performance"
 baselineShort: "Web / Référencement / Performance"
 
-# Public source repository, linked discreetly from the footer.
 repository: "https://github.com/Cedric-ruiu/cedric-ruiu.fr"
 
-# Looped by header.njk (through the navLinks filter) and footer.njk; the legal
-# notice link is added separately. A `service` entry is a key of services.yml:
-# the header shows it, the footer leaves it to its own "Expertise" column.
 nav:
   - name: "Accueil"
     url: "/"
@@ -28,7 +22,6 @@ nav:
 email: "contact@cedric-ruiu.fr"
 phone: "0637844729"
 
-# Publicly displayed area — the street only appears on the legal notice page.
 locality: "Séné"
 department: "Morbihan"
 departmentCode: "56"
@@ -36,8 +29,6 @@ region: "Bretagne"
 country: "FR"
 postalCode: "56860"
 
-# Mirrors the service area of the Google Business Profile (JSON-LD areaServed),
-# plus remote work across France.
 areaServed:
   - "Séné"
   - "Vannes"
@@ -51,13 +42,10 @@ areaServed:
   - "Morbihan"
   - "France"
 
-# Google Business Profile listing, linked from the JSON-LD (sameAs).
 googleBusinessProfile: "https://www.google.com/maps/search/?api=1&query=C%C3%A9dric%20Ruiu&query_place_id=ChIJo5ZOXTPHOykRzNiKWDhv35s"
 
-# web3formsKey is a public key by design, safe to version.
 web3formsKey: "d0e8982f-f4d2-43ca-978f-1b633b25de54"
 web3formsSubject: "Nouveau message depuis cedric-ruiu.fr"
-# Web3Forms requires an ABSOLUTE https URL on the same domain (free tier).
 web3formsRedirect: "https://cedric-ruiu.fr/contact/merci/"
 
 legal:
@@ -69,8 +57,6 @@ legal:
     city: "Séné"
     country: "France"
 
-  # Left empty: no registered business exists yet. Templates only render each
-  # block when it's filled in, so registering later is a 3-line edit here.
   statut: ""
   siret: ""
   tva: ""

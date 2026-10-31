@@ -3,7 +3,6 @@ layout: page
 title: "Mentions légales — cedric-ruiu.fr"
 description: "Éditeur, hébergeur, propriété intellectuelle, cookies et mesure d'audience, traitement des données du formulaire de contact du site cedric-ruiu.fr."
 permalink: /mentions-legales/
-eyebrow: "Informations légales"
 heading: "Mentions légales"
 lead: "Qui édite ce site, qui l'héberge, et ce qu'il advient des informations que vous y laissez."
 ---

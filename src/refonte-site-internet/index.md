@@ -4,7 +4,6 @@ title: "Refonte de site internet près de Vannes | Cédric Ruiu"
 description: "Refaire ou rafraîchir un site qui a vieilli, sans perdre sa place sur Google : refonte sur mesure pour associations, artisans et TPE, près de Vannes."
 permalink: /refonte-site-internet/
 service: "refonte"
-eyebrow: "Refonte de site internet"
 heading: "Refonte de site internet : moderniser votre site sans perdre votre place sur Google"
 lead: >-
   Votre site a vieilli, s'affiche mal sur téléphone ou ne vous ressemble plus ?

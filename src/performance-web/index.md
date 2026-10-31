@@ -4,7 +4,6 @@ title: "Site lent ? Audit de performance web sur mobile | Cédric Ruiu"
 description: "Des sites légers qui s'affichent vite, même en 4G : ma spécialité depuis plus de dix ans. Audit de performance et conseils pour accélérer votre site."
 permalink: /performance-web/
 service: "performance"
-eyebrow: "Performance web"
 heading: "Performance web : un site rapide, surtout sur mobile"
 lead: >-
   Votre site met du temps à s'afficher sur téléphone, ou saute pendant le
@@ -16,18 +15,18 @@ lead: >-
 # and tmp/measure/pages.mjs (on the wire, KiB). Re-measure before editing.
 # `median` is the median mobile page of the Web Almanac 2024, in kB.
 vitals:
-  measured: "20 octobre 2026"
-  lcp: "1,6 s"
+  measured: "30 octobre 2026"
+  lcp: "0,9 s"
   cls: "0"
   tbt: "0 ms"
 weight:
-  measured: "20 octobre 2026"
-  site: 95.7
+  measured: "30 octobre 2026"
+  site: 79.5
   median: 2311
 faq:
   - question: "Comment savoir si mon site est lent ?"
     answer: >-
-      Rendez-vous sur <a href="https://pagespeed.web.dev/" class="font-medium text-ocean underline underline-offset-2">PageSpeed
+      Rendez-vous sur <a href="https://pagespeed.web.dev/" class="font-semibold text-ocean underline underline-offset-2">PageSpeed
       Insights</a>, l'outil gratuit de Google, et saisissez l'adresse de votre
       site. Regardez d'abord l'onglet Mobile, puis le bloc du haut : quand
       Google dispose d'assez de données, il reflète l'expérience de vos vrais
@@ -101,7 +100,7 @@ Le secret de ces résultats, c'est la légèreté. Pour afficher une page, un
 téléphone doit d'abord la télécharger : textes, images, polices de caractères,
 scripts. Moins il y a à télécharger, plus la page s'affiche vite. Une page web
 moyenne représente environ 2,3 Mo de données sur mobile ; la page d'accueil de
-ce site, moins de 0,1 Mo — vingt-quatre fois moins, et moins qu'une seule photo
+ce site, moins de 0,1 Mo — vingt-neuf fois moins, et moins qu'une seule photo
 prise avec un téléphone.
 
 {% include "partials/weight-compare.njk" %}

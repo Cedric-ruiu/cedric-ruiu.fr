@@ -2,14 +2,6 @@
 permalink: /sitemap.xml
 eleventyExcludeFromCollections: true
 ---
-{#- Only real, indexable pages. Anything carrying `noindex` (the 404 and the
-    thank-you page) sets `excludeFromSitemap` too and is filtered out here.
-
-    No <lastmod>: Eleventy's default date is the file's creation time, and a CI
-    checkout recreates every file, so all four entries would carry the deploy
-    date and change on every deploy whether or not the page did. Google only
-    uses lastmod when it is consistently accurate, and the element is optional —
-    four honest <loc> beat four dates that are always wrong. -#}
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 {%- for item in collections.all %}

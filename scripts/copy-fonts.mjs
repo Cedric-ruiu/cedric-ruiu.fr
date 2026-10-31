@@ -1,14 +1,3 @@
-/**
- * Copies the self-hosted webfonts out of node_modules into public/fonts/.
- *
- * Only the `latin` subset is shipped — it covers every character French needs.
- * The Fontsource CSS files are NOT imported: they also declare cyrillic, greek,
- * vietnamese and latin-ext, which would multiply requests. @font-face is
- * hand-written in src/assets/css/main.css instead.
- *
- * public/fonts/ is gitignored — runs as the first step of `yarn dev`/`yarn build`.
- */
-
 import fs from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
@@ -19,14 +8,9 @@ const outputDir = path.join(rootDir, "public", "fonts");
 
 const families = [
   {
-    package: "@fontsource-variable/bitter",
-    file: "bitter-latin-wght-normal.woff2",
-    licenseAs: "OFL-Bitter.txt",
-  },
-  {
-    package: "@fontsource-variable/manrope",
-    file: "manrope-latin-wght-normal.woff2",
-    licenseAs: "OFL-Manrope.txt",
+    package: "@fontsource-variable/albert-sans",
+    file: "albert-sans-latin-wght-normal.woff2",
+    licenseAs: "OFL-AlbertSans.txt",
   },
 ];
 
