@@ -39,7 +39,7 @@ does not need. Everything below follows from that.
   Audience is measured with a cookieless, privacy-friendly tool run by the site owner: aggregate,
   anonymous statistics only, shared with no one.
 - **A budget, not an aspiration.** 300 kB per page on mobile, images included. The heaviest page
-  currently uses 68 % of it; the home page, 26 %.
+  currently uses 73 % of it; the home page, 26 %.
 - **Motion that never leaves the compositor.** Every page opens under water: kelp fronds from the
   logo swaying around their holdfast, bubbles rising, sunlight coming down from the surface; the home
   page is a whole dive, from the surface to the seabed of the footer. `transform` and `opacity` only
@@ -58,7 +58,7 @@ runs.
 | Page | Performance | Accessibility | Best practices | SEO | LCP | CLS |
 |---|---|---|---|---|---|---|
 | Home | 100 | 100 | 100 | 100 | 0.91 s | 0 |
-| Website creation | 100 | 100 | 100 | 100 | 0.91 s | 0 |
+| Website creation | 100 | 100 | 100 | 100 | 0.90 s | 0 |
 | SEO audit | 100 | 100 | 100 | 100 | 0.91 s | 0 |
 | Web performance | 100 | 100 | 100 | 100 | 0.90 s | 0 |
 | Website redesign | 100 | 100 | 100 | 100 | 0.90 s | 0 |
@@ -76,12 +76,12 @@ The 404 and thank-you pages are `noindex` by design, which Lighthouse scores dow
 | Page | Requests | Transferred | Budget used |
 |---|---|---|---|
 | Home | 10 | **79.5 kB** | 26 % |
-| Website creation | 12 | 144.7 kB | 48 % |
+| Website creation | 12 | 152.0 kB | 51 % |
 | SEO audit | 9 | 70.6 kB | 24 % |
 | Web performance | 11 | 121.7 kB | 41 % |
 | Website redesign | 9 | 67.8 kB | 23 % |
 | Mobile app | 11 | 93.6 kB | 31 % |
-| Portfolio | 15 | 203.3 kB | 68 % |
+| Portfolio | 16 | 219.9 kB | 73 % |
 | Contact | 9 | 62.3 kB | 21 % |
 | Visibility guide | 9 | 65.4 kB | 22 % |
 | Legal notice | 9 | 63.5 kB | 21 % |
@@ -96,7 +96,9 @@ per page back, and the portfolio's sharper screenshots, retaken the same day, 2.
 pages that show them (the app page lost 2.2 kB). The service pages'
 charts — a Search Console curve, Core Web Vitals figures and a page-weight comparison — are inline
 SVG and HTML, with no image and no request. The website creation page is the heaviest service page
-because it shows three portfolio screenshots, lazy-loaded and counted here.
+because it shows three portfolio screenshots, lazy-loaded and counted here. The portfolio and
+website creation rows were measured again on **2026-11-08**, after LoopCube joined the portfolio
+as its seventh project and the projects were reordered.
 
 Both tables are deliberately pessimistic. The request count includes the manifest and the full icon
 set, which Lighthouse fetches to test installability and a browser does not — a real client picks
