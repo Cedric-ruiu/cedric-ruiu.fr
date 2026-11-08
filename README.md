@@ -100,7 +100,7 @@ because it shows three portfolio screenshots, lazy-loaded and counted here.
 
 Both tables are deliberately pessimistic. The request count includes the manifest and the full icon
 set, which Lighthouse fetches to test installability and a browser does not — a real client picks
-one icon and caches it. The portfolio figure scrolls the whole page, so it counts all six
+one icon and caches it. The portfolio figure scrolls the whole page, so it counts all seven
 screenshots, where a visitor who lands and stays put loads the first one or two.
 
 One stylesheet per page, **48,725 bytes** minified and **10,623 bytes** over the wire (gzip -9). Two
@@ -164,7 +164,7 @@ yarn dev          # http://localhost:8080, live reload
 │   └── partials/             # header, footer, logo, icons, the kelp, the section list
 ├── src/                      # Eleventy input: pages, images, stylesheet, sitemap
 │   ├── index.md              #   home
-│   ├── portfolio/            #   page + six screenshots
+│   ├── portfolio/            #   page + seven screenshots
 │   ├── contact/              #   form page + thank-you page
 │   ├── mentions-legales/     #   legal notice
 │   ├── 404.md

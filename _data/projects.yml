@@ -1,19 +1,17 @@
-
-- name: "Myrmecophoto"
-  url: "https://myrmecophoto.fr/"
-  tag: "Site éditorial"
-  year: 2025
-  stack: "Nuxt"
-  services: [creation, seo, performance]
+- name: "Danse de la Licorne"
+  url: "https://lion-dance.fr/"
+  tag: "Site vitrine"
+  year: 2015
+  stack: "WordPress, thème sur mesure"
+  services: [creation]
   description: >-
-    Mon site de photographie naturaliste, consacré aux fourmis de France et
-    d'Europe. Il réunit une collection taxonomique — une fiche par espèce,
-    photographiée sous plusieurs angles — et un carnet de terrain où je publie
-    mes observations et mes notes de macrophotographie. C'est le terrain sur
-    lequel je teste ce que je propose ensuite : structure de contenu, vitesse
-    d'affichage et référencement.
-  image: "/portfolio/myrmecophoto.webp"
-  imageAlt: "Page d'accueil de Myrmecophoto, avec une macrophotographie de fourmi et l'accès à la collection d'espèces."
+    Site conçu et développé pour une école strasbourgeoise de danse de la
+    licorne et du dragon. Il explique la tradition, présente les costumes
+    disponibles pour les prestations — mariages, nouvel an, inaugurations — et
+    détaille les cours et les inscriptions. Le thème a été écrit sur mesure,
+    et le site est publié en plusieurs langues.
+  image: "/portfolio/lion-dance.webp"
+  imageAlt: "Page d'accueil du site Danse de la Licorne, avec une photo de prestation en costume."
 
 - name: "Aksel San Tattoo"
   url: "https://akselsan-tattoo.com/"
@@ -31,21 +29,6 @@
   image: "/portfolio/akselsan-tattoo.webp"
   imageAlt: "Page d'accueil du site Aksel San Tattoo, avec le titre « tatoueur à Ostwald, près de Strasbourg » sur une photo du tatoueur au travail."
 
-- name: "Danse de la Licorne"
-  url: "https://lion-dance.fr/"
-  tag: "Site vitrine"
-  year: 2015
-  stack: "WordPress, thème sur mesure"
-  services: [creation]
-  description: >-
-    Site conçu et développé pour une école strasbourgeoise de danse de la
-    licorne et du dragon. Il explique la tradition, présente les costumes
-    disponibles pour les prestations — mariages, nouvel an, inaugurations — et
-    détaille les cours et les inscriptions. Le thème a été écrit sur mesure,
-    et le site est publié en plusieurs langues.
-  image: "/portfolio/lion-dance.webp"
-  imageAlt: "Page d'accueil du site Danse de la Licorne, avec une photo de prestation en costume."
-
 - name: "AKSVB Strasbourg"
   url: "https://aksvb-strasbourg.fr/"
   tag: "Site vitrine"
@@ -60,6 +43,39 @@
     sur mesure plutôt que sur un gabarit du commerce.
   image: "/portfolio/aksvb-strasbourg.webp"
   imageAlt: "Page d'accueil du site AKSVB Strasbourg, avec la présentation des cours de kung-fu."
+
+- name: "Myrmecophoto"
+  url: "https://myrmecophoto.fr/"
+  tag: "Site éditorial"
+  year: 2025
+  stack: "Nuxt"
+  services: [creation, seo, performance]
+  description: >-
+    Mon site de photographie naturaliste, consacré aux fourmis de France et
+    d'Europe. Il réunit une collection taxonomique — une fiche par espèce,
+    photographiée sous plusieurs angles — et un carnet de terrain où je publie
+    mes observations et mes notes de macrophotographie. C'est le terrain sur
+    lequel je teste ce que je propose ensuite : structure de contenu, vitesse
+    d'affichage et référencement.
+  image: "/portfolio/myrmecophoto.webp"
+  imageAlt: "Page d'accueil de Myrmecophoto, avec une macrophotographie de fourmi et l'accès à la collection d'espèces."
+
+- name: "LoopCube"
+  url: "https://cedric-ruiu.github.io/loopcube/"
+  tag: "Application web"
+  year: 2026
+  stack: "Astro, TypeScript, three.js"
+  services: [creation]
+  description: >-
+    Générateur de cube infini en métal : une sculpture faite d'une seule ligne
+    de tube qui se referme sur elle-même en dessinant les arêtes d'un cube. On
+    choisit la forme — cube classique, cube encadré ou table basse — et le
+    profilé, carré ou rond ; l'outil affiche le cube en 3D et produit un plan
+    de fabrication A4 imprimable, avec nomenclature et fiche de débit. Pensé
+    pour les chaudronniers, métalliers et soudeurs, en français et en anglais.
+    Gratuit, open source, et tout se calcule dans le navigateur.
+  image: "/portfolio/loopcube.webp"
+  imageAlt: "Interface de LoopCube, avec un cube infini en tube carré affiché en 3D, ses pièces colorées par type, et le panneau de réglages."
 
 - name: "GypSum"
   url: "https://cedric-ruiu.github.io/gyp-sum/"
